@@ -1,0 +1,7 @@
+[user]
+	name = Oleg Voronkovich
+	email = oleg-voronkovich@yandex.ru
+[push]
+	default = simple
+[core]
+	excludesfile = ~/.gitignore_global
