@@ -1,0 +1,51 @@
+snippet koaapp "Koa / Application skeleton" b
+'use strict';
+
+const app = require('koa')();
+
+app.listen(3000);
+endsnippet
+
+snippet koaerror "Koa / Error handler" b
+app.on('error', function(err, ctx) {
+	${0}
+});
+endsnippet
+
+snippet koause "Koa / Use middleware" b
+app.use(function *(next) {
+	${0}
+});
+endsnippet
+
+snippet koamw "Koa / Middleware" i
+function *(next) {
+	${0}
+}
+endsnippet
+
+snippet koarouter "Koa / Router module" b
+'use strict';
+
+module.exports = function(router) {
+	${0}
+
+	return router;
+};
+endsnippet
+
+snippet koauseroute "Koa / Router middleware" b
+app.use(${1:router}.routes());
+endsnippet
+
+snippet koaroute "Koa / Route" b
+router.${1:get}(${2:'${3:route_name}', }'/${4}', function *(next) {
+	${0}
+});
+endsnippet
+
+snippet koaroute "Koa / Route" i
+${1:get}(${2:'${3:route_name}', }'/${4}', function *(next) {
+	${0}
+});
+endsnippet

@@ -1,0 +1,19 @@
+snippet test "Jest / Test" b
+test('${1}', () => {
+	${VISUAL}${0}
+});
+endsnippet
+
+snippet desc "Jest / Describe" b
+describe('${1}', () => {
+	${VISUAL}${0}
+});
+endsnippet
+
+snippet exp "Jest / Expect" b
+expect(${1}).toBe${2}(${3})
+endsnippet
+
+snippet expn "Jest / Expect not" b
+expect(${1}).not.toBe${2}(${3});
+endsnippet

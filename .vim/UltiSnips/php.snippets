@@ -1,0 +1,44 @@
+snippet putesta "PHPUnit test" b
+/** @test */
+public function ${1}()
+{
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet puit "PHPUnit test (it)" b
+public function testIt${1}()
+{
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet puita "PHPUnit test (it)" b
+/** @test */
+public function it${1}()
+{
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet desc "Describe spec" b
+describe("${1}", function () {
+	${VISUAL}${0};
+});
+endsnippet
+
+snippet it "Test" b
+it("${1}", function () {
+	${VISUAL}${0};
+});
+endsnippet
+
+snippet given "Given" b
+given('${1}', function () {
+	${VISUAL}${0};
+});
+endsnippet
+
+snippet exp "expect()" b
+expect(${1})->to${2}(${3});
+endsnippet

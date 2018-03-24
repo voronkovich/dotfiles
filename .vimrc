@@ -178,7 +178,7 @@ nnoremap <leader>R :call Replace(expand('<cWORD>'))<CR>
 " 1}}}
 
 " Ultisnips {{{
-let g:UltiSnipsSnippetDirectories=[ "UltiSnips", $HOME . '/.vim/vimrc/UltiSnips' ]
+let g:UltiSnipsSnippetDirectories=[ "UltiSnips", $HOME.'/.vim/UltiSnips' ]
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
@@ -334,7 +334,7 @@ else
 endif
 
 " PHPDoc
-let g:pdv_template_dir = $HOME . "/.vim/vimrc/pdv_templates_snip"
+let g:pdv_template_dir = $HOME."/.vim/pdv_templates_snip"
 au FileType php nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
 
 " PHP getset plugin
