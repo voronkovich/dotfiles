@@ -1,89 +1,94 @@
-" Plugins {{{ " Vundle
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Plugins {{{
+" Download vim-plug if missing
+if empty(glob("~/.vim/autoload/plug.vim"))
+    silent! execute '!curl --create-dirs -fsSLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * silent! PlugInstall
+endif
+
+" declare plugins
+silent! if plug#begin()
 
 " Common
-Plugin 'PeterRincker/vim-argumentative'
-Plugin 'Raimondi/delimitMate'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Yggdroot/indentLine'
-Plugin 'bling/vim-airline'
-Plugin 'duggiefresh/vim-easydir'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'janko-m/vim-test'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sgur/vim-editorconfig'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'voronkovich/file-magic.vim'
-Plugin 'wincent/ferret'
-Plugin 'xolox/vim-misc'
-Plugin 'ryanoasis/vim-devicons'
+Plug 'PeterRincker/vim-argumentative'
+Plug 'Raimondi/delimitMate'
+Plug 'VundleVim/Vundle.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'bling/vim-airline'
+Plug 'duggiefresh/vim-easydir'
+Plug 'easymotion/vim-easymotion'
+Plug 'janko-m/vim-test'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'junegunn/vim-easy-align'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'scrooloose/nerdtree'
+Plug 'sgur/vim-editorconfig'
+Plug 'tpope/vim-surround'
+Plug 'vim-syntastic/syntastic'
+Plug 'voronkovich/file-magic.vim'
+Plug 'wincent/ferret'
+Plug 'xolox/vim-misc'
+Plug 'ryanoasis/vim-devicons'
 
 " CtrlP
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'fisadev/vim-ctrlp-cmdpalette'
-Plugin 'ivalkeen/vim-ctrlp-tjump'
-Plugin 'nixprime/cpsm'
-Plugin 'tacahiroy/ctrlp-funky'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fisadev/vim-ctrlp-cmdpalette'
+Plug 'ivalkeen/vim-ctrlp-tjump'
+Plug 'nixprime/cpsm'
+Plug 'tacahiroy/ctrlp-funky'
 
 " Colorschemes
-" Plugin 'xolox/vim-colorscheme-switcher'
-Plugin 'flazz/vim-colorschemes'
+" Plug 'xolox/vim-colorscheme-switcher'
+Plug 'flazz/vim-colorschemes'
 
 " Comments
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
 " Code completion
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 " Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'sniphpets/sniphpets'
-Plugin 'sniphpets/sniphpets-common'
-Plugin 'sniphpets/sniphpets-doctrine'
-Plugin 'sniphpets/sniphpets-phpunit'
-Plugin 'sniphpets/sniphpets-peridot'
-Plugin 'sniphpets/sniphpets-postfix-codes'
-Plugin 'sniphpets/sniphpets-sylius'
-Plugin 'sniphpets/sniphpets-symfony'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'sniphpets/sniphpets'
+Plug 'sniphpets/sniphpets-common'
+Plug 'sniphpets/sniphpets-doctrine'
+Plug 'sniphpets/sniphpets-phpunit'
+Plug 'sniphpets/sniphpets-peridot'
+Plug 'sniphpets/sniphpets-postfix-codes'
+Plug 'sniphpets/sniphpets-sylius'
+Plug 'sniphpets/sniphpets-symfony'
 
 " PHP
 " Conficts with YCM
-" Plugin 'arnaud-lb/vim-php-namespace'
-" Plugin 'docteurklein/vim-symfony'
-Plugin '2072/PHP-Indenting-for-VIm'
-Plugin 'StanAngeloff/php.vim'
-Plugin 'adoy/vim-php-refactoring-toolbox'
-Plugin 'dantleech/vim-phpnamespace'
-Plugin 'evidens/vim-twig'
-Plugin 'noahfrederick/vim-composer'
-Plugin 'php-vim/phpcd.vim'
-" Plugin 'phpactor/phpactor'
-Plugin 'rayburgemeestre/phpfolding.vim'
-Plugin 'tobyS/pdv'
-Plugin 'tobyS/vmustache'
-Plugin 'voronkovich/ctrlp-symfony2.vim'
-Plugin 'voronkovich/php-getter-setter.vim'
-Plugin 'voronkovich/vim-composer-open-class-file'
+" Plug 'arnaud-lb/vim-php-namespace'
+" Plug 'docteurklein/vim-symfony'
+Plug '2072/PHP-Indenting-for-VIm'
+Plug 'StanAngeloff/php.vim'
+Plug 'adoy/vim-php-refactoring-toolbox'
+Plug 'dantleech/vim-phpnamespace'
+Plug 'evidens/vim-twig'
+Plug 'noahfrederick/vim-composer'
+Plug 'php-vim/phpcd.vim'
+" Plug 'phpactor/phpactor'
+Plug 'rayburgemeestre/phpfolding.vim'
+Plug 'tobyS/pdv'
+Plug 'tobyS/vmustache'
+Plug 'voronkovich/ctrlp-symfony2.vim'
+Plug 'voronkovich/php-getter-setter.vim'
+Plug 'voronkovich/vim-composer-open-class-file'
 
 " JS
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
 " Html
-Plugin 'Valloric/MatchTagAlways'
-Plugin 'mattn/emmet-vim'
+Plug 'Valloric/MatchTagAlways'
+Plug 'mattn/emmet-vim'
 
 " ZSH highlighting
-Plugin 'clones/vim-zsh'
+Plug 'clones/vim-zsh'
 
-call vundle#end()
+call plug#end()
+endif
 " }}}
 
 
