@@ -51,11 +51,18 @@ setopt hist_ignore_all_dups
 # }}}
 
 # Aliases {{{
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias ack="ag"
 alias d='docker'
 alias e="$EDITOR"
 alias ide="tmux -2 new-session $EDITOR \; split-window \; resize-pane -D 4"
+alias la='ls -a'
+alias la='ls -la'
+alias ll='ls -lG'
 alias localhost8080='sudo iptables -t nat -A OUTPUT -d localhost -p tcp --dport 80 -j REDIRECT --to-port 8080'
+alias ls='ls --color=auto'
 alias m='make'
 alias root='sudo -s'
 alias v="vagrant"
