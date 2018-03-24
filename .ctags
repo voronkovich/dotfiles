@@ -1,0 +1,7 @@
+--recurse
+--sort=fold
+--exclude=.git
+--exclude=*/cache/*
+--exclude=*.json
+--exclude=*.css
+--exclude=vendor/composer
