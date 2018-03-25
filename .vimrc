@@ -63,7 +63,7 @@ Plug 'sniphpets/sniphpets-symfony'
 " Plug 'docteurklein/vim-symfony'
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'StanAngeloff/php.vim'
-Plug 'adoy/vim-php-refactoring-toolbox'
+" Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'dantleech/vim-phpnamespace'
 Plug 'evidens/vim-twig'
 Plug 'noahfrederick/vim-composer'
@@ -74,7 +74,7 @@ Plug 'tobyS/pdv'
 Plug 'tobyS/vmustache'
 Plug 'voronkovich/ctrlp-symfony2.vim'
 Plug 'voronkovich/php-getter-setter.vim'
-Plug 'voronkovich/vim-composer-open-class-file'
+" Plug 'voronkovich/vim-composer-open-class-file'
 
 " JS
 Plug 'pangloss/vim-javascript'
@@ -325,9 +325,12 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " PHP {{{
-au FileType php nnoremap gf :call composer#open_file#open(expand('<cword>'))<CR>
+" au FileType php nnoremap gf :call composer#open_file#open(expand('<cword>'))<CR>
 
-autocmd FileType php setlocal omnifunc=phpactor#Complete
+" Phpactor
+au FileType php nnoremap gd :call phpactor#GotoDefinition()<CR>
+au FileType php setlocal omnifunc=phpactor#Complete
+au FileType php noremap <Leader>m :call phpactor#ContextMenu()<CR>
 
 " PHP folding
 let php_folding=0
