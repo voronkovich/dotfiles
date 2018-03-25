@@ -61,11 +61,8 @@ Plug 'sniphpets/sniphpets-symfony'
 
 " PHP
 " Conficts with YCM
-" Plug 'arnaud-lb/vim-php-namespace', { 'for' 'php' }
-" Plug 'docteurklein/vim-symfony'
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'StanAngeloff/php.vim'
-" Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'dantleech/vim-phpnamespace'
 Plug 'evidens/vim-twig'
 Plug 'noahfrederick/vim-composer'
@@ -91,7 +88,6 @@ Plug 'clones/vim-zsh'
 call plug#end()
 endif
 " }}}
-
 
 " Common settings {{{1
 set nobackup
@@ -330,9 +326,10 @@ nmap ga <Plug>(EasyAlign)
 " au FileType php nnoremap gf :call composer#open_file#open(expand('<cword>'))<CR>
 
 " Phpactor
-au FileType php nnoremap gd :call phpactor#GotoDefinition()<CR>
 au FileType php setlocal omnifunc=phpactor#Complete
-au FileType php noremap <Leader>m :call phpactor#ContextMenu()<CR>
+au FileType php nnoremap gd :call phpactor#GotoDefinition()<CR>
+au FileType php nnoremap <Leader>m :call phpactor#ContextMenu()<CR>
+au FileType php nnoremap <Leader>u :call phpactor#UseAdd()<CR>
 
 " PHP folding
 let php_folding=0
