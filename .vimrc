@@ -20,8 +20,9 @@ Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/vim-easy-align'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'sgur/vim-editorconfig'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
 Plug 'voronkovich/file-magic.vim'
@@ -58,22 +59,22 @@ Plug 'sniphpets/sniphpets-symfony'
 
 " PHP
 " Conficts with YCM
-" Plug 'arnaud-lb/vim-php-namespace'
+" Plug 'arnaud-lb/vim-php-namespace', { 'for' 'php' }
 " Plug 'docteurklein/vim-symfony'
-Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
-Plug 'StanAngeloff/php.vim', { 'for': 'php' }
-Plug 'adoy/vim-php-refactoring-toolbox', { 'for': 'php' }
-Plug 'dantleech/vim-phpnamespace', { 'for': 'php' }
-Plug 'evidens/vim-twig', { 'for': 'twig' }
+Plug '2072/PHP-Indenting-for-VIm'
+Plug 'StanAngeloff/php.vim'
+Plug 'adoy/vim-php-refactoring-toolbox'
+Plug 'dantleech/vim-phpnamespace'
+Plug 'evidens/vim-twig'
 Plug 'noahfrederick/vim-composer'
-Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
-" Plug 'phpactor/phpactor'
-Plug 'rayburgemeestre/phpfolding.vim', { 'for': 'php' }
-Plug 'tobyS/pdv', { 'for': 'php' }
+" Plug 'lvht/phpcd.vim', { 'do': 'composer install --no-dev -o -n' }
+Plug 'phpactor/phpactor', { 'do': 'composer install --no-dev -o -n' }
+Plug 'rayburgemeestre/phpfolding.vim'
+Plug 'tobyS/pdv'
 Plug 'tobyS/vmustache'
 Plug 'voronkovich/ctrlp-symfony2.vim'
-Plug 'voronkovich/php-getter-setter.vim', { 'for': 'php' }
-Plug 'voronkovich/vim-composer-open-class-file', { 'for': 'php' }
+Plug 'voronkovich/php-getter-setter.vim'
+Plug 'voronkovich/vim-composer-open-class-file'
 
 " JS
 Plug 'pangloss/vim-javascript'
@@ -325,6 +326,8 @@ nmap ga <Plug>(EasyAlign)
 
 " PHP {{{
 au FileType php nnoremap gf :call composer#open_file#open(expand('<cword>'))<CR>
+
+autocmd FileType php setlocal omnifunc=phpactor#Complete
 
 " PHP folding
 let php_folding=0
