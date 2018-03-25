@@ -1,4 +1,4 @@
-" Plugins {{{
+" Plugins {{,{
 " Download vim-plug if missing
 if empty(glob("~/.vim/autoload/plug.vim"))
     silent! execute '!curl --create-dirs -fsSLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
@@ -11,7 +11,6 @@ silent! if plug#begin()
 " Common
 Plug 'PeterRincker/vim-argumentative'
 Plug 'Raimondi/delimitMate'
-Plug 'VundleVim/Vundle.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'bling/vim-airline'
 Plug 'duggiefresh/vim-easydir'
@@ -20,14 +19,14 @@ Plug 'janko-m/vim-test'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/vim-easy-align'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'sgur/vim-editorconfig'
 Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
 Plug 'voronkovich/file-magic.vim'
 Plug 'wincent/ferret'
 Plug 'xolox/vim-misc'
-Plug 'ryanoasis/vim-devicons'
 
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
@@ -37,14 +36,13 @@ Plug 'nixprime/cpsm'
 Plug 'tacahiroy/ctrlp-funky'
 
 " Colorschemes
-" Plug 'xolox/vim-colorscheme-switcher'
 Plug 'flazz/vim-colorschemes'
 
 " Comments
 Plug 'tpope/vim-commentary'
 
 " Code completion
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -62,20 +60,20 @@ Plug 'sniphpets/sniphpets-symfony'
 " Conficts with YCM
 " Plug 'arnaud-lb/vim-php-namespace'
 " Plug 'docteurklein/vim-symfony'
-Plug '2072/PHP-Indenting-for-VIm'
-Plug 'StanAngeloff/php.vim'
-Plug 'adoy/vim-php-refactoring-toolbox'
-Plug 'dantleech/vim-phpnamespace'
-Plug 'evidens/vim-twig'
+Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
+Plug 'StanAngeloff/php.vim', { 'for': 'php' }
+Plug 'adoy/vim-php-refactoring-toolbox', { 'for': 'php' }
+Plug 'dantleech/vim-phpnamespace', { 'for': 'php' }
+Plug 'evidens/vim-twig', { 'for': 'twig' }
 Plug 'noahfrederick/vim-composer'
-Plug 'php-vim/phpcd.vim'
+Plug 'lvht/phpcd.vim', { 'for': 'php', 'do': 'composer install' }
 " Plug 'phpactor/phpactor'
-Plug 'rayburgemeestre/phpfolding.vim'
-Plug 'tobyS/pdv'
+Plug 'rayburgemeestre/phpfolding.vim', { 'for': 'php' }
+Plug 'tobyS/pdv', { 'for': 'php' }
 Plug 'tobyS/vmustache'
 Plug 'voronkovich/ctrlp-symfony2.vim'
-Plug 'voronkovich/php-getter-setter.vim'
-Plug 'voronkovich/vim-composer-open-class-file'
+Plug 'voronkovich/php-getter-setter.vim', { 'for': 'php' }
+Plug 'voronkovich/vim-composer-open-class-file', { 'for': 'php' }
 
 " JS
 Plug 'pangloss/vim-javascript'
