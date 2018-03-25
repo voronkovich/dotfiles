@@ -18,6 +18,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'janko-m/vim-test'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/vim-easy-align'
+Plug 'moll/vim-bbye'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
@@ -28,6 +29,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'voronkovich/file-magic.vim'
 Plug 'wincent/ferret'
 Plug 'xolox/vim-misc'
+
 
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
@@ -165,9 +167,9 @@ nmap <silent> <leader>rv :so $MYVIMRC<CR>
 command! W w !sudo tee %
 
 " Working with buffers {{{2
-nmap <Space>l :CtrlPBuffer<CR>
-nmap <Leader>q :bd<CR>
-nmap <C-h> <C-^> " Toggle between two buffers
+nnoremap <Space>l :CtrlPBuffer<CR>
+nnoremap <Leader>q :Bdelete<CR>
+nnoremap <C-h> <C-^> " Toggle between two buffers
 " 2}}}
 
 " Substitute functions {{{2
