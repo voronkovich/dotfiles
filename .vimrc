@@ -68,7 +68,6 @@ Plug 'phpactor/phpactor', { 'do': 'composer install --no-dev -o -n' }
 Plug 'rayburgemeestre/phpfolding.vim'
 Plug 'tobyS/pdv'
 Plug 'tobyS/vmustache'
-Plug 'voronkovich/ctrlp-symfony2.vim'
 
 " JS
 Plug 'pangloss/vim-javascript'
@@ -100,7 +99,7 @@ nnoremap ; :
 inoremap jf <Esc>
 inoremap fj <Esc>
 
-nnoremap <C-z> <Nop>
+" nnoremap <C-z> <Nop>
 
 " Launch shell command
 nnoremap ! :!
@@ -282,15 +281,6 @@ let g:ctrlp_extensions = ['funky', 'nerdtree']
 nnoremap <Space><BS> :CtrlPNerdTree<CR>
 nnoremap <Space>/ :CtrlPLine<CR>
 nnoremap <CR>   :CtrlP<CR>
-nnoremap <C-z>t :CtrlP tests/<CR>
-nnoremap <C-z>m :CtrlPSymfonyEntities<CR>
-nnoremap <C-z>c :CtrlPSymfonyControllers<CR>
-nnoremap <C-z>v :CtrlPSymfonyViews<CR>
-nnoremap <C-z>a :CtrlPSymfonyAssets<CR>
-nnoremap <C-z>o :CtrlPSymfonyConfigs<CR>
-nnoremap <C-z>f :CtrlPSymfonyForms<CR>
-nnoremap <C-z>l :CtrlPSymfonyListeners<CR>
-nnoremap <C-z>d :CtrlPSymfonyServices<CR>
 nnoremap <Leader>f :CtrlPFunky<CR>
 " }}}
 
