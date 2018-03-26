@@ -69,8 +69,6 @@ alias v="vagrant"
 alias vb='virtualbox'
 alias vim="stty stop '' -ixoff ; vim"
 alias vspec=~/.vim/bundle/vim-vspec/bin/vspec
-alias zshrc-pull="echo '**** Pulling .zshrc'; git --git-dir ~/.zsh/.git --work-tree ~/.zsh pull; echo; antigen update; zshrc-reload"
-alias zshrc-push="git --git-dir ~/.zsh/.git --work-tree ~/.zsh add . && git --git-dir ~/.zsh/.git --work-tree ~/.zsh commit && git --git-dir ~/.zsh/.git --work-tree ~/.zsh push"
 alias zshrc-reload="source ~/.zshrc"
 alias zshrc="$EDITOR ~/.zshrc"
 if $(which htop &>/dev/null); then
@@ -130,6 +128,8 @@ auto-ls () {
 zle -N accept-line auto-ls
 zle -N other-widget auto-ls
 # }}}
+
+bindkey '^ ' autosuggest-accept
 
 if [[ -r $HOME/.zsh_custom ]]; then
     source $HOME/.zsh_custom
