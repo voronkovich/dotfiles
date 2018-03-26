@@ -35,7 +35,6 @@ Plug 'xolox/vim-misc'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fisadev/vim-ctrlp-cmdpalette'
 Plug 'ivalkeen/vim-ctrlp-tjump'
-Plug 'nixprime/cpsm'
 Plug 'tacahiroy/ctrlp-funky'
 
 " Colorschemes
@@ -72,7 +71,6 @@ Plug 'rayburgemeestre/phpfolding.vim'
 Plug 'tobyS/pdv'
 Plug 'tobyS/vmustache'
 Plug 'voronkovich/ctrlp-symfony2.vim'
-Plug 'voronkovich/php-getter-setter.vim'
 " Plug 'voronkovich/vim-composer-open-class-file'
 
 " JS
@@ -284,8 +282,6 @@ if executable('ag')
           \ -g ""'
 endif
 let g:ctrlp_extensions = ['funky', 'nerdtree']
-" let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
-let g:cpsm_highlight_mode = 'detailed'
 nnoremap <Space><BS> :CtrlPNerdTree<CR>
 nnoremap <Space>/ :CtrlPLine<CR>
 nnoremap <CR>   :CtrlP<CR>
@@ -344,29 +340,6 @@ endif
 " PHPDoc
 let g:pdv_template_dir = $HOME."/.vim/pdv_templates_snip"
 au FileType php nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
-
-" PHP getset plugin
-let g:phpgetset_getterTemplate =
-            \ "    \n" .
-            \ "    public function %funcname%()\n" .
-            \ "    {\n" .
-            \ "        return $this->%varname%;\n" .
-            \ "    }"
-let g:phpgetset_setterTemplate =
-            \ "    \n" .
-            \ "    public function %funcname%($%varname%)\n" .
-            \ "    {\n" .
-            \ "        $this->%varname% = $%varname%;\n\n" .
-            \ "        return $this;\n" .
-            \ "    }"
-
-" PHP namespace
-inoremap <Leader>pu <C-O>:call PhpInsertUse()<CR>
-noremap <Leader>pu :call PhpInsertUse()<CR>
-inoremap <Leader>pe <C-O>:call PhpExpandClass()<CR>
-noremap <Leader>pe :call PhpExpandClass()<CR>
-inoremap <silent><leader>pn :call PhpNamespaceInsert()<CR>
-noremap <silent><leader>pn :call PhpNamespaceInsert()<CR>
 
 " Sniphpets
 " Override a default namespace resolving function
