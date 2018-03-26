@@ -30,7 +30,6 @@ Plug 'voronkovich/file-magic.vim'
 Plug 'wincent/ferret'
 Plug 'xolox/vim-misc'
 
-
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fisadev/vim-ctrlp-cmdpalette'
@@ -65,13 +64,11 @@ Plug 'StanAngeloff/php.vim'
 Plug 'dantleech/vim-phpnamespace'
 Plug 'evidens/vim-twig'
 Plug 'noahfrederick/vim-composer'
-" Plug 'lvht/phpcd.vim', { 'do': 'composer install --no-dev -o -n' }
 Plug 'phpactor/phpactor', { 'do': 'composer install --no-dev -o -n' }
 Plug 'rayburgemeestre/phpfolding.vim'
 Plug 'tobyS/pdv'
 Plug 'tobyS/vmustache'
 Plug 'voronkovich/ctrlp-symfony2.vim'
-" Plug 'voronkovich/vim-composer-open-class-file'
 
 " JS
 Plug 'pangloss/vim-javascript'
@@ -319,8 +316,6 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " PHP {{{
-" au FileType php nnoremap gf :call composer#open_file#open(expand('<cword>'))<CR>
-
 " Phpactor
 au FileType php setlocal omnifunc=phpactor#Complete
 au FileType php nnoremap gd :call phpactor#GotoDefinition()<CR>
@@ -340,13 +335,6 @@ endif
 " PHPDoc
 let g:pdv_template_dir = $HOME."/.vim/pdv_templates_snip"
 au FileType php nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
-
-" Sniphpets
-" Override a default namespace resolving function
-" fun! sniphpets#namespace()
-"     " See https://github.com/dantleech/vim-phpnamespace
-"     return PhpNamespaceGet()
-" endf
 
 " Advanced highlighting
 function! PhpSyntaxOverride()
