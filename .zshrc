@@ -129,6 +129,10 @@ zle -N accept-line auto-ls
 zle -N other-widget auto-ls
 # }}}
 
+# Enable Emacs keybindings
+# See https://superuser.com/a/751378
+bindkey -e
+
 bindkey '^ ' autosuggest-accept
 
 if [[ -r $HOME/.zsh_custom ]]; then
