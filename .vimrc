@@ -61,6 +61,7 @@ Plug 'sniphpets/sniphpets-symfony'
 " Conficts with YCM
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'StanAngeloff/php.vim'
+Plug 'arnaud-lb/vim-php-namespace'
 Plug 'dantleech/vim-phpnamespace'
 Plug 'evidens/vim-twig'
 Plug 'noahfrederick/vim-composer'
@@ -310,7 +311,8 @@ nmap ga <Plug>(EasyAlign)
 au FileType php setlocal omnifunc=phpactor#Complete
 au FileType php nnoremap gd :call phpactor#GotoDefinition()<CR>
 au FileType php nnoremap <Leader>m :call phpactor#ContextMenu()<CR>
-au FileType php nnoremap <Leader>u :call phpactor#UseAdd()<CR>
+au FileType php nnoremap <Leader>ua :call phpactor#UseAdd() <bar> :call PhpSortUse()<CR>
+au FileType php nnoremap <Leader>us :call PhpSortUse()<CR>
 
 " PHP folding
 let php_folding=0
