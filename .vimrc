@@ -24,6 +24,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sgur/vim-editorconfig'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'
 Plug 'voronkovich/file-magic.vim'
@@ -242,11 +243,12 @@ fun! CreateHere(key, file)
 endfun
 " Create phpunit test
 fun! CreateTest(key)
-    let test_file = substitute(expand('%:p'), '/src/', '/tests/', '')
+    let test_file = substitute(expand('%:p'), '/src/', '/tests/unit/', '')
     let test_file = substitute(test_file, '.php$', 'Test.php', '')
 
     return test_file
 endfun
+nnoremap <Leader>ct :Create test<CR>
 " }}}
 
 " Guttentags
@@ -305,6 +307,38 @@ let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 " Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" Projectionist
+let g:projectionist_heuristics = {
+    \ 'src/*.php': {
+        \ 'src/*.php': {
+            \ 'type': 'source',
+            \ 'alternate': 'tests/{}Test.php',
+        \ },
+        \ 'tests/*Test.php': {
+            \ 'type': 'test',
+            \ 'alternate': 'src/{}.php',
+        \ },
+        \ 'src/Controller/*Controller.php': {
+            \ 'type': 'controller',
+        \ },
+        \ 'src/Entity/*.php': {
+            \ 'type': 'entity',
+            \ 'alternate': ['src/Repository/{}Repository.php', 'src/Form/{}Type.php'],
+        \ },
+        \ 'src/Repository/*Repository.php': {
+            \ 'type': 'repository',
+            \ 'alternate': 'src/Entity/{}.php',
+        \ },
+        \ 'src/Form/*Type.php': {
+            \ 'type': 'form',
+            \ 'alternate': 'src/Entity/{}.php',
+        \ },
+        \ 'src/EventSubscriber/*Subscriber.php': {
+            \ 'type': 'subscriber',
+        \ },
+    \ },
+\ }
 
 " PHP {{{
 " Phpactor
