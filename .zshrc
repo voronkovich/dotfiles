@@ -139,4 +139,9 @@ if [[ -r $HOME/.zsh_custom ]]; then
     source $HOME/.zsh_custom
 fi
 
+# Symfony console autocompletion
+eval "$(symfony-autocomplete)"
+compdef _symfony manalize
+compdef _symfony peridot
+
 # vim: foldmethod=marker
