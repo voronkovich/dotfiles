@@ -14,6 +14,7 @@ omz github
 omz npm
 omz vagrant
 omz yarn
+zplug "aperezdc/zsh-fzy"
 zplug "mafredri/zsh-async", defer:0
 zplug "rg3/youtube-dl"
 zplug "sindresorhus/pure", as:theme, use:pure.zsh
@@ -27,6 +28,7 @@ zplug "voronkovich/symfony.plugin.zsh"
 zplug "zdharma/fast-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions", use:src
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 # }}}
 
 if ! zplug check --verbose; then
@@ -143,5 +145,10 @@ fi
 eval "$(symfony-autocomplete)"
 compdef _symfony manalize
 compdef _symfony peridot
+
+# Fuzzy
+bindkey '\ec' fzy-cd-widget
+bindkey '^T'  fzy-file-widget
+bindkey '^R'  fzy-history-widget
 
 # vim: foldmethod=marker
