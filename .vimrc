@@ -301,7 +301,7 @@ function! FzyCommand(choice_command, vim_command)
   endif
 endfunction
 
-nnoremap <CR> :call FzyCommand("ag . --silent -l -g ''", ":e")<cr>
+nnoremap <CR> :call FzyCommand('ag --silent -l', ":e")<cr>
 
 " Easy motion
 let g:EasyMotion_leader_key = '<Space>'
