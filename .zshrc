@@ -20,7 +20,6 @@ zplug "rg3/youtube-dl"
 zplug "sindresorhus/pure", as:theme, use:pure.zsh
 zplug "supercrabtree/k"
 zplug "voronkovich/gitignore.plugin.zsh"
-zplug 'voronkovich/mysql.plugin.zsh'
 zplug "voronkovich/phpcs.plugin.zsh"
 zplug "voronkovich/phpunit.plugin.zsh"
 zplug "voronkovich/project.plugin.zsh"
@@ -28,6 +27,8 @@ zplug "voronkovich/symfony.plugin.zsh"
 zplug "zdharma/fast-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions", use:src
+zplug 'voronkovich/mysql.plugin.zsh'
+zplug 'willghatch/zsh-snippets'
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 # }}}
 
@@ -150,5 +151,7 @@ compdef _symfony peridot
 bindkey '\ec' fzy-cd-widget
 bindkey '^T'  fzy-file-widget
 bindkey '^R'  fzy-history-widget
+
+bindkey '\eg' snippet-expand
 
 # vim: foldmethod=marker
