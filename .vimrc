@@ -57,6 +57,7 @@ Plug 'sniphpets/sniphpets-peridot'
 Plug 'sniphpets/sniphpets-postfix-codes'
 Plug 'sniphpets/sniphpets-sylius'
 Plug 'sniphpets/sniphpets-symfony'
+Plug 'voronkovich/ultisnips-t3js'
 
 " PHP
 " Conficts with YCM
@@ -248,7 +249,7 @@ fun! CreateTest(key)
 
     return test_file
 endfun
-nnoremap <Leader>ct :Create test<CR>
+nnoremap <Leader>to :Create test<CR>
 " }}}
 
 " Guttentags
@@ -286,6 +287,21 @@ nnoremap <Space>/ :CtrlPLine<CR>
 nnoremap <CR>   :CtrlP<CR>
 nnoremap <Leader>f :CtrlPFunky<CR>
 " }}}
+
+" Fzy
+function! FzyCommand(choice_command, vim_command)
+  try
+    let output = system(a:choice_command . " | fzy ")
+  catch /Vim:Interrupt/
+    " Swallow errors from ^C, allow redraw! below
+  endtry
+  redraw!
+  if v:shell_error == 0 && !empty(output)
+    exec a:vim_command . ' ' . output
+  endif
+endfunction
+
+nnoremap <CR> :call FzyCommand("ag . --silent -l -g ''", ":e")<cr>
 
 " Easy motion
 let g:EasyMotion_leader_key = '<Space>'
