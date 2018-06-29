@@ -26,10 +26,12 @@ Plug 'sgur/vim-editorconfig'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-eunuch'
 Plug 'vim-syntastic/syntastic'
 Plug 'voronkovich/file-magic.vim'
 Plug 'wincent/ferret'
 Plug 'xolox/vim-misc'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
