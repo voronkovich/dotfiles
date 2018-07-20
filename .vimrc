@@ -32,11 +32,10 @@ Plug 'voronkovich/file-magic.vim'
 Plug 'wincent/ferret'
 Plug 'xolox/vim-misc'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'srstevenson/vim-picker'
 
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'fisadev/vim-ctrlp-cmdpalette'
-Plug 'ivalkeen/vim-ctrlp-tjump'
 Plug 'tacahiroy/ctrlp-funky'
 
 " Colorschemes
@@ -162,7 +161,6 @@ nmap <silent> <leader>rv :so $MYVIMRC<CR>
 command! W w !sudo tee %
 
 " Working with buffers {{{2
-nnoremap <Space>l :CtrlPBuffer<CR>
 nnoremap <Leader>q :Bdelete<CR>
 nnoremap <C-h> <C-^> " Toggle between two buffers
 " 2}}}
@@ -216,9 +214,6 @@ let test#php#phpspec#options = '--format=pretty'
 " Saving by Ctrl+a
 nnoremap <C-a> <Esc>:w<CR>
 inoremap <C-a> <Esc>:w<CR>
-
-" CtrlP command palette
-nnoremap <Space>; :CtrlPCmdPalette<CR>
 
 " FileMagic {{{
 nnoremap <Leader>c :Create 
@@ -288,22 +283,13 @@ nnoremap <Space><BS> :CtrlPNerdTree<CR>
 nnoremap <Space>/ :CtrlPLine<CR>
 nnoremap <CR>   :CtrlP<CR>
 nnoremap <Leader>f :CtrlPFunky<CR>
+
 " }}}
 
-" Fzy
-function! FzyCommand(choice_command, vim_command)
-  try
-    let output = system(a:choice_command . " | fzy ")
-  catch /Vim:Interrupt/
-    " Swallow errors from ^C, allow redraw! below
-  endtry
-  redraw!
-  if v:shell_error == 0 && !empty(output)
-    exec a:vim_command . ' ' . output
-  endif
-endfunction
-
-nnoremap <CR> :call FzyCommand('ag --silent -l', ":e")<cr>
+" Picker/Fzy
+nnoremap <CR> :PickerEdit<CR>
+nnoremap <expr> <CR> &buftype ==# 'quickfix' ? "\<CR>" : ':PickerEdit<CR>'
+nnoremap <Space>l :PickerBuffer<CR>
 
 " Easy motion
 let g:EasyMotion_leader_key = '<Space>'

@@ -46,7 +46,6 @@ export LC_ALL=en_US.UTF-8
 export PATH="$PATH:${HOME}/bin:${HOME}/.composer/vendor/bin:${HOME}/.local/bin:vendor/bin:node_modules/.bin:${HOME}/.gem/ruby/current/bin"
 export EDITOR=vim
 export PAGER=most
-export ZSH_PLUGIN_GITIGNORE_TEMPLATE_PATHS="$HOME/.gitignore:$ZSH_PLUGIN_GITIGNORE_TEMPLATE_PATHS"
 # }}}
 
 # History settings {{{
