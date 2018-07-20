@@ -61,7 +61,6 @@ Plug 'sniphpets/sniphpets-symfony'
 Plug 'voronkovich/ultisnips-t3js'
 
 " PHP
-" Conficts with YCM
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'StanAngeloff/php.vim'
 Plug 'arnaud-lb/vim-php-namespace'
