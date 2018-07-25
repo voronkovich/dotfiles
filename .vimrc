@@ -23,16 +23,16 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sgur/vim-editorconfig'
+Plug 'srstevenson/vim-picker'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-eunuch'
-Plug 'vim-syntastic/syntastic'
 Plug 'voronkovich/file-magic.vim'
+Plug 'w0rp/ale'
 Plug 'wincent/ferret'
 Plug 'xolox/vim-misc'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'srstevenson/vim-picker'
 
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
@@ -63,12 +63,14 @@ Plug 'voronkovich/ultisnips-t3js'
 " PHP
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'StanAngeloff/php.vim'
+Plug 'afternoon/vim-phpunit'
 Plug 'arnaud-lb/vim-php-namespace'
 Plug 'dantleech/vim-phpnamespace'
 Plug 'evidens/vim-twig'
 Plug 'noahfrederick/vim-composer'
 Plug 'phpactor/phpactor', { 'do': 'composer install --no-dev -o -n' }
 Plug 'rayburgemeestre/phpfolding.vim'
+Plug 'renanivo/phpspec.vim'
 Plug 'tobyS/pdv'
 Plug 'tobyS/vmustache'
 
@@ -293,18 +295,13 @@ nnoremap <Space>l :PickerBuffer<CR>
 " Easy motion
 let g:EasyMotion_leader_key = '<Space>'
 
-" Synastic {{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" ALE {{{
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:airline#extensions#ale#enabled = 1
 
-let g:syntastic_php_checkers = ['php']
-let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
+let g:ale_php_phpcs_standard = 'psr2'
 " }}}
 
 " Easy align
