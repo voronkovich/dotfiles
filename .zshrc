@@ -145,6 +145,8 @@ fi
 eval "$(symfony-autocomplete)"
 compdef _symfony manalize
 compdef _symfony peridot
+compdef _symfony phpactor
+compdef _symfony phpstan
 
 # Fuzzy
 bindkey '\ec' fzy-cd-widget
