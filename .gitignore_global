@@ -34,6 +34,9 @@ cscope.po.out
 # phpcd
 .phpcd
 
+# php-cs-fixer
+.php_cs.cache
+
 ### Vagrant
 .vagrant/
 
