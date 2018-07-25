@@ -32,6 +32,7 @@ Plug 'tpope/vim-surround'
 Plug 'voronkovich/file-magic.vim'
 Plug 'w0rp/ale'
 Plug 'wincent/ferret'
+Plug 'wsdjeg/FlyGrep.vim'
 Plug 'xolox/vim-misc'
 
 " CtrlP
