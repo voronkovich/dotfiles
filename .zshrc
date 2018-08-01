@@ -49,7 +49,12 @@ export PAGER=most
 # }}}
 
 # History settings {{{
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+setopt appendhistory
 setopt hist_ignore_all_dups
+setopt share_history
 # }}}
 
 # Aliases {{{
