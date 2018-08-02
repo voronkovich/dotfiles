@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+mkdir src tests
+echo '{
+    "name": "app/app",
+    "description": "",
+    "autoload": {
+        "psr-4": {
+            "App\\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\\": "tests/"
+        }
+    }
+}' > composer.json
