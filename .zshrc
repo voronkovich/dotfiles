@@ -5,7 +5,6 @@ omz() { zplug "plugins/$1", from:oh-my-zsh; }
 # }}}
 
 # Bundles {{{
-omz bower
 omz composer
 omz docker
 omz extract
@@ -32,7 +31,6 @@ zplug 'voronkovich/mysql.plugin.zsh'
 zplug 'willghatch/zsh-snippets'
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug 'zunit-zsh/zunit', as:command, use:zunit, hook-build:'./build.zsh'
-
 # }}}
 
 if ! zplug check --verbose; then
