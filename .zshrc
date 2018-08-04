@@ -27,9 +27,12 @@ zplug "voronkovich/symfony.plugin.zsh"
 zplug "zdharma/fast-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions", use:src
+zplug 'molovo/revolver', as:command, use:revolver
 zplug 'voronkovich/mysql.plugin.zsh'
 zplug 'willghatch/zsh-snippets'
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug 'zunit-zsh/zunit', as:command, use:zunit, hook-build:'./build.zsh'
+
 # }}}
 
 if ! zplug check --verbose; then
