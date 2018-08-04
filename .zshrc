@@ -72,6 +72,7 @@ alias ll='ls -lG'
 alias localhost8080='sudo iptables -t nat -A OUTPUT -d localhost -p tcp --dport 80 -j REDIRECT --to-port 8080'
 alias ls='ls --color=auto'
 alias m='make'
+alias pt='p -t'
 alias root='sudo -s'
 alias v="vagrant"
 alias vb='virtualbox'
