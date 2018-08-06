@@ -2,8 +2,6 @@
 
 mkdir src tests
 echo '{
-    "name": "app/app",
-    "description": "",
     "autoload": {
         "psr-4": {
             "App\\\": "src/"
@@ -15,17 +13,4 @@ echo '{
         }
     }
 }' > composer.json
-echo '<?xml version="1.0" encoding="UTF-8"?>
-
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.0/phpunit.xsd"
-         colors="true"
-         bootstrap="vendor/autoload.php"
->
-    <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>tests/</directory>
-        </testsuite>
-    </testsuites>
-</phpunit>' > phpunit.xml.dist
 composer dump
