@@ -155,6 +155,7 @@ compdef _symfony manalize
 compdef _symfony peridot
 compdef _symfony phpactor
 compdef _symfony phpstan
+compdef _symfony phpunit-watcher
 
 # Fuzzy
 bindkey '\ec' fzy-cd-widget
