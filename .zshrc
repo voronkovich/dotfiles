@@ -130,6 +130,7 @@ auto-ls () {
     if [[ -z $BUFFER ]]; then
         zle -I
         k
+        echo
     else
         zle ".$WIDGET"
     fi
