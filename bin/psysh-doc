@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+echo doc "$1" | psysh

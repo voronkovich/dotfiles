@@ -341,6 +341,8 @@ let g:projectionist_heuristics = {
     \ },
 \ }
 
+au FileType php setlocal keywordprg=psysh-doc
+
 " PHP {{{
 " Phpactor
 au FileType php setlocal omnifunc=phpactor#Complete
