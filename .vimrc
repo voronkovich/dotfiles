@@ -308,7 +308,29 @@ nnoremap <Leader>e :E
 let g:projectionist_heuristics = {
     \ 'src/*.php': {
         \ 'src/*.php': {
-            \ 'type': 'source',
+            \ 'type': 'src',
+            \ 'alternate': [
+                \ 'tests/{}Test.php',
+                \ 'specs/{}.spec.php',
+                \ 'spec/{}Spec.php',
+            \ ],
+        \ },
+        \ 'tests/*Test.php': {
+            \ 'type': 'test',
+            \ 'alternate': 'src/{}.php',
+        \ },
+        \ 'specs/*.spec.php': {
+            \ 'type': 'test',
+            \ 'alternate': 'src/{}.php',
+        \ },
+        \ 'spec/*Spec.php': {
+            \ 'type': 'test',
+            \ 'alternate': 'src/{}.php',
+        \ },
+    \ },
+    \ 'config/bundles.php': {
+        \ 'src/*.php': {
+            \ 'type': 'src',
             \ 'alternate': 'tests/{}Test.php',
         \ },
         \ 'tests/*Test.php': {
@@ -323,7 +345,10 @@ let g:projectionist_heuristics = {
         \ },
         \ 'src/Entity/*.php': {
             \ 'type': 'entity',
-            \ 'alternate': ['src/Repository/{}Repository.php', 'src/Form/{}Type.php'],
+            \ 'alternate': [
+                \ 'src/Repository/{}Repository.php',
+                \ 'src/Form/{}Type.php'
+            \ ],
         \ },
         \ 'src/EventSubscriber/*Subscriber.php': {
             \ 'type': 'subscriber',
@@ -342,8 +367,11 @@ let g:projectionist_heuristics = {
         \ 'config/packages/*.yaml': {
             \ 'type': 'config',
         \ },
-        \ 'config/packages/services*.yaml': {
+        \ 'config/services.yaml': {
             \ 'type': 'service',
+        \ },
+        \ 'var/log/*.log': {
+            \ 'type': 'log',
         \ },
     \ },
 \ }
