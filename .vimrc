@@ -306,14 +306,19 @@ nmap ga <Plug>(EasyAlign)
 nnoremap <Leader>a :A<CR>
 nnoremap <Leader>e :E
 let g:projectionist_heuristics = {
-    \ 'src/*.php': {
+    \ 'composer.json': {
         \ 'src/*.php': {
             \ 'type': 'src',
             \ 'alternate': [
                 \ 'tests/{}Test.php',
-                \ 'specs/{}.spec.php',
+                \ 'tests/unit/{}Test.php',
                 \ 'spec/{}Spec.php',
+                \ 'specs/{}.spec.php',
             \ ],
+        \ },
+        \ 'tests/unit/*Test.php': {
+            \ 'type': 'test',
+            \ 'alternate': 'src/{}.php',
         \ },
         \ 'tests/*Test.php': {
             \ 'type': 'test',
