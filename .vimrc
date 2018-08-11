@@ -32,7 +32,6 @@ Plug 'tpope/vim-surround'
 Plug 'voronkovich/file-magic.vim'
 Plug 'w0rp/ale'
 Plug 'wincent/ferret'
-Plug 'wsdjeg/FlyGrep.vim'
 Plug 'xolox/vim-misc'
 
 " CtrlP
@@ -66,12 +65,9 @@ Plug '2072/PHP-Indenting-for-VIm'
 Plug 'StanAngeloff/php.vim'
 Plug 'afternoon/vim-phpunit'
 Plug 'arnaud-lb/vim-php-namespace'
-Plug 'dantleech/vim-phpnamespace'
 Plug 'evidens/vim-twig'
-Plug 'noahfrederick/vim-composer'
 Plug 'phpactor/phpactor', { 'do': 'composer install --no-dev -o -n' }
 Plug 'rayburgemeestre/phpfolding.vim'
-Plug 'renanivo/phpspec.vim'
 Plug 'tobyS/pdv'
 Plug 'tobyS/vmustache'
 
