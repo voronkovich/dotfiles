@@ -73,6 +73,7 @@ alias localhost8080='sudo iptables -t nat -A OUTPUT -d localhost -p tcp --dport 
 alias ls='ls --color=auto'
 alias m='make'
 alias pt='p -t'
+alias phpspec='vendor/bin/phpspec'
 alias root='sudo -s'
 alias v="vagrant"
 alias vb='virtualbox'
@@ -156,6 +157,7 @@ compdef _symfony peridot
 compdef _symfony phpactor
 compdef _symfony phpstan
 compdef _symfony phpunit-watcher
+compdef _symfony phpspec
 
 # Fuzzy
 bindkey '\ec' fzy-cd-widget
