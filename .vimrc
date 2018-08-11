@@ -152,8 +152,8 @@ nmap g# g#zz
 " 2}}}
 
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>rv :so $MYVIMRC<CR>
+nmap <silent> <leader>ve :e $MYVIMRC<CR>
+nmap <silent> <leader>vr :so $MYVIMRC<CR>
 
 " Write file with root permissions
 command! W w !sudo tee %
@@ -304,6 +304,7 @@ nmap ga <Plug>(EasyAlign)
 
 " Projectionist
 nnoremap <Leader>a :A<CR>
+nnoremap <Leader>e :E
 let g:projectionist_heuristics = {
     \ 'src/*.php': {
         \ 'src/*.php': {
@@ -314,6 +315,9 @@ let g:projectionist_heuristics = {
             \ 'type': 'test',
             \ 'alternate': 'src/{}.php',
         \ },
+        \ 'src/Command/*Command.php': {
+            \ 'type': 'command',
+        \ },
         \ 'src/Controller/*Controller.php': {
             \ 'type': 'controller',
         \ },
@@ -321,16 +325,25 @@ let g:projectionist_heuristics = {
             \ 'type': 'entity',
             \ 'alternate': ['src/Repository/{}Repository.php', 'src/Form/{}Type.php'],
         \ },
-        \ 'src/Repository/*Repository.php': {
-            \ 'type': 'repository',
-            \ 'alternate': 'src/Entity/{}.php',
+        \ 'src/EventSubscriber/*Subscriber.php': {
+            \ 'type': 'subscriber',
         \ },
         \ 'src/Form/*Type.php': {
             \ 'type': 'form',
             \ 'alternate': 'src/Entity/{}.php',
         \ },
-        \ 'src/EventSubscriber/*Subscriber.php': {
-            \ 'type': 'subscriber',
+        \ 'src/Repository/*Repository.php': {
+            \ 'type': 'repository',
+            \ 'alternate': 'src/Entity/{}.php',
+        \ },
+        \ 'templates/*.html.twig': {
+            \ 'type': 'template',
+        \ },
+        \ 'config/packages/*.yaml': {
+            \ 'type': 'config',
+        \ },
+        \ 'config/packages/services*.yaml': {
+            \ 'type': 'service',
         \ },
     \ },
 \ }
