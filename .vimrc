@@ -196,9 +196,6 @@ nnoremap <BS> :NERDTreeToggle<CR>
 nnoremap <C-n> :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen = 1
 
-" Ferret
-nnoremap <Leader>a :Ack 
-
 " vim-test
 nnoremap <Leader>tf :TestFile<CR>
 nnoremap <Leader>tl :TestLast<CR>
@@ -306,6 +303,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Projectionist
+nnoremap <Leader>a :A<CR>
 let g:projectionist_heuristics = {
     \ 'src/*.php': {
         \ 'src/*.php': {
