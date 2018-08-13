@@ -29,7 +29,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
-Plug 'voronkovich/file-magic.vim'
 Plug 'w0rp/ale'
 Plug 'wincent/ferret'
 Plug 'xolox/vim-misc'
@@ -216,40 +215,6 @@ let test#php#phpspec#options = '--format=pretty'
 " Saving by Ctrl+a
 nnoremap <C-a> <Esc>:w<CR>
 inoremap <C-a> <Esc>:w<CR>
-
-" FileMagic {{{
-nnoremap <Leader>c :Create 
-let g:file_magic_command_alias = 'Create'
-let g:file_magic_open_command = 'e'
-let g:file_magic_spells = {
-    \ 'sfcontro': "src/AppBundle/Controller/%sController.php",
-    \ 'sfentity': "src/AppBundle/Entity/%s.php",
-    \ 'sfform':   "src/AppBundle/Form/Type/%sType.php",
-    \ 'sflistener': "src/AppBundle/EventListener/%sListener.php",
-    \ 'sfview':   "app/Resources/views/%s.twig",
-    \ 'sfconf':   "app/config/%s.yml",
-    \ 'here':     "!CreateHere",
-    \ 'test':     "!CreateTest"
-\ }
-" Create file in the same directory as the current buffer
-fun! CreateHere(key, file)
-    let path = expand('%:p:h')
-
-    if ! empty(path)
-        return path . '/' . a:file
-    else
-        return a:file
-    endif
-endfun
-" Create phpunit test
-fun! CreateTest(key)
-    let test_file = substitute(expand('%:p'), '/src/', '/tests/unit/', '')
-    let test_file = substitute(test_file, '.php$', 'Test.php', '')
-
-    return test_file
-endfun
-nnoremap <Leader>to :Create test<CR>
-" }}}
 
 " Guttentags
 let g:gutentags_project_root = [ 'vendor/composer' ]
