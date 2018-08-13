@@ -178,7 +178,8 @@ nnoremap <leader>R :call Replace(expand('<cWORD>'))<CR>
 " 2}}}
 " 1}}}
 
-set path=$PWD/**
+set path=**
+set wildignore+=*/vendor/*,*/node_modules/*,*/var/*,*/public/build/*
 
 " Ultisnips {{{
 let g:UltiSnipsSnippetDirectories=[ "UltiSnips", $HOME.'/.vim/UltiSnips' ]
