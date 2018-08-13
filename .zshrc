@@ -78,7 +78,7 @@ alias root='sudo -s'
 alias v="vagrant"
 alias vb='virtualbox'
 alias vim="stty stop '' -ixoff ; vim"
-alias vspec=~/.vim/bundle/vim-vspec/bin/vspec
+alias vspec=~/.vim/plugged/vim-vspec/bin/vspec
 alias zshrc-reload="source ~/.zshrc"
 alias zshrc="$EDITOR ~/.zshrc"
 if $(which htop &>/dev/null); then
