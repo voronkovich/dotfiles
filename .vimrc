@@ -310,42 +310,55 @@ nmap ga <Plug>(EasyAlign)
 nnoremap <Leader>a :A<CR>
 nnoremap <Leader>e :E
 let g:projectionist_heuristics = {
-    \ 'composer.json': {
+    \ 'composer.json&src/&tests/': {
         \ 'src/*.php': {
             \ 'type': 'src',
             \ 'alternate': [
                 \ 'tests/{}Test.php',
+            \ ],
+        \ },
+        \ 'tests/*Test.php': {
+            \ 'type': 'test',
+            \ 'alternate': 'src/{}.php',
+        \ },
+    \ },
+    \ 'composer.json&src/&tests/unit/': {
+        \ 'src/*.php': {
+            \ 'type': 'src',
+            \ 'alternate': [
                 \ 'tests/unit/{}Test.php',
-                \ 'spec/{}Spec.php',
-                \ 'specs/{}.spec.php',
             \ ],
         \ },
         \ 'tests/unit/*Test.php': {
             \ 'type': 'test',
             \ 'alternate': 'src/{}.php',
         \ },
-        \ 'tests/*Test.php': {
-            \ 'type': 'test',
-            \ 'alternate': 'src/{}.php',
-        \ },
-        \ 'specs/*.spec.php': {
-            \ 'type': 'test',
-            \ 'alternate': 'src/{}.php',
+    \ },
+    \ 'composer.json&src/&spec/': {
+        \ 'src/*.php': {
+            \ 'type': 'src',
+            \ 'alternate': [
+                \ 'spec/{}Spec.php',
+            \ ],
         \ },
         \ 'spec/*Spec.php': {
             \ 'type': 'test',
             \ 'alternate': 'src/{}.php',
         \ },
     \ },
-    \ 'config/bundles.php': {
+    \ 'composer.json&src/&specs/': {
         \ 'src/*.php': {
             \ 'type': 'src',
-            \ 'alternate': 'tests/{}Test.php',
+            \ 'alternate': [
+                \ 'specs/{}.spec.php',
+            \ ],
         \ },
-        \ 'tests/*Test.php': {
+        \ 'specs/*.spec.php': {
             \ 'type': 'test',
             \ 'alternate': 'src/{}.php',
         \ },
+    \ },
+    \ 'config/bundles.php': {
         \ 'src/Command/*Command.php': {
             \ 'type': 'command',
         \ },
