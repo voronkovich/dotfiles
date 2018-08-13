@@ -178,6 +178,8 @@ nnoremap <leader>R :call Replace(expand('<cWORD>'))<CR>
 " 2}}}
 " 1}}}
 
+set path=$PWD/**
+
 " Ultisnips {{{
 let g:UltiSnipsSnippetDirectories=[ "UltiSnips", $HOME.'/.vim/UltiSnips' ]
 let g:UltiSnipsExpandTrigger="<tab>"
