@@ -34,6 +34,10 @@ Plug 'w0rp/ale'
 Plug 'wincent/ferret'
 Plug 'xolox/vim-misc'
 
+" Vim testing
+Plug 'junegunn/vader.vim'
+Plug 'kana/vim-vspec'
+
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
