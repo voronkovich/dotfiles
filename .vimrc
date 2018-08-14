@@ -368,9 +368,11 @@ let g:projectionist_heuristics = {
     \ },
 \ }
 
-au FileType php setlocal keywordprg=psysh-doc
 
 " PHP {{{
+au FileType php setlocal keywordprg=psysh-doc
+au FileType php setlocal matchpairs=(:),{:},[:]
+
 " Phpactor
 au FileType php setlocal omnifunc=phpactor#Complete
 au FileType php nnoremap gd :call phpactor#GotoDefinition()<CR>
