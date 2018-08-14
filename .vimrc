@@ -216,6 +216,13 @@ let test#php#phpspec#options = '--format=pretty'
 nnoremap <C-a> <Esc>:w<CR>
 inoremap <C-a> <Esc>:w<CR>
 
+" IDE like autocompletion with C-<Space>
+if has("gui_running")
+    inoremap <C-Space> <C-x><C-o>
+else
+    inoremap <Nul> <C-x><C-o>
+endif
+
 " Guttentags
 let g:gutentags_project_root = [ 'vendor/composer' ]
 
@@ -250,7 +257,6 @@ nnoremap <Space><BS> :CtrlPNerdTree<CR>
 nnoremap <Space>/ :CtrlPLine<CR>
 nnoremap <CR>   :CtrlP<CR>
 nnoremap <Leader>f :CtrlPFunky<CR>
-
 " }}}
 
 " Picker/Fzy
@@ -382,13 +388,6 @@ au FileType php nnoremap <Leader>us :call PhpSortUse()<CR>
 
 " PHP folding
 let php_folding=0
-
-" PHP Complete
-if has("gui_running")
-    inoremap <C-Space> <C-x><C-o>
-else
-    inoremap <Nul> <C-x><C-o>
-endif
 
 " PHPDoc
 let g:pdv_template_dir = $HOME."/.vim/pdv_templates_snip"
