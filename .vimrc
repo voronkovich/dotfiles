@@ -386,6 +386,8 @@ let g:projectionist_heuristics = {
     \ },
 \ }
 
+" Ferret
+nnoremap <localleader>a :Ack 
 
 " PHP {{{
 au FileType php setlocal keywordprg=psysh-doc
