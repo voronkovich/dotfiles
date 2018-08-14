@@ -337,6 +337,8 @@ let g:projectionist_heuristics = {
             \ 'type': 'entity',
             \ 'alternate': [
                 \ 'src/Repository/{}Repository.php',
+                \ 'src/Controller/{}Controller.php',
+                \ 'src/Controller/Admin/{}Controller.php',
                 \ 'src/Form/{}Type.php'
             \ ],
         \ },
