@@ -48,7 +48,15 @@ Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-commentary'
 
 " Code completion
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'kristijanhusak/deoplete-phpactor'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -196,6 +204,9 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:ycm_semantic_triggers = {}
 let g:ycm_semantic_triggers.php = [ '->', '::', '(', 'use ', 'namespace ', '\' ]
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " NERDTree
 nnoremap <BS> :NERDTreeToggle<CR>
