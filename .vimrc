@@ -163,6 +163,11 @@ nmap g* g*zz
 nmap g# g#zz
 " 2}}}
 
+" Centering after moving to the mark
+" https://www.reddit.com/r/vim/comments/80vutj/how_to_center_screen_after_moving_to_a_mark/duz2t0k/
+nnoremap <expr> ' "'" . nr2char(getchar()) . "zz"
+nnoremap <expr> ` "`" . nr2char(getchar()) . "zz"
+
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ve :e $MYVIMRC<CR>
 nmap <silent> <leader>vr :so $MYVIMRC<CR>
