@@ -356,6 +356,10 @@ let g:projectionist_heuristics = {
         \ 'src/Controller/*Controller.php': {
             \ 'type': 'controller',
         \ },
+        \ 'src/DataFixtures/*Fixtures.php': {
+            \ 'type': 'fixture',
+            \ 'alternate': 'src/Entity/{}.php',
+        \ },
         \ 'src/Entity/*.php': {
             \ 'type': 'entity',
             \ 'alternate': [
@@ -381,6 +385,9 @@ let g:projectionist_heuristics = {
         \ },
         \ 'config/packages/*.yaml': {
             \ 'type': 'config',
+        \ },
+        \ 'config/packages/easy_admin/entities/*.yaml': {
+            \ 'alternate': 'src/Entity/{basename}.php',
         \ },
         \ 'config/services.yaml': {
             \ 'type': 'service',
