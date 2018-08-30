@@ -388,6 +388,13 @@ let g:projectionist_heuristics = {
         \ },
         \ 'config/packages/easy_admin/entities/*.yaml': {
             \ 'alternate': 'src/Entity/{basename}.php',
+            \ 'type': 'easyadmin',
+            \ 'template': [
+                \ 'easy_admin:',
+                \ '    entities:',
+                \ '        {basename}:',
+                \ '            class: App\Entity\{basename}',
+                \ ],
         \ },
         \ 'config/services.yaml': {
             \ 'type': 'service',
