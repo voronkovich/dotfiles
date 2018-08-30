@@ -304,30 +304,35 @@ let g:projectionist_heuristics = {
     \ 'composer.json&src/&tests/': {
         \ 'src/*.php': {
             \ 'type': 'src',
+            \ 'skeleton': 'class',
             \ 'alternate': [
                 \ 'tests/{}Test.php',
             \ ],
         \ },
         \ 'tests/*Test.php': {
             \ 'type': 'test',
+            \ 'skeleton': 'pucase',
             \ 'alternate': 'src/{}.php',
         \ },
     \ },
     \ 'composer.json&src/&tests/unit/': {
         \ 'src/*.php': {
             \ 'type': 'src',
+            \ 'skeleton': 'class',
             \ 'alternate': [
                 \ 'tests/unit/{}Test.php',
             \ ],
         \ },
         \ 'tests/unit/*Test.php': {
             \ 'type': 'test',
+            \ 'skeleton': 'pucase',
             \ 'alternate': 'src/{}.php',
         \ },
     \ },
     \ 'composer.json&src/&spec/': {
         \ 'src/*.php': {
             \ 'type': 'src',
+            \ 'skeleton': 'class',
             \ 'alternate': [
                 \ 'spec/{}Spec.php',
             \ ],
@@ -340,28 +345,34 @@ let g:projectionist_heuristics = {
     \ 'composer.json&src/&specs/': {
         \ 'src/*.php': {
             \ 'type': 'src',
+            \ 'skeleton': 'class',
             \ 'alternate': [
                 \ 'specs/{}.spec.php',
             \ ],
         \ },
         \ 'specs/*.spec.php': {
             \ 'type': 'test',
+            \ 'skeleton': 'pddesc',
             \ 'alternate': 'src/{}.php',
         \ },
     \ },
     \ 'config/bundles.php': {
         \ 'src/Command/*Command.php': {
             \ 'type': 'command',
+            \ 'skeleton': 'sfcommand',
         \ },
         \ 'src/Controller/*Controller.php': {
             \ 'type': 'controller',
+            \ 'skeleton': 'sfcontroller',
         \ },
         \ 'src/DataFixtures/*Fixtures.php': {
             \ 'type': 'fixture',
+            \ 'skeleton': 'sffixture',
             \ 'alternate': 'src/Entity/{}.php',
         \ },
         \ 'src/Entity/*.php': {
             \ 'type': 'entity',
+            \ 'skeleton': 'sfentity',
             \ 'alternate': [
                 \ 'src/Repository/{}Repository.php',
                 \ 'src/Controller/{}Controller.php',
@@ -371,20 +382,25 @@ let g:projectionist_heuristics = {
         \ },
         \ 'src/EventSubscriber/*Subscriber.php': {
             \ 'type': 'subscriber',
+            \ 'skeleton': 'sfsubscriber',
         \ },
         \ 'src/Form/*Type.php': {
             \ 'type': 'form',
             \ 'alternate': 'src/Entity/{}.php',
+            \ 'skeleton': 'sfform',
         \ },
         \ 'src/Repository/*Repository.php': {
             \ 'type': 'repository',
             \ 'alternate': 'src/Entity/{}.php',
+            \ 'skeleton': 'sfrepository',
         \ },
         \ 'templates/*.html.twig': {
             \ 'type': 'template',
+            \ 'skeleton': 'sftemplate',
         \ },
         \ 'config/packages/*.yaml': {
             \ 'type': 'config',
+            \ 'template': '{basename}:',
         \ },
         \ 'config/packages/easy_admin/entities/*.yaml': {
             \ 'alternate': 'src/Entity/{basename}.php',
@@ -396,8 +412,15 @@ let g:projectionist_heuristics = {
                 \ '            class: App\Entity\{basename}',
                 \ ],
         \ },
+        \ 'config/routes/*.yaml': {
+            \ 'type': 'routing',
+            \ 'template': '{basename}:',
+        \ },
+        \ 'config/routes.yaml': {
+            \ 'type': 'routes',
+        \ },
         \ 'config/services.yaml': {
-            \ 'type': 'service',
+            \ 'type': 'services',
         \ },
         \ 'var/log/*.log': {
             \ 'type': 'log',
@@ -436,5 +459,50 @@ augroup phpSyntaxOverride
     autocmd FileType php call PhpSyntaxOverride()
 augroup END
 " }}}
-"
+
+" File skeletons based on Ultisnips {{{
+" See: https://subvisual.co/blog/posts/135-super-powered-vim-part-iii-skeletons/
+augroup UltiSnips_custom
+    autocmd!
+    autocmd BufNewFile * silent! call InsertSkeleton()
+augroup END
+
+function s:try_insert(skel)
+    execute "normal! i" . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
+
+    if g:ulti_expand_res == 0
+        silent! undo
+        return
+    endif
+
+    " enter insert mode and advance cursor (equivalent to typing `a` instead of `i`)
+    execute "startinsert"
+    call cursor( line('.'), col('.') + 1)
+
+    return g:ulti_expand_res
+endfunction
+
+function! InsertSkeleton() abort
+    let filename = expand('%')
+
+    " abort on non-empty buffer or exitant file
+    if !(line('$') == 1 && getline('$') == '') || filereadable(filename)
+        return
+    endif
+
+    if !empty('b:projectionist')
+        " Loop through projections with 'skeleton' key and try each one until the
+        " snippet expands
+        for [root, value] in projectionist#query('skeleton')
+            echo value
+            if s:try_insert(value)
+                return
+            endif
+        endfor
+    endif
+
+    call s:try_insert('skel')
+endfunction
+" }}}
+
 " vim: foldmethod=marker
