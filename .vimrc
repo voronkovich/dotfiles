@@ -352,7 +352,7 @@ let g:projectionist_heuristics = {
         \ },
         \ 'specs/*.spec.php': {
             \ 'type': 'test',
-            \ 'skeleton': 'pddesc',
+            \ 'skeleton': 'pdspec',
             \ 'alternate': 'src/{}.php',
         \ },
     \ },
