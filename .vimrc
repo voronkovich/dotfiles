@@ -482,7 +482,7 @@ augroup UltiSnips_custom
     autocmd BufNewFile * silent! call InsertSkeleton()
 augroup END
 
-function s:try_insert(skel)
+function! s:try_insert(skel)
     execute "normal! i" . a:skel . "\<C-r>=UltiSnips#ExpandSnippet()\<CR>"
 
     if g:ulti_expand_res == 0
