@@ -394,6 +394,15 @@ let g:projectionist_heuristics = {
             \ 'alternate': 'src/Entity/{}.php',
             \ 'skeleton': 'sfrepository',
         \ },
+        \ 'src/MessageHandler/*Handler.php': {
+            \ 'type': 'handler',
+            \ 'alternate': 'src/Message/{}.php',
+            \ 'skeleton': 'sfhandler',
+        \ },
+        \ 'src/Message/*.php': {
+            \ 'type': 'message',
+            \ 'alternate': 'src/MessageHandler/{}Handler.php',
+        \ },
         \ 'templates/*.html.twig': {
             \ 'type': 'template',
             \ 'skeleton': 'sftemplate',
@@ -421,6 +430,12 @@ let g:projectionist_heuristics = {
         \ },
         \ 'config/services.yaml': {
             \ 'type': 'services',
+        \ },
+        \ 'assets/css/*.css': {
+            \ 'type': 'css',
+        \ },
+        \ 'assets/js/*.js': {
+            \ 'type': 'js',
         \ },
         \ 'var/log/*.log': {
             \ 'type': 'log',
