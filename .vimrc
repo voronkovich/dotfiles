@@ -380,6 +380,10 @@ let g:projectionist_heuristics = {
                 \ 'src/Form/{}Type.php'
             \ ],
         \ },
+        \ 'src/Event/*Event.php': {
+            \ 'type': 'event',
+            \ 'skeleton': 'sfevent',
+        \ },
         \ 'src/EventSubscriber/*Subscriber.php': {
             \ 'type': 'subscriber',
             \ 'skeleton': 'sfsubscriber',
@@ -402,6 +406,16 @@ let g:projectionist_heuristics = {
         \ 'src/Message/*.php': {
             \ 'type': 'message',
             \ 'alternate': 'src/MessageHandler/{}Handler.php',
+        \ },
+        \ 'src/Validator/*.php': {
+            \ 'type': 'constraint',
+            \ 'alternate': 'src/Validator/{}Validator.php',
+            \ 'skeleton': 'sfconstraint',
+        \ },
+        \ 'src/Validator/*Validator.php': {
+            \ 'type': 'validator',
+            \ 'alternate': 'src/Validator/{}.php',
+            \ 'skeleton': 'sfvalidator',
         \ },
         \ 'templates/*.html.twig': {
             \ 'type': 'template',
