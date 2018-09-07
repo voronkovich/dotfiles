@@ -380,6 +380,9 @@ let g:projectionist_heuristics = {
                 \ 'src/Form/{}Type.php'
             \ ],
         \ },
+        \ 'src/Events.php': {
+            \ 'type': 'events',
+        \ },
         \ 'src/Event/*Event.php': {
             \ 'type': 'event',
             \ 'skeleton': 'sfevent',
