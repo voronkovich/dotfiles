@@ -420,9 +420,15 @@ let g:projectionist_heuristics = {
             \ 'alternate': 'src/Validator/{}.php',
             \ 'skeleton': 'sfvalidator',
         \ },
+        \ 'src/Kernel.php': {
+            \ 'type': 'kernel',
+        \ },
         \ 'templates/*.html.twig': {
             \ 'type': 'template',
             \ 'skeleton': 'sftemplate',
+        \ },
+        \ 'config/bundles.php': {
+            \ 'type': 'bundles',
         \ },
         \ 'config/packages/*.yaml': {
             \ 'type': 'config',
