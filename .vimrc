@@ -391,6 +391,9 @@ let g:projectionist_heuristics = {
             \ 'type': 'subscriber',
             \ 'skeleton': 'sfsubscriber',
         \ },
+        \ 'src/Exception/*Exception.php': {
+            \ 'type': 'exception',
+        \ },
         \ 'src/Form/*Type.php': {
             \ 'type': 'form',
             \ 'alternate': 'src/Entity/{}.php',
@@ -410,6 +413,9 @@ let g:projectionist_heuristics = {
             \ 'type': 'message',
             \ 'alternate': 'src/MessageHandler/{}Handler.php',
         \ },
+        \ 'src/Migrations/Version*.php': {
+            \ 'type': 'migration',
+        \ },
         \ 'src/Validator/*.php': {
             \ 'type': 'constraint',
             \ 'alternate': 'src/Validator/{}Validator.php',
@@ -419,6 +425,13 @@ let g:projectionist_heuristics = {
             \ 'type': 'validator',
             \ 'alternate': 'src/Validator/{}.php',
             \ 'skeleton': 'sfvalidator',
+        \ },
+        \ 'src/Twig/*Extension.php': {
+            \ 'type': 'twig',
+            \ 'skeleton': 'sftwigextension',
+        \ },
+        \ 'src/Helper/*.php': {
+            \ 'type': 'helper',
         \ },
         \ 'src/Kernel.php': {
             \ 'type': 'kernel',
