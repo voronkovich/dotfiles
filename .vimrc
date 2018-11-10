@@ -302,61 +302,6 @@ nmap ga <Plug>(EasyAlign)
 nnoremap <Leader>a :A<CR>
 nnoremap <Leader>e :E
 let g:projectionist_heuristics = {
-    \ 'composer.json&src/&tests/': {
-        \ 'src/*.php': {
-            \ 'type': 'src',
-            \ 'skeleton': 'class',
-            \ 'alternate': [
-                \ 'tests/{}Test.php',
-            \ ],
-        \ },
-        \ 'tests/*Test.php': {
-            \ 'type': 'test',
-            \ 'skeleton': 'pucase',
-            \ 'alternate': 'src/{}.php',
-        \ },
-    \ },
-    \ 'composer.json&src/&tests/unit/': {
-        \ 'src/*.php': {
-            \ 'type': 'src',
-            \ 'skeleton': 'class',
-            \ 'alternate': [
-                \ 'tests/unit/{}Test.php',
-            \ ],
-        \ },
-        \ 'tests/unit/*Test.php': {
-            \ 'type': 'test',
-            \ 'skeleton': 'pucase',
-            \ 'alternate': 'src/{}.php',
-        \ },
-    \ },
-    \ 'composer.json&src/&spec/': {
-        \ 'src/*.php': {
-            \ 'type': 'src',
-            \ 'skeleton': 'class',
-            \ 'alternate': [
-                \ 'spec/{}Spec.php',
-            \ ],
-        \ },
-        \ 'spec/*Spec.php': {
-            \ 'type': 'test',
-            \ 'alternate': 'src/{}.php',
-        \ },
-    \ },
-    \ 'composer.json&src/&specs/': {
-        \ 'src/*.php': {
-            \ 'type': 'src',
-            \ 'skeleton': 'class',
-            \ 'alternate': [
-                \ 'specs/{}.spec.php',
-            \ ],
-        \ },
-        \ 'specs/*.spec.php': {
-            \ 'type': 'test',
-            \ 'skeleton': 'pdspec',
-            \ 'alternate': 'src/{}.php',
-        \ },
-    \ },
     \ 'config/bundles.php': {
         \ 'src/Command/*Command.php': {
             \ 'type': 'command',
@@ -434,6 +379,9 @@ let g:projectionist_heuristics = {
         \ 'src/Helper/*.php': {
             \ 'type': 'helper',
         \ },
+        \ 'src/Util/*.php': {
+            \ 'type': 'util',
+        \ },
         \ 'src/Kernel.php': {
             \ 'type': 'kernel',
         \ },
@@ -468,6 +416,9 @@ let g:projectionist_heuristics = {
         \ 'config/services.yaml': {
             \ 'type': 'services',
         \ },
+        \ 'translations/*.xlf': {
+            \ 'type': 'translation',
+        \ },
         \ 'assets/css/*.css': {
             \ 'type': 'css',
         \ },
@@ -476,6 +427,67 @@ let g:projectionist_heuristics = {
         \ },
         \ 'var/log/*.log': {
             \ 'type': 'log',
+        \ },
+    \ },
+    \ 'composer.json&src/': {
+        \ 'src/*.php': {
+            \ 'type': 'src',
+            \ 'skeleton': 'class',
+        \ },
+    \ },
+    \ 'composer.json&src/&tests/': {
+        \ 'src/*.php': {
+            \ 'type': 'src',
+            \ 'skeleton': 'class',
+            \ 'alternate': [
+                \ 'tests/{}Test.php',
+            \ ],
+        \ },
+        \ 'tests/*Test.php': {
+            \ 'type': 'test',
+            \ 'skeleton': 'pucase',
+            \ 'alternate': 'src/{}.php',
+        \ },
+    \ },
+    \ 'composer.json&src/&tests/unit/': {
+        \ 'src/*.php': {
+            \ 'type': 'src',
+            \ 'skeleton': 'class',
+            \ 'alternate': [
+                \ 'tests/unit/{}Test.php',
+            \ ],
+        \ },
+        \ 'tests/unit/*Test.php': {
+            \ 'type': 'test',
+            \ 'skeleton': 'pucase',
+            \ 'alternate': 'src/{}.php',
+        \ },
+    \ },
+    \ 'composer.json&src/&spec/': {
+        \ 'src/*.php': {
+            \ 'type': 'src',
+            \ 'skeleton': 'class',
+            \ 'alternate': [
+                \ 'spec/{}Spec.php',
+            \ ],
+        \ },
+        \ 'spec/*Spec.php': {
+            \ 'type': 'test',
+            \ 'alternate': 'src/{}.php',
+        \ },
+    \ },
+    \ 'composer.json&src/&specs/': {
+        \ 'src/*.php': {
+            \ 'type': 'src',
+            \ 'skeleton': 'class',
+            \ 'alternate': [
+                \ 'specs/{}.spec.php',
+            \ ],
+        \ },
+        \ 'specs/*.spec.php': {
+            \ 'type': 'test',
+            \ 'skeleton': 'pdspec',
+            \ 'alternate': 'src/{}.php',
         \ },
     \ },
 \ }
