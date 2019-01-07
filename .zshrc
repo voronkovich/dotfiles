@@ -6,7 +6,6 @@ omz() { zplug "plugins/$1", from:oh-my-zsh; }
 
 # Bundles {{{
 omz composer
-omz docker
 omz extract
 omz git
 omz github
@@ -126,6 +125,9 @@ fix-autocompletion() {
 }
 f() {
     find -iname "*$1*" -print -o -name '.git' -prune | grep -i --color "$1"
+}
+dsh() {
+    docker exec -it "$1" "${2:-bash}"
 }
 # }}}
 
