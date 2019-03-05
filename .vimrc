@@ -194,6 +194,7 @@ nnoremap <leader>R :call Replace(expand('<cWORD>'))<CR>
 " 1}}}
 
 set path=**
+au FileType c setlocal path=.,/usr/include,,
 set wildignore+=*/vendor/*,*/node_modules/*,*/var/*,*/public/build/*
 
 " Ultisnips {{{
