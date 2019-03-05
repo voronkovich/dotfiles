@@ -1,0 +1,10 @@
+snippet rule "Rule" b
+${1:target}: ${2:prerequisites}
+	${0:recipe}
+endsnippet
+
+snippet rulep "Phony rule" b
+.PHONY: $1
+${1:target}: ${2:prerequisites}
+	${0:recipe}
+endsnippet
