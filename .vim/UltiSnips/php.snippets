@@ -1,3 +1,7 @@
+snippet "([^\w])sp" "sprintf" r
+`!p snip.rv = match.group(1)`\sprintf('${1}', ${2})
+endsnippet
+
 snippet putesta "PHPUnit test" b
 /** @test */
 public function ${1}()
