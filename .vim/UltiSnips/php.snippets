@@ -1,3 +1,19 @@
+snippet @a "@Assert"
+@Assert\\${1:NotBlank}${2:(${3})}
+endsnippet
+
+snippet @o "@ORM"
+@ORM\\${1})}
+endsnippet
+
+snippet vd "var_dump()" b
+var_dump(${1:${VISUAL/;$//}});
+endsnippet
+
+snippet du "Symfony dump()" b
+dump(${1:${VISUAL/;$//}});
+endsnippet
+
 snippet "([^\w])sp" "sprintf" r
 `!p snip.rv = match.group(1)`\sprintf('${1}', ${2})
 endsnippet
