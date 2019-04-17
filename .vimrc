@@ -86,6 +86,8 @@ Plug 'tobyS/vmustache'
 
 " JS
 Plug 'pangloss/vim-javascript'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install tern' }
 
 " Html
 Plug 'Valloric/MatchTagAlways'
@@ -570,5 +572,7 @@ function! InsertSkeleton() abort
     call s:try_insert('skel')
 endfunction
 " }}}
+
+au FileType javascript nnoremap <buffer> <Leader>d :call jsdoc#insert()<CR>
 
 " vim: foldmethod=marker
