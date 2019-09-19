@@ -1,3 +1,10 @@
+# Exporting variables {{{
+export PATH="$PATH:${HOME}/.local/bin:${HOME}/.gem/ruby/current/bin:${HOME}/.composer/vendor/bin:vendor/bin:node_modules/.bin"
+export LC_ALL=en_US.UTF-8
+export EDITOR=vim
+export PAGER=most
+# }}}
+
 # Bootstrap {{{
 source ~/.zplug/init.zsh
 
@@ -39,13 +46,6 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
-
-# Exporting variables {{{
-export LC_ALL=en_US.UTF-8
-export PATH="$PATH:${HOME}/bin:${HOME}/.composer/vendor/bin:${HOME}/.local/bin:vendor/bin:node_modules/.bin:${HOME}/.gem/ruby/current/bin"
-export EDITOR=vim
-export PAGER=most
-# }}}
 
 # History settings {{{
 HISTSIZE=10000
