@@ -14,7 +14,6 @@ omz vagrant
 omz yarn
 zplug "aperezdc/zsh-fzy"
 zplug "mafredri/zsh-async", defer:0
-zplug "rg3/youtube-dl"
 zplug "sindresorhus/pure", as:theme, use:pure.zsh
 zplug "supercrabtree/k"
 zplug "voronkovich/gitignore.plugin.zsh"
