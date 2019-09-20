@@ -174,6 +174,7 @@ compdef _symfony phpactor
 compdef _symfony phpstan
 compdef _symfony phpunit-watcher
 compdef _symfony phpspec
+compdef _symfony phive
 
 # Fuzzy
 bindkey '\ec' fzy-cd-widget
