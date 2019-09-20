@@ -34,6 +34,7 @@ Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'wincent/ferret'
 Plug 'xolox/vim-misc'
+Plug 'itchyny/vim-cursorword'
 
 " Vim testing
 Plug 'junegunn/vader.vim'
@@ -306,6 +307,16 @@ nmap ga <Plug>(EasyAlign)
 nnoremap <Leader>a :A<CR>
 nnoremap <Leader>e :E
 let g:projectionist_heuristics = {
+    \ '*': {
+        \ '*.c': {
+            \ 'type': 's',
+            \ 'alternate': '{}.h',
+        \ },
+        \ '*.h': {
+            \ 'type': 'h',
+            \ 'alternate': '{}.c',
+        \ },
+    \ },
     \ 'config/bundles.php': {
         \ 'src/Command/*Command.php': {
             \ 'type': 'command',
@@ -515,7 +526,7 @@ let php_folding=0
 
 " PHPDoc
 let g:pdv_template_dir = $HOME."/.vim/pdv_templates_snip"
-au FileType php nnoremap <Leader>d :call pdv#DocumentWithSnip()<CR>
+au FileType php nnoremap <buffer> <Leader>d :call pdv#DocumentWithSnip()<CR>
 
 " Advanced highlighting
 function! PhpSyntaxOverride()
