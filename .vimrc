@@ -546,6 +546,9 @@ augroup phpSyntaxOverride
     autocmd!
     autocmd FileType php call PhpSyntaxOverride()
 augroup END
+
+" Sniphpets
+let g:sniphpets_strict_types = 1
 " }}}
 
 " File skeletons based on Ultisnips {{{
