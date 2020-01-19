@@ -18,6 +18,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'janko-m/vim-test'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/vim-easy-align'
+Plug 'kkoomen/vim-doge'
 Plug 'markonm/traces.vim'
 Plug 'moll/vim-bbye'
 Plug 'ntpeters/vim-better-whitespace'
@@ -82,12 +83,9 @@ Plug 'arnaud-lb/vim-php-namespace'
 Plug 'evidens/vim-twig'
 Plug 'phpactor/phpactor', { 'do': 'composer install --no-dev -o -n' }
 Plug 'rayburgemeestre/phpfolding.vim'
-Plug 'tobyS/pdv'
-Plug 'tobyS/vmustache'
 
 " JS
 Plug 'pangloss/vim-javascript'
-Plug 'heavenshell/vim-jsdoc'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install tern' }
 
 " Html
@@ -533,10 +531,6 @@ au FileType php nnoremap <Leader>us :call PhpSortUse()<CR>
 " PHP folding
 let php_folding=0
 
-" PHPDoc
-let g:pdv_template_dir = $HOME."/.vim/pdv_templates_snip"
-au FileType php nnoremap <buffer> <Leader>d :call pdv#DocumentWithSnip()<CR>
-
 " Advanced highlighting
 function! PhpSyntaxOverride()
     hi! def link phpDocTags  phpDefine
@@ -550,6 +544,11 @@ augroup END
 " Sniphpets
 let g:sniphpets_strict_types = 1
 " }}}
+
+" Doge
+let g:doge_mapping_comment_jump_forward = '<C-j>'
+let g:doge_mapping_comment_jump_backward = '<C-k>'
+
 
 " File skeletons based on Ultisnips {{{
 " See: https://subvisual.co/blog/posts/135-super-powered-vim-part-iii-skeletons/
@@ -595,7 +594,5 @@ function! InsertSkeleton() abort
     call s:try_insert('skel')
 endfunction
 " }}}
-
-au FileType javascript nnoremap <buffer> <Leader>d :call jsdoc#insert()<CR>
 
 " vim: foldmethod=marker
