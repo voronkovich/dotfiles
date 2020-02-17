@@ -512,6 +512,11 @@ let g:projectionist_heuristics = {
             \ 'alternate': 'src/{}.php',
         \ },
     \ },
+    \ 'src/App.vue': {
+        \ 'src/components/*.vue': {
+            \ 'type': 'component',
+        \ },
+    \ },
 \ }
 
 " Ferret
