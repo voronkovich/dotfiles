@@ -1,0 +1,58 @@
+priority 40
+
+snippet vbase "Vue / SFC base structure" b
+<template>
+	<div>
+	</div>
+</template>
+
+<script>
+export default {
+	name: '${1:`!v expand('%:t:r')`}'${0}
+}
+</script>
+
+<style scoped>
+</style>
+endsnippet
+
+snippet vscript "Vue / SFC <script> section" b
+<script>
+export default {
+	name: '${1:`!v expand('%:t:r')`}'${0}
+}
+</script>
+endsnippet
+
+snippet vstyle "Vue / SFC <style> section" b
+<style scoped>
+</style>
+endsnippet
+
+snippet vdata "Vue / Component data" b
+data() {
+	return {
+		${1:name}: ${2:value}${0}
+	};
+}
+endsnippet
+
+snippet vprop "Vue / Component prop"
+${1}: {
+	type: ${2:String},
+	required: ${3:true},
+	default: ${4:null}
+}
+endsnippet
+
+snippet vfor "Vue v-for directive"
+v-for="${1} in ${2:$1s}" :key="$1.id"
+endsnippet
+
+snippet vclass "Vue bind CSS class"
+:class="{ '${1}': ${2} }"
+endsnippet
+
+snippet veventtransparent "Vue"
+@${1}="\$emit('${2:$1}', \$event.target.value)"
+endsnippet
