@@ -1,3 +1,7 @@
 #!/usr/bin/env zsh
 
-vue create --default --bare --no-git --merge . && echo '' > src/App.vue && rm -rf src/assets/;
+yarn create vite-app . && \
+    echo '' > src/App.vue && \
+    echo '' > src/index.css && \
+    rm -rf src/assets/ src/components/ \ &&
+    yarn install
