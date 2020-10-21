@@ -37,6 +37,14 @@ data() {
 }
 endsnippet
 
+snippet vsetup "Vue / Setup method" b
+setup(${1:props${2:, \{ ${3} \}}}) {
+	${0}
+	return {
+	};
+}
+endsnippet
+
 snippet vprop "Vue / Component prop"
 ${1}: {
 	type: ${2:String},
