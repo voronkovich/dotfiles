@@ -456,6 +456,10 @@ let g:projectionist_heuristics = {
             \ 'type': 'src',
             \ 'skeleton': 'class',
         \ },
+        \ 'src/Exception/*Exception.php': {
+            \ 'type': 'exception',
+            \ 'skeleton': 'class',
+        \ },
     \ },
     \ 'composer.json&src/&tests/': {
         \ 'src/*.php': {
@@ -515,6 +519,9 @@ let g:projectionist_heuristics = {
     \ 'src/App.vue': {
         \ 'src/components/*.vue': {
             \ 'type': 'component',
+        \ },
+        \ 'src/views/*.vue': {
+            \ 'type': 'view',
         \ },
     \ },
 \ }
