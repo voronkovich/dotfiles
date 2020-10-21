@@ -95,6 +95,9 @@ alias vim="stty stop '' -ixoff ; vim"
 alias vspec=~/.vim/plugged/vim-vspec/bin/vspec
 alias zshrc-reload="source ~/.zshrc"
 alias zshrc="$EDITOR ~/.zshrc"
+alias vpn="sudo protonvpn connect --fastest"
+alias vpnd="sudo protonvpn disconnect"
+alias vpns="protonvpn status"
 if $(which htop &>/dev/null); then
     alias top=htop
 fi
