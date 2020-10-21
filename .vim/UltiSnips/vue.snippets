@@ -45,14 +45,22 @@ ${1}: {
 }
 endsnippet
 
-snippet vfor "Vue v-for directive"
+snippet vinput "Vue / Input with v-model directive"
+<input v-model="${1}" type="${2:text}"${3} />
+endsnippet
+
+snippet vfor "Vue / v-for directive"
 v-for="${1} in ${2:$1s}" :key="$1.id"
 endsnippet
 
-snippet vclass "Vue bind CSS class"
+snippet vclass "Vue / Bind CSS class"
 :class="{ '${1}': ${2} }"
 endsnippet
 
 snippet veventtransparent "Vue"
 @${1}="\$emit('${2:$1}', \$event.target.value)"
+endsnippet
+
+snippet vref "Vue / ref()"
+const ${1} = ref(${2});
 endsnippet
