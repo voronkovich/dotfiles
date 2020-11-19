@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+git clone --depth 1 https://github.com/dunglas/symfony-docker . && \
+    docker-compose build && \
+    rm -rf  .git docs
