@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
 "${0:a:h}/vue" && \
-    yarn add -D tailwindcss && \
+    yarn add -D autoprefixer tailwindcss && \
     yarn tailwind init -p && \
     echo "@tailwind base;\n@tailwind components;\n@tailwind utilities;" > src/index.css
