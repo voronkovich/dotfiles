@@ -65,10 +65,14 @@ snippet vclass "Vue / Bind CSS class"
 :class="{ '${1}': ${2} }"
 endsnippet
 
-snippet veventtransparent "Vue"
-@${1}="\$emit('${2:$1}', \$event.target.value)"
+snippet vref "Vue / Create ref"
+const ${1} = ref(${2});
 endsnippet
 
-snippet vref "Vue / ref()"
-const ${1} = ref(${2});
+snippet vcomputed "Vue / Computed"
+const ${1} = computed(() => ${2});
+endsnippet
+
+snippet vwatch "Vue / Watch"
+const ${1} = watch(${2}, ($2, $2Prev) => ${3});
 endsnippet
