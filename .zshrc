@@ -3,6 +3,7 @@ export PATH="$PATH:${HOME}/.local/bin:${HOME}/.gem/bin:{HOME}/.composer/vendor/b
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export MANPAGER='most'
+export PROJECTS_TMP="/run/user/$(id -u)/projects"
 # }}}
 
 # Bootstrap {{{
