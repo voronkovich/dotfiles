@@ -45,7 +45,7 @@ setup(${1:props${2:, \{ ${3} \}}}) {
 }
 endsnippet
 
-snippet vprop "Vue / Component prop"
+snippet vprop "Vue / Component prop" b
 ${1}: {
 	type: ${2:String},
 	required: ${3:true},
@@ -57,6 +57,10 @@ snippet vinput "Vue / Input with v-model directive"
 <input v-model="${1}" type="${2:text}"${3} />
 endsnippet
 
+snippet vbutton "Vue / Button with @click directive"
+<button @click="${1}">${2}</button>
+endsnippet
+
 snippet vfor "Vue / v-for directive"
 v-for="${1} in ${2:$1s}" :key="$1.id"
 endsnippet
@@ -65,14 +69,14 @@ snippet vclass "Vue / Bind CSS class"
 :class="{ '${1}': ${2} }"
 endsnippet
 
-snippet vref "Vue / Create ref"
+snippet vref "Vue / Create ref" b
 const ${1} = ref(${2});
 endsnippet
 
-snippet vcomputed "Vue / Computed"
+snippet vcomputed "Vue / Computed" b
 const ${1} = computed(() => ${2});
 endsnippet
 
-snippet vwatch "Vue / Watch"
+snippet vwatch "Vue / Watch" b
 const ${1} = watch(${2}, ($2, $2Prev) => ${3});
 endsnippet
