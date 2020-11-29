@@ -520,8 +520,14 @@ let g:projectionist_heuristics = {
         \ 'src/components/*.vue': {
             \ 'type': 'component',
         \ },
+        \ 'src/composables/*.js': {
+            \ 'type': 'composable',
+        \ },
         \ 'src/views/*.vue': {
             \ 'type': 'view',
+        \ },
+        \ 'tests/unit/*.spec.js': {
+            \ 'type': 'test',
         \ },
     \ },
 \ }
