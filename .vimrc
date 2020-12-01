@@ -27,15 +27,16 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'sgur/vim-editorconfig'
 Plug 'srstevenson/vim-picker'
+Plug 'thinca/vim-quickrun'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
+Plug 'vim-utils/vim-man'
 Plug 'w0rp/ale'
 Plug 'wincent/ferret'
 Plug 'xolox/vim-misc'
-Plug 'itchyny/vim-cursorword'
 
 " Vim testing
 Plug 'junegunn/vader.vim'
@@ -85,8 +86,9 @@ Plug 'phpactor/phpactor', { 'do': 'composer install --no-dev -o -n' }
 Plug 'rayburgemeestre/phpfolding.vim'
 
 " JS
-Plug 'pangloss/vim-javascript'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install tern' }
+Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
 
 " Html
 Plug 'Valloric/MatchTagAlways'
@@ -573,8 +575,8 @@ let g:sniphpets_strict_types = 1
 " }}}
 
 " Doge
-let g:doge_mapping_comment_jump_forward = '<C-j>'
-let g:doge_mapping_comment_jump_backward = '<C-k>'
+" let g:doge_mapping_comment_jump_forward = '<C-j>'
+" let g:doge_mapping_comment_jump_backward = '<C-k>'
 
 
 " File skeletons based on Ultisnips {{{
