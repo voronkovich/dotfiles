@@ -517,8 +517,13 @@ let g:projectionist_heuristics = {
         \ },
     \ },
     \ 'src/App.vue': {
+        \ 'src/*.js': {
+            \ 'type': 'src',
+            \ 'alternate': 'tests/unit/{}.spec.js',
+        \ },
         \ 'src/components/*.vue': {
             \ 'type': 'component',
+            \ 'alternate': 'tests/unit/components/{}.spec.js',
         \ },
         \ 'src/composables/*.js': {
             \ 'type': 'composable',
@@ -528,6 +533,10 @@ let g:projectionist_heuristics = {
         \ },
         \ 'tests/unit/*.spec.js': {
             \ 'type': 'test',
+            \ 'alternate': 'src/{}.js',
+        \ },
+        \ 'tests/unit/components/*.spec.js': {
+            \ 'alternate': 'src/components/{}.vue',
         \ },
     \ },
 \ }
