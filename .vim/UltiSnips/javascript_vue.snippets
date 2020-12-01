@@ -1,0 +1,25 @@
+snippet vcomposable "Vue / Composable" b
+export function use${1}(${2}) {
+	${0}
+
+	return {
+	};
+}
+endsnippet
+
+snippet vspec "Vue / Jest spec" b
+import { mount } from '@vue/test-utils';
+import `!v substitute(expand('%:t'), '.spec.js$', '', '')` from '../../../src/components/`!v substitute(expand('%:t'), '.spec.js$', '.vue', '')`';
+
+describe('`!v substitute(expand('%:t'), '.spec.js$', '.vue', '')`', () => {
+	${0}
+});
+endsnippet
+
+snippet vtest "Vue / Jest test" b
+it('${1}', () => {
+	const wrapper = mount(`!v substitute(expand('%:t'), '.spec.js$', '', '')`);
+
+	${0}
+});
+endsnippet

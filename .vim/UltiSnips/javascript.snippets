@@ -1,0 +1,79 @@
+snippet c "const" b
+const ${1} = ${2};
+endsnippet
+
+snippet l "let" b
+let ${1} = ${2};
+endsnippet
+
+snippet v "var" b
+var ${1} = ${2};
+endsnippet
+
+snippet class "Class" b
+class ${1} {
+	${VISUAL}
+}
+endsnippet
+
+snippet m "Method" b
+${1}(${2}) {
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet get "Getter" b
+get ${1}() {
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet set "Setter" b
+set ${1}(${2}) {
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet domlistener "Event listener" b
+${1:document}.addEventListener('${2:DOMContentLoaded}', ${3:function});
+endsnippet
+
+snippet domloaded "DOMContentLoaded" b
+if (document.readyState === 'loading') {
+	document.addEventListener('DOMContentLoaded', ${1});
+} else {
+	$1();
+}
+endsnippet
+
+snippet domquery "document.querySelector"
+document.querySelector${1:All}('${2}')
+endsnippet
+
+snippet it "it()" b
+it('${1}', () => {
+	${VISUAL}${0}
+});
+endsnippet
+
+snippet O "Object."
+Object.
+endsnippet
+
+snippet Oc "Object.create"
+Object.create(${1:null})
+endsnippet
+
+snippet Oa "Object.assign"
+Object.assign(${1:null})
+endsnippet
+
+snippet ,t "this." iA
+this.
+endsnippet
+
+snippet ifdef "if defined"
+if (typeof ${1} !== 'undefined') {
+	${VISUAL}${0}
+}
+endsnippet
