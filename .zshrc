@@ -65,6 +65,7 @@ alias ack="ag"
 alias alpine='docker run -it --rm alpine'
 alias ubuntu='docker run -it --rm ubuntu'
 alias phpinsights='docker run -it --rm -v "$(pwd):/app" nunomaduro/phpinsights'
+alias phars='/bin/sh -c "cd ~/.phive && phive status"'
 alias d='docker'
 alias dc='docker-compose'
 alias di='docker images'
@@ -78,6 +79,7 @@ alias dup='docker-compose up'
 alias dub='docker-compose up --build'
 alias e="$EDITOR"
 alias getmp3='youtube-dl -x --audio-format=mp3'
+alias ytm4a='youtube-dl -f m4a'
 alias gs='git status -sb'
 alias sfdql="bin/console d:q:d"
 alias ide="tmux -2 new-session $EDITOR \; split-window \; resize-pane -D 4"
@@ -99,6 +101,8 @@ alias zshrc="$EDITOR ~/.zshrc"
 alias vpn="sudo protonvpn connect --fastest"
 alias vpnd="sudo protonvpn disconnect"
 alias vpns="protonvpn status"
+alias dsymfony='docker-compose exec php bin/console'
+alias dcomposer='docker-compose exec php composer'
 if $(which htop &>/dev/null); then
     alias top=htop
 fi
@@ -141,6 +145,15 @@ fix-autocompletion() {
 }
 f() {
     find -iname "*$1*" -print -o -name '.git' -prune | grep -i --color "$1"
+}
+smoke() {
+    wget \
+        --recursive \
+        --level 0 \
+        --spider \
+        --no-directories \
+        --no-verbose \
+        "${1:-localhost:8000}"
 }
 dsh() {
     docker exec -it "${1:-$(docker ps -ql)}" "${2:-sh}"
