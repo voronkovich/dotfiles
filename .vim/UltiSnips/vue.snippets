@@ -29,6 +29,10 @@ snippet vstyle "Vue / SFC <style> section" b
 </style>
 endsnippet
 
+snippet vim "Vue / Import component" b
+import ${1/^(.*\/)?(\w+)(\.vue)?$/$2/i} from './components/${1}';
+endsnippet
+
 snippet vdata "Vue / Component data" b
 data() {
 	return {
