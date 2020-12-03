@@ -69,6 +69,10 @@ snippet vfor "Vue / v-for directive"
 v-for="${1} in ${2:$1s}" :key="$1.id"
 endsnippet
 
+snippet "v(bind|if|is|show|slot|text|html|model)" "Vue / Directive" r
+v-`!p snip.rv = match.group(1)`="${1}"
+endsnippet
+
 snippet vclass "Vue / Bind CSS class"
 :class="{ '${1}': ${2} }"
 endsnippet
