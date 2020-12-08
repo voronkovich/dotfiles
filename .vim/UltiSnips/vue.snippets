@@ -62,7 +62,7 @@ snippet vinput "Vue / Input with v-model directive"
 endsnippet
 
 snippet vbutton "Vue / Button with @click directive"
-<button @click="${1}">${2}</button>
+<button type="button" @click="${1}">${2}</button>
 endsnippet
 
 snippet vfor "Vue / v-for directive"
@@ -75,4 +75,8 @@ endsnippet
 
 snippet vclass "Vue / Bind CSS class"
 :class="{ '${1}': ${2} }"
+endsnippet
+
+snippet vlink "Vue / Route link"
+<router-link :to="{ name: '${1}'${2} }">${3:$1}</router-link>
 endsnippet
