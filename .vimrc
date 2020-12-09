@@ -75,6 +75,7 @@ Plug 'sniphpets/sniphpets-postfix-codes'
 Plug 'sniphpets/sniphpets-sylius'
 Plug 'sniphpets/sniphpets-symfony'
 Plug 'voronkovich/ultisnips-t3js'
+Plug 'voronkovich/ultisnips-vue'
 
 " PHP
 Plug '2072/PHP-Indenting-for-VIm'

@@ -72,8 +72,15 @@ snippet ,t "this." iA
 this.
 endsnippet
 
-snippet ifdef "if defined"
+snippet ifdef "if defined" b
 if (typeof ${1} !== 'undefined') {
 	${VISUAL}${0}
 }
+endsnippet
+
+snippet fetch "fetch()" b
+fetch('${1}')
+	.then(res => res.json())
+	.then(data => ${2})
+	.catch(console.log)
 endsnippet
