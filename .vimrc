@@ -95,6 +95,9 @@ Plug 'posva/vim-vue'
 Plug 'Valloric/MatchTagAlways'
 Plug 'mattn/emmet-vim'
 
+" CSS
+Plug 'ap/vim-css-color'
+
 " ZSH highlighting
 Plug 'clones/vim-zsh'
 
