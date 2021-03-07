@@ -12,7 +12,7 @@ endsnippet
 
 snippet class "Class" b
 class ${1} {
-	${VISUAL}
+	${0}${VISUAL}
 }
 endsnippet
 
@@ -65,7 +65,11 @@ Object.create(${1:null})
 endsnippet
 
 snippet Oa "Object.assign"
-Object.assign(${1:null})
+Object.assign(${1})
+endsnippet
+
+snippet Of "Object.freeze"
+Object.freeze(${1})
 endsnippet
 
 snippet ,t "this." iA
@@ -83,4 +87,38 @@ fetch(${1})
 	.then(res => res.json())
 	.then(data => ${2})
 	.catch(console.log)
+endsnippet
+
+snippet throw "throw Error" b
+throw Error(${1})
+endsnippet
+
+snippet promise "Promise"
+new Promise((resolve, reject) => {
+	${VISUAL}${0}
+})
+endsnippet
+
+snippet .then "Promise.then()" i
+.then(${1:value} => {
+	${VISUAL}${0}
+})
+endsnippet
+
+snippet .catch "Promise.catch()" i
+.catch(error => {
+	${VISUAL}${0}
+})
+endsnippet
+
+snippet timeout "setTimeout"
+setTimeout(() => {
+	${VISUAL}${0}
+}, ${1})
+endsnippet
+
+snippet : "{}" b
+${1}: {
+	${VISUAL}${0}
+},
 endsnippet
