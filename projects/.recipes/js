@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+yarn create @vitejs/app --template vanilla . && \
+    yarn install
