@@ -76,6 +76,18 @@ snippet ,t "this." iA
 this.
 endsnippet
 
+snippet ,# "this." iA
+this.#
+endsnippet
+
+snippet ,r "return" bA
+return ${0}
+endsnippet
+
+snippet throw "throw Error"
+throw Error(${1})
+endsnippet
+
 snippet ifdef "if defined" b
 if (typeof ${1} !== 'undefined') {
 	${VISUAL}${0}
@@ -89,10 +101,6 @@ fetch(${1})
 	.catch(console.log)
 endsnippet
 
-snippet throw "throw Error" b
-throw Error(${1})
-endsnippet
-
 snippet promise "Promise"
 new Promise((resolve, reject) => {
 	${VISUAL}${0}
@@ -100,15 +108,11 @@ new Promise((resolve, reject) => {
 endsnippet
 
 snippet .then "Promise.then()" i
-.then(${1:value} => {
-	${VISUAL}${0}
-})
+.then(${1:result} => ${VISUAL}${0})
 endsnippet
 
 snippet .catch "Promise.catch()" i
-.catch(error => {
-	${VISUAL}${0}
-})
+.catch(error => ${VISUAL}${0})
 endsnippet
 
 snippet timeout "setTimeout"
@@ -121,4 +125,16 @@ snippet : "{}" b
 ${1}: {
 	${VISUAL}${0}
 },
+endsnippet
+
+snippet .map ".map()" i
+.map(${1:item} => ${0})
+endsnippet
+
+snippet .reduce ".reduce()" i
+.reduce((${1:result}, ${2:item}) => ${0})
+endsnippet
+
+snippet .filter ".filter()" i
+.filter(${1:item} => ${0})
 endsnippet
