@@ -34,6 +34,18 @@ set ${1}(${2}) {
 }
 endsnippet
 
+snippet fu "Function" i
+function ${1}(${2}) {
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet fn "Arrow function" i
+(${1}) => {
+	${VISUAL}${0}
+}
+endsnippet
+
 snippet domlistener "Event listener" b
 ${1:document}.addEventListener('${2:DOMContentLoaded}', ${3:function})
 endsnippet
