@@ -68,19 +68,19 @@ it('${1}', () => {
 })
 endsnippet
 
-snippet O "Object."
+snippet O "Object." i
 Object.
 endsnippet
 
-snippet Oc "Object.create"
+snippet Oc "Object.create" i
 Object.create(${1:null})
 endsnippet
 
-snippet Oa "Object.assign"
+snippet Oa "Object.assign" i
 Object.assign(${1})
 endsnippet
 
-snippet Of "Object.freeze"
+snippet Of "Object.freeze" i
 Object.freeze(${1})
 endsnippet
 
@@ -149,4 +149,8 @@ endsnippet
 
 snippet .filter ".filter()" i
 .filter(${1:item} => ${0})
+endsnippet
+
+snippet cl "console.log"
+console.log(${VISUAL}${1})
 endsnippet
