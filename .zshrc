@@ -116,6 +116,10 @@ hash -d logs=/var/log
 # }}}
 
 # Functions {{{
+ddev-install() {
+    curl -LO https://raw.githubusercontent.com/drud/ddev/master/scripts/install_ddev.sh && \
+        bash install_ddev.sh
+}
 gac() {
     git add -A;
     git ls-files --deleted -z | xargs -r0 git rm;
