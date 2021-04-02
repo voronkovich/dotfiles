@@ -1,5 +1,5 @@
 # Exporting variables {{{
-export PATH="$PATH:${HOME}/.local/bin:${HOME}/.gem/bin:{HOME}/.composer/vendor/bin:${HOME}/.symfony/bin:vendor/bin:node_modules/.bin"
+export PATH="$PATH:${HOME}/.local/bin:${HOME}/.gem/bin:${HOME}/.composer/vendor/bin:${HOME}/.symfony/bin:vendor/bin:node_modules/.bin"
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export MANPAGER='most'
