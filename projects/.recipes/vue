@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-yarn create @vitejs/app --template vue . && \
+echo "${PWD##*/}" | \
+    yarn create @vitejs/app -- --template vue . && \
     echo '' > src/App.vue && \
     echo '' > src/index.css && \
     rm -rf src/assets/ src/components/ && \
