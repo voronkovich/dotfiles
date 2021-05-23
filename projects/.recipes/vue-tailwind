@@ -3,4 +3,5 @@
 "${0:a:h}/vue" && \
     yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest && \
     yarn tailwind init -p && \
-    echo "@tailwind base;\n@tailwind components;\n@tailwind utilities;" > src/index.css
+    rm src/index.css && \
+    echo -e "import 'tailwindcss/tailwind.css'\n\n$(cat src/main.js)" > src/main.js
