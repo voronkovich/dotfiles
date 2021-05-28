@@ -210,3 +210,5 @@ bindkey '^R'  fzy-history-widget
 bindkey '\eg' snippet-expand
 
 # vim: foldmethod=marker
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
