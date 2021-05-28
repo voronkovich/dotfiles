@@ -78,8 +78,9 @@ alias drr='docker run --rm'
 alias dup='docker-compose up'
 alias dub='docker-compose up --build'
 alias e="$EDITOR"
-alias getmp3='youtube-dl -x --audio-format=mp3'
+alias ytmp3='youtube-dl -x --audio-format=mp3'
 alias ytm4a='youtube-dl -f m4a'
+alias ytlist='youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s"'
 alias gs='git status -sb'
 alias sfdql="bin/console d:q:d"
 alias ide="tmux -2 new-session $EDITOR \; split-window \; resize-pane -D 4"
