@@ -46,11 +46,15 @@ snippet fn "Arrow function" i
 }
 endsnippet
 
-snippet domlistener "Event listener" b
-${1:document}.addEventListener('${2:DOMContentLoaded}', ${3:function})
+snippet domon "DOM / Event listener" b
+${1:document}.addEventListener('${2:DOMContentLoaded}', ${3})
 endsnippet
 
-snippet domloaded "DOMContentLoaded" b
+snippet .domon "DOM / Event listener" i
+.addEventListener('${1:click}', ${2})
+endsnippet
+
+snippet domloaded "DOM / DOMContentLoaded" b
 if (document.readyState === 'loading') {
 	document.addEventListener('DOMContentLoaded', ${1})
 } else {
@@ -58,8 +62,16 @@ if (document.readyState === 'loading') {
 }
 endsnippet
 
-snippet domquery "document.querySelector"
-document.querySelector${1:All}('${2}')
+snippet domcreate "DOM / Create element"
+document.createElement('${1:div}')
+endsnippet
+
+snippet domquery "DOM / Query selector"
+${1:document}.querySelector${2:All}('${3}')
+endsnippet
+
+snippet qs "DOM / Query selector"
+${1:document}.querySelector${2:All}('${3}')
 endsnippet
 
 snippet it "it()" b
@@ -82,6 +94,18 @@ endsnippet
 
 snippet Of "Object.freeze" i
 Object.freeze(${1})
+endsnippet
+
+snippet Oe "Object.entries" i
+Object.entries(${1})
+endsnippet
+
+snippet Ok "Object.keys" i
+Object.keys(${1})
+endsnippet
+
+snippet Ov "Object.values" i
+Object.values(${1})
 endsnippet
 
 snippet ,t "this." iA
@@ -133,6 +157,12 @@ setTimeout(() => {
 }, ${1})
 endsnippet
 
+snippet interval "setInterval"
+setInterval(() => {
+	${VISUAL}${0}
+}, ${1})
+endsnippet
+
 snippet : "{}" b
 ${1}: {
 	${VISUAL}${0}
@@ -151,6 +181,18 @@ snippet .filter ".filter()" i
 .filter(${1:item} => ${0})
 endsnippet
 
-snippet cl "console.log"
+snippet .forEach ".forEach()" i
+.forEach(${1:item} => ${0})
+endsnippet
+
+snippet cl "console.log" b
 console.log(${VISUAL}${1})
+endsnippet
+
+snippet new "new"
+new ${1}(${2})
+endsnippet
+
+snippet ? "? : operator" i
+${1} ? ${2} : ${3}
 endsnippet
