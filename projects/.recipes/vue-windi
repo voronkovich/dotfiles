@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-npx degit --mode=git git@github.com:voronkovich/vue-windicss-starter.git . && yarn
