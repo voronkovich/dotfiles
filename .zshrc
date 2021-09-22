@@ -182,6 +182,15 @@ zle -N accept-line auto-ls
 zle -N other-widget auto-ls
 # }}}
 
+# ^Z to foreground the last suspended job {{{
+# https://github.com/Peeja/ctrl-zsh
+foreground-current-job() { fg; }
+zle -N foreground-current-job
+bindkey -M emacs '^z' foreground-current-job
+bindkey -M viins '^z' foreground-current-job
+bindkey -M vicmd '^z' foreground-current-job
+# }}}
+
 # Enable Emacs keybindings
 # See https://superuser.com/a/751378
 bindkey -e
