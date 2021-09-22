@@ -1,8 +1,11 @@
-# Exporting variables {{{
+# Environment ariables {{{
 export PATH="$PATH:${HOME}/.local/bin:${HOME}/.gem/bin:${HOME}/.composer/vendor/bin:${HOME}/.symfony/bin:vendor/bin:node_modules/.bin"
+# Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export MANPAGER='most'
+export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="/run/user/$(id -u)/projects"
 # }}}
 
@@ -219,5 +222,3 @@ bindkey '^R'  fzy-history-widget
 bindkey '\eg' snippet-expand
 
 # vim: foldmethod=marker
-
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
