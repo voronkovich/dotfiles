@@ -31,7 +31,6 @@ zplug "voronkovich/gitignore.plugin.zsh"
 zplug "voronkovich/phpcs.plugin.zsh"
 zplug "voronkovich/phpunit.plugin.zsh"
 zplug "voronkovich/project.plugin.zsh"
-zplug "voronkovich/symfony.plugin.zsh"
 zplug "zdharma/fast-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions", use:src
@@ -213,6 +212,10 @@ compdef _symfony phpstan
 compdef _symfony phpunit-watcher
 compdef _symfony phpspec
 compdef _symfony phive
+compdef _symfony bin/console
+
+# phpbrew
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 # Fuzzy
 bindkey '\ec' fzy-cd-widget
