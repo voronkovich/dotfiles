@@ -15,10 +15,11 @@ Plug 'Yggdroot/indentLine'
 Plug 'bling/vim-airline'
 Plug 'duggiefresh/vim-easydir'
 Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
 Plug 'janko-m/vim-test'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/vim-easy-align'
-Plug 'kkoomen/vim-doge'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'markonm/traces.vim'
 Plug 'moll/vim-bbye'
 Plug 'ntpeters/vim-better-whitespace'
@@ -587,9 +588,8 @@ let g:sniphpets_strict_types = 1
 " }}}
 
 " Doge
-" let g:doge_mapping_comment_jump_forward = '<C-j>'
-" let g:doge_mapping_comment_jump_backward = '<C-k>'
-
+let g:doge_mapping_comment_jump_forward = '<C-j>'
+let g:doge_mapping_comment_jump_backward = '<C-k>'
 
 " File skeletons based on Ultisnips {{{
 " See: https://subvisual.co/blog/posts/135-super-powered-vim-part-iii-skeletons/
