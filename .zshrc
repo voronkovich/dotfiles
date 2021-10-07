@@ -169,6 +169,9 @@ dsh() {
     docker exec -it "${1:-$(docker ps -ql)}" "${2:-sh}"
 }
 compdef __docker_complete_running_containers dsh
+dokku() {
+    ssh "${DOKKU_DESTINATION:-dokku}" -t "dokku $@"
+}
 # }}}
 
 # Automatically run ls on blank line for faster navigation {{{
