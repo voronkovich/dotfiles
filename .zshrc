@@ -79,6 +79,7 @@ alias dr='docker run'
 alias drr='docker run --rm'
 alias dup='docker-compose up'
 alias dub='docker-compose up --build'
+alias dev='ddev exec'
 alias e="$EDITOR"
 alias ytmp3='youtube-dl -x --audio-format=mp3'
 alias ytm4a='youtube-dl -f m4a'
