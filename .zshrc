@@ -170,7 +170,12 @@ dsh() {
 }
 compdef __docker_complete_running_containers dsh
 dokku() {
-    ssh "${DOKKU_DESTINATION:-dokku}" -q -t "dokku $@"
+    ssh "${DOKKU_DESTINATION:-dokku}" -q -t -- "dokku $@"
+}
+__dokku_commands_list() {
+    (dokku --quiet help --all 2>/dev/null) | \
+        sed -nE 's/^\s*([-a-z:]+).*$/\1/p' | \
+        sort -u
 }
 # }}}
 
