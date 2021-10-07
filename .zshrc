@@ -170,7 +170,7 @@ dsh() {
 }
 compdef __docker_complete_running_containers dsh
 dokku() {
-    ssh "${DOKKU_DESTINATION:-dokku}" -t "dokku $@"
+    ssh "${DOKKU_DESTINATION:-dokku}" -q -t "dokku $@"
 }
 # }}}
 
