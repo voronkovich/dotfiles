@@ -7,6 +7,7 @@ export EDITOR=vim
 export MANPAGER='most'
 export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="/run/user/$(id -u)/projects"
+export DOKKU_HOST=dokku
 # }}}
 
 # Bootstrap {{{
