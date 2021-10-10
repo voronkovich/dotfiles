@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -eo pipefail
+[[ $DOKKU_TRACE ]] && set -x
+
+export DOKKU_HOST=${DOKKU_HOST:=dokku}
+export DOKKU_PORT=${DOKKU_PORT:=22}
+
+ssh -o LogLevel=QUIET -p $DOKKU_PORT -t dokku@$DOKKU_HOST -- $@ || {
+    ssh_exit_code="$?"
+    echo " !     Failed to execute dokku command over ssh: exit code $?" 1>&2
+    echo " !     If there was no output from Dokku, ensure your configured SSH Key can connect to the remote server" 1>&2
+    exit $ssh_exit_code
+}
