@@ -169,14 +169,28 @@ dsh() {
     docker exec -it "${1:-$(docker ps -ql)}" "${2:-sh}"
 }
 compdef __docker_complete_running_containers dsh
-dokku() {
-    ssh "${DOKKU_DESTINATION:-dokku}" -q -t -- "dokku $@"
-}
+
 __dokku_commands_list() {
-    (dokku --quiet help --all 2>/dev/null) | \
-        sed -nE 's/^\s*([-a-z:]+).*$/\1/p' | \
+    dokku --quiet help --all 2>/dev/null | \
+        sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" | \
+        tr -cd '\11\12\15\40-\176' | \
+        sed -nE 's/^\s*([-a-z:]+).*\s{2,}(\w.*)?$/\1 \u\2/p' | \
         sort -u
 }
+
+_dokku() {
+    local cache="/tmp/${USER}-dokku-completions-4623c3e3-e3a2-403c-9422-12f4a135f07a"
+
+    if [[ ! -f "$cache" ]]; then
+        __dokku_commands_list | sed -E -e 's/:/\\:/' -e 's/\s/:/' > "$cache"
+    fi
+
+    IFS=$'\n' local -a commands=($(cat "$cache"))
+
+    _describe 'commands' commands
+}
+
+compdef _dokku dokku
 # }}}
 
 # Automatically run ls on blank line for faster navigation {{{
