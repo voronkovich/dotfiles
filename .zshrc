@@ -251,4 +251,7 @@ bindkey '^R'  fzy-history-widget
 
 bindkey '\eg' snippet-expand
 
+# Pack completion
+. $(pack completion --shell zsh)
+
 # vim: foldmethod=marker
