@@ -1,5 +1,5 @@
 # Environment ariables {{{
-export PATH="$PATH:${HOME}/.local/bin:${HOME}/.gem/bin:${HOME}/.composer/vendor/bin:${HOME}/.symfony/bin:vendor/bin:node_modules/.bin"
+export PATH="$PATH:${HOME}/.local/bin:${HOME}/.composer/vendor/bin:${HOME}/.symfony/bin:vendor/bin:node_modules/.bin"
 # Added by n-install (see http://git.io/n-install-repo).
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export LC_ALL=en_US.UTF-8
@@ -8,6 +8,9 @@ export MANPAGER='most'
 export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="/run/user/$(id -u)/projects"
 export DOKKU_HOST=dokku
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 # }}}
 
 # Bootstrap {{{
