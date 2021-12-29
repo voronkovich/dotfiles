@@ -6,7 +6,7 @@ export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export MANPAGER='most'
 export PROJECTS="${HOME}/projects"
-export PROJECTS_TMP="/run/user/$(id -u)/projects"
+export PROJECTS_TMP="${XDG_RUNTIME_DIR}/projects"
 export DOKKU_HOST=dokku
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
@@ -35,7 +35,7 @@ zplug "voronkovich/gitignore.plugin.zsh"
 zplug "voronkovich/phpcs.plugin.zsh"
 zplug "voronkovich/phpunit.plugin.zsh"
 zplug "voronkovich/project.plugin.zsh"
-zplug "zdharma/fast-syntax-highlighting", defer:2
+zplug "zdharma-continuum/fast-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions", use:src
 zplug 'molovo/revolver', as:command, use:revolver
@@ -83,7 +83,7 @@ alias dr='docker run'
 alias drr='docker run --rm'
 alias dup='docker-compose up'
 alias dub='docker-compose up --build'
-alias dev='ddev exec'
+alias dev='ddev exec --'
 alias e="$EDITOR"
 alias ytmp3='youtube-dl -x --audio-format=mp3'
 alias ytm4a='youtube-dl -f m4a'
