@@ -102,6 +102,8 @@ Plug 'ap/vim-css-color'
 " ZSH highlighting
 Plug 'clones/vim-zsh'
 
+" Ansible
+Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 call plug#end()
 endif
 " }}}
