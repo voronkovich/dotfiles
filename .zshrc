@@ -111,7 +111,7 @@ alias vpnd="sudo protonvpn disconnect"
 alias vpns="protonvpn status"
 alias dsymfony='docker-compose exec php bin/console'
 alias dcomposer='docker-compose exec php composer'
-if $(which htop &>/dev/null); then
+if which htop >/dev/null; then
     alias top=htop
 fi
 # }}}
@@ -231,15 +231,17 @@ if [[ -r $HOME/.zsh_custom ]]; then
 fi
 
 # Symfony console autocompletion
-eval "$(symfony-autocomplete)"
-compdef _symfony manalize
-compdef _symfony peridot
-compdef _symfony phpactor
-compdef _symfony phpstan
-compdef _symfony phpunit-watcher
-compdef _symfony phpspec
-compdef _symfony phive
-compdef _symfony bin/console
+if which symfony-autocomplete >/dev/null; then
+    eval "$(symfony-autocomplete)"
+    compdef _symfony manalize
+    compdef _symfony peridot
+    compdef _symfony phpactor
+    compdef _symfony phpstan
+    compdef _symfony phpunit-watcher
+    compdef _symfony phpspec
+    compdef _symfony phive
+    compdef _symfony bin/console
+fi
 
 # phpbrew
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
@@ -252,6 +254,8 @@ bindkey '^R'  fzy-history-widget
 bindkey '\eg' snippet-expand
 
 # Pack completion
-. $(pack completion --shell zsh)
+if which pack >/dev/null; then
+    . $(pack completion --shell zsh)
+fi
 
 # vim: foldmethod=marker
