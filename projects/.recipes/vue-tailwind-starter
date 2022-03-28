@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
 npx degit posva/vite-tailwind-starter && \
-    yarn
+    npm install

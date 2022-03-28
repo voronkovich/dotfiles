@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
 echo "${PWD##*/}" | \
-    yarn create @vitejs/app -- --template vanilla . && \
-    yarn install
+    npm init -- vite --template vanilla . && \
+    npm install

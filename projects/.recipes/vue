@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
 echo "${PWD##*/}" | \
-    yarn create vite --template vue . && \
+    npm init -- vite --template vue . && \
     echo '' > src/App.vue && \
     echo '' > src/index.css && \
     rm -rf src/assets/ src/components/ && \
-    yarn install
+    npm install

@@ -1,3 +1,4 @@
 #!/usr/bin/env zsh
 
-rsync --recursive "${PROJECTS}/.templates/vue-windicss/" ./ && yarn
+rsync --recursive "${PROJECTS}/.templates/vue-windicss/" ./ \
+    && npm install
