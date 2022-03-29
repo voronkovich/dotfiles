@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+terminal="/usr/bin/gnome-terminal"
+args="--full-screen --zoom 1.4"
+
+if command -v tmux; then
+    exec "${terminal}" ${args} "${@}" -- tmux
+fi
+
+exec "${terminal}" ${args} "${@}"
