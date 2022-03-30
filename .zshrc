@@ -1,5 +1,5 @@
 # Environment ariables {{{
-export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin:${HOME}/.local/bin:${HOME}/.composer/vendor/bin:${HOME}/.symfony/bin:vendor/bin:node_modules/.bin"
+export PATH="/home/linuxbrew/.linuxbrew/bin:${HOME}/.local/bin:${HOME}/.composer/vendor/bin:${HOME}/.symfony/bin:vendor/bin:node_modules/.bin:$PATH"
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export MANPAGER='most'

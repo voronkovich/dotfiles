@@ -3,7 +3,7 @@
 terminal="/usr/bin/gnome-terminal"
 args="--full-screen --zoom 1.4"
 
-if command -v tmux; then
+if which tmux >/dev/null; then
     exec "${terminal}" ${args} "${@}" -- tmux
 fi
 
