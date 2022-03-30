@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+"${0:a:h}/symfony" && composer require webapp
