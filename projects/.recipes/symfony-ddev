@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 readonly php_version=8.1
+readonly mailer_dsn='smtp://localhost:1025'
 
 ddev config \
     --project-type=php \
@@ -9,6 +10,7 @@ ddev config \
     --create-docroot \
     --omit-containers=db,dba && \
     ddev composer create -y symfony/skeleton && \
+    echo "MAILER_DSN=\"${mailer_dsn}\"" >> .env.dev && \
     # https://dev.to/devtonight/how-to-fix-npm-timeout-errors-on-slow-internet-connections-2kn4
     ddev exec npm config set fetch-retries 3 && \
     ddev exec npm config set fetch-retry-mintimeout 100000 && \
