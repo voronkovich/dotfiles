@@ -1,24 +1,14 @@
 #!/usr/bin/env zsh
 
 readonly php_version=8.1
-readonly postgres_version=14
-readonly database_url="postgresql://db:db@db:5432/db?serverVersion=${postgres_version}&charset=utf8"
-readonly composer_packages=(
-    symfony/orm-pack
-    symfony/debug-pack
-)
 
 ddev config \
     --project-type=php \
     --php-version="${php_version}" \
     --docroot=public \
     --create-docroot \
-    --database="postgres:${postgres_version}" \
-    --omit-containers=dba && \
+    --omit-containers=db,dba && \
     ddev composer create -y symfony/skeleton && \
-    ddev composer require ${composer_packages} && \
-    echo "DATABASE_URL=\"${database_url}\"" >> .env.dev && \
-
     # https://dev.to/devtonight/how-to-fix-npm-timeout-errors-on-slow-internet-connections-2kn4
     ddev exec npm config set fetch-retries 3 && \
     ddev exec npm config set fetch-retry-mintimeout 100000 && \
