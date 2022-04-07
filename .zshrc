@@ -9,6 +9,8 @@ export DOKKU_HOST=dokku
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
+
+ZSH_PLUGIN_DDEV_TOOLS=(composer yarn npm npx console bin/console)
 # }}}
 
 # Bootstrap {{{
@@ -29,6 +31,7 @@ zplug "aperezdc/zsh-fzy"
 zplug "mafredri/zsh-async", defer:0
 zplug "sindresorhus/pure", as:theme, use:pure.zsh
 zplug "supercrabtree/k"
+zplug "voronkovich/ddev.plugin.zsh"
 zplug "voronkovich/gitignore.plugin.zsh"
 zplug "voronkovich/phpcs.plugin.zsh"
 zplug "voronkovich/phpunit.plugin.zsh"
@@ -37,7 +40,6 @@ zplug "zdharma-continuum/fast-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions", use:src
 zplug 'molovo/revolver', as:command, use:revolver
-zplug 'voronkovich/mysql.plugin.zsh'
 zplug 'willghatch/zsh-snippets'
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug 'zunit-zsh/zunit', as:command, use:zunit, hook-build:'./build.zsh'
@@ -81,8 +83,8 @@ alias dr='docker run'
 alias drr='docker run --rm'
 alias dup='docker-compose up'
 alias dub='docker-compose up --build'
-alias dev='ddev exec --'
 alias e="$EDITOR"
+alias youtube-dl='yt-dlp'
 alias ytmp3='youtube-dl -x --audio-format=mp3'
 alias ytm4a='youtube-dl -f m4a'
 alias ytlist='youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s"'
@@ -122,12 +124,6 @@ hash -d logs=/var/log
 # }}}
 
 # Functions {{{
-ddev-install() {
-    curl https://raw.githubusercontent.com/drud/ddev/master/scripts/install_ddev.sh | bash
-}
-ddev-update() {
-    ddev-install
-}
 gac() {
     git add -A;
     git ls-files --deleted -z | xargs -r0 git rm;
