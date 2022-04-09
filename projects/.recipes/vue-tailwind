@@ -3,10 +3,5 @@
 "${0:a:h}/vue" && \
     npm install -D tailwindcss postcss autoprefixer && \
     npx tailwindcss init -p && \
-    rm src/index.css && \
-    echo -e "import 'tailwindcss/tailwind.css'\n\n$(cat src/main.js)" > src/main.js
-    # https://dev.to/devtonight/how-to-fix-npm-timeout-errors-on-slow-internet-connections-2kn4
-    ddev exec npm config set fetch-retries 3 && \
-    ddev exec npm config set fetch-retry-mintimeout 100000 && \
-    ddev exec npm config set fetch-retry-maxtimeout 600000 && \
-    ddev exec npm config set cache-min 3600 && \
+    rsync --recursive "${PROJECTS}/.templates/vue-tailwind/" ./ && \
+    sed -ie "/import App/a \\import './index.css'" src/main.js
