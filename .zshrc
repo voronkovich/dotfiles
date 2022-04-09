@@ -10,7 +10,7 @@ if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
-ZSH_PLUGIN_DDEV_TOOLS=(composer yarn npm npx console bin/console)
+ZSH_PLUGIN_DDEV_TOOLS=(composer yarn npm npx mysql psql console bin/console)
 # }}}
 
 # Bootstrap {{{
@@ -89,6 +89,7 @@ alias ytmp3='youtube-dl -x --audio-format=mp3'
 alias ytm4a='youtube-dl -f m4a'
 alias ytlist='youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s"'
 alias gs='git status -sb'
+alias sf="bin/console"
 alias sfdql="bin/console d:q:d"
 alias ide="tmux -2 new-session $EDITOR \; split-window \; resize-pane -D 4"
 alias k='k -h'
