@@ -463,6 +463,10 @@ let g:projectionist_heuristics = {
         \ 'assets/js/*.js': {
             \ 'type': 'js',
         \ },
+        \ 'assets/controllers/*_controller.js': {
+            \ 'type': 'jscontroller',
+            \ 'skeleton': 'stcontroller',
+        \ },
         \ 'var/log/*.log': {
             \ 'type': 'log',
         \ },
