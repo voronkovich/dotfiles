@@ -1,14 +1,15 @@
 # Environment ariables {{{
-export PATH="/home/linuxbrew/.linuxbrew/bin:${HOME}/.local/bin:${HOME}/.composer/vendor/bin:${HOME}/.symfony/bin:vendor/bin:node_modules/.bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${HOME}/.local/bin:${HOME}/.composer/vendor/bin:${HOME}/.symfony/bin:vendor/bin:node_modules/.bin:$PATH"
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -r rubygems -e 'puts "#{Gem.dir}/bin:#{Gem.user_dir}/bin"'):${PATH}"
+fi
+
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export MANPAGER='most'
 export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="${XDG_RUNTIME_DIR}/projects"
 export DOKKU_HOST=dokku
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-fi
 
 ZSH_PLUGIN_DDEV_TOOLS=(composer yarn npm npx mysql psql console bin/console)
 # }}}
