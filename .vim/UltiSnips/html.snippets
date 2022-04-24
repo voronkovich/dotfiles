@@ -1,3 +1,17 @@
 snippet = "Html attribute"
 ${1}="${2}"
 endsnippet
+
+snippet tuframe "Turbo / Frame"
+<turbo-frame id="${1}">
+	${VISUAL}${0}
+</turbo-frame>
+endsnippet
+
+snippet tustream "Turbo / Stream"
+<turbo-stream action="${1:replace}" target="${2}">
+	<template>
+		${VISUAL}${0}
+	</template>
+</turbo-stream>
+endsnippet

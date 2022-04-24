@@ -67,3 +67,11 @@ snippet php "description" b
 <?php`!v sniphpets#header()`
 
 endsnippet
+
+snippet sfturbo "Symfony / Controller / Turbo stream"
+if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+	$request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
+	${VISUAL}${0}
+}
+endsnippet
