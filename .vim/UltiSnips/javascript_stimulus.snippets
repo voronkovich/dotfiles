@@ -1,7 +1,19 @@
-snippet stcontroller "Stimulus / Controller"
+snippet stcontroller "Stimulus / Controller" b
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-	${0}
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet stvalues "Stimulus / Controller / Values" b
+static values = {
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet stchanged "Stimulus / Controller / Value changed" b
+${1}ValueChanged(value, previousValue) {
+	${VISUAL}${0}
 }
 endsnippet
