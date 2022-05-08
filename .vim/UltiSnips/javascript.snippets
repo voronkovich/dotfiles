@@ -46,44 +46,6 @@ snippet fn "Arrow function" i
 }
 endsnippet
 
-snippet domon "DOM / Event listener" b
-${1:document}.addEventListener('${2:DOMContentLoaded}', ${3})
-endsnippet
-
-snippet .domon "DOM / Event listener" i
-.addEventListener('${1:click}', ${2})
-endsnippet
-
-snippet domloaded "DOM / DOMContentLoaded" b
-if (document.readyState === 'loading') {
-	document.addEventListener('DOMContentLoaded', ${1})
-} else {
-	$1()
-}
-endsnippet
-
-snippet domcreate "DOM / Create element"
-document.createElement('${1:div}')
-endsnippet
-
-snippet domquery "DOM / Query selector"
-${1:document}.querySelector${2:All}('${3}')
-endsnippet
-
-snippet qs "DOM / Query selector"
-${1:document}.querySelector${2:All}('${3}')
-endsnippet
-
-snippet .qs "DOM / Query selector" i
-.querySelector${1:All}('${2}')
-endsnippet
-
-snippet it "it()" b
-it('${1}', () => {
-	${VISUAL}${0}
-})
-endsnippet
-
 snippet O "Object." i
 Object.
 endsnippet
@@ -114,6 +76,10 @@ endsnippet
 
 snippet Oh "Object.hasOwn" i
 Object.hasOwn(${1})
+endsnippet
+
+snippet Af "Array.from" i
+Array.from(${1})
 endsnippet
 
 snippet ,t "this." iA

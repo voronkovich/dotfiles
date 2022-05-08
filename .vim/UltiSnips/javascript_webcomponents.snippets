@@ -1,0 +1,49 @@
+snippet wcdefine "Web Component / define"
+customElements.define('${1}', ${2})
+endsnippet
+
+snippet wcdefinee "Web Component / define extends"
+customElements.define('${1}', ${2}, {
+	extends: '${3}',
+})
+endsnippet
+
+snippet wcbase "Web Component / Base class"
+const template = document.createElement('template')
+template.innerHTML = \`
+    <slot></slot>
+\`
+
+export default class extends HTML${1}Element {
+	constructor() {
+		super()
+
+		this.attachShadow({ mode: 'open' })
+		this.shadowRoot.append(template.content.cloneNode(true))
+	}
+
+	connectedCallback() {
+		${VISUAL}${0}
+	}
+}
+endsnippet
+
+snippet wcobserveattrs "Web Component / Observe attributes" b
+static get observedAttributes() {
+	return [ '${1}' ]
+}
+
+attributeChangedCallback(attr, prev, value) {
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet wcattr "Web Component / Attribute accessors"
+get ${1}() {
+	return this.getAttribute('$1')${2: || '${3:default}'}
+}
+
+set $1(value) {
+	this.setAttribute('$1', value)
+}
+endsnippet
