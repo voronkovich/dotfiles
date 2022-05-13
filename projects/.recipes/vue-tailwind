@@ -4,4 +4,4 @@
     npm install -D tailwindcss postcss autoprefixer && \
     npx tailwindcss init -p && \
     rsync --recursive "${PROJECTS}/.templates/vue-tailwind/" ./ && \
-    sed -ie "/import App/a \\import './index.css'" src/main.js
+    sed -i -e "/import App/a \\import './index.css'" src/main.js
