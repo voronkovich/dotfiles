@@ -1,8 +1,8 @@
-snippet wcdefine "Web Component / define"
+snippet wcdef "Web Component / Define"
 customElements.define('${1}', ${2})
 endsnippet
 
-snippet wcdefinee "Web Component / define extends"
+snippet wcdefe "Web Component / Define with extends"
 customElements.define('${1}', ${2}, {
 	extends: '${3}',
 })
@@ -11,7 +11,13 @@ endsnippet
 snippet wcbase "Web Component / Base class"
 const template = document.createElement('template')
 template.innerHTML = \`
-    <slot></slot>
+	<style>
+	:host {
+		all: initial;
+		contain: content;
+	}
+	</style>
+	<slot></slot>
 \`
 
 export default class extends HTML${1}Element {
@@ -28,16 +34,6 @@ export default class extends HTML${1}Element {
 }
 endsnippet
 
-snippet wcobserveattrs "Web Component / Observe attributes" b
-static get observedAttributes() {
-	return [ '${1}' ]
-}
-
-attributeChangedCallback(attr, prev, value) {
-	${VISUAL}${0}
-}
-endsnippet
-
 snippet wcattr "Web Component / Attribute accessors"
 get ${1}() {
 	return this.getAttribute('$1')${2: || '${3:default}'}
@@ -45,5 +41,29 @@ get ${1}() {
 
 set $1(value) {
 	this.setAttribute('$1', value)
+}
+endsnippet
+
+snippet wcattrbool "Web Component / Attribute boolean"
+get ${1}() {
+	return this.hasAttribute('$1')
+}
+
+set $1(value) {
+	if (value) {
+		this.removeAttribute('$1')
+	} else {
+		this.setAttribute('$1', '')
+	}
+}
+endsnippet
+
+snippet wcattrobserve "Web Component / Attributes observe" b
+static get observedAttributes() {
+	return [ '${1}' ]
+}
+
+attributeChangedCallback(attr, prev, value) {
+	${VISUAL}${0}
 }
 endsnippet
