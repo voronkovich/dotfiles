@@ -1,0 +1,140 @@
+#!/usr/bin/bash
+
+set -euo pipefail
+shopt -s lastpipe nullglob dotglob
+
+if ! command -v supabase &>/dev/null; then
+    echo 'Please, install "supabase". See https://supabase.com/docs/reference/cli/installing-and-updating' >&2
+
+    exit 1
+fi
+
+main() {
+    declare -r cmd="$1" && shift
+
+    case $cmd in
+        envs )
+            supabase_envs "$@"
+            ;;
+        psql )
+            supabase_psql "$@"
+            ;;
+        pg_dump )
+            supabase_pg_dump "$@"
+            ;;
+        studio )
+            open "$(supabase_studio_url)/project/default" &>/dev/null
+            ;;
+        emails )
+            open "$(supabase_inbucket_url)/monitor" &>/dev/null
+            ;;
+        get|post|put|patch|delete|options )
+            supabase_httpie "${cmd}" "$@"
+            ;;
+        * )
+            supabase "$cmd" "$@"
+            ;;
+    esac
+}
+
+supabase_envs() {
+    declare prefix="${1:-}"
+
+    if [[ -z "${prefix}" ]]; then
+        prefix="$(project_type)"
+    fi
+
+    if [[ -n "${prefix}" ]]; then
+        prefix="${prefix^^}_"
+    fi
+
+    cat <<EOF
+${prefix}SUPABASE_API=$(supabase_api_url)
+${prefix}SUPABASE_ANON_KEY=$(supabase_anon_key)
+EOF
+}
+
+supabase_httpie() {
+    if ! command -v http &>/dev/null; then
+        echo 'Please, install "httpie". See https://httpie.io' >&2
+
+        return 1
+    fi
+
+    declare -r apiKey="$(supabase_service_role_key)"
+    declare -r apiUrl="$(supabase_api_rest_url)"
+    declare -r method="${1}" && shift
+    declare -r url="${1}" && shift
+
+    command http \
+        -A bearer -a "${apiKey}" \
+        "${method}" "${apiUrl}/${url///}" \
+        apiKey:"${apiKey}" \
+        Prefer:'return=representation' \
+        "$@"
+}
+
+supabase_psql() {
+    if ! command -v psql &>/dev/null; then
+        echo 'Please, install "psql". See https://www.postgresql.org/docs/current/app-psql.html' >&2
+
+        return 1
+    fi
+
+    declare opts=''
+    if [[ $# -gt 0 && ! "$@" == -* ]]; then
+        opts='-c'
+    fi
+
+    command psql "$(supabase_postgres_url)" ${opts} "$@"
+}
+
+supabase_pg_dump() {
+    if ! command -v pg_dump &>/dev/null; then
+        echo 'Please, install "pg_dump". See https://www.postgresql.org/docs/current/app-pgdump.html' >&2
+
+        return 1
+    fi
+
+    command pg_dump "$@" "$(supabase_postgres_url)"
+}
+
+supabase_api_url() {
+    supabase_config 'API URL'
+}
+
+supabase_api_rest_url() {
+    echo "$(supabase_api_url)/rest/v1/"
+}
+
+supabase_postgres_url() {
+    supabase_config 'DB URL'
+}
+
+supabase_studio_url() {
+    supabase_config 'Studio URL'
+}
+
+supabase_inbucket_url() {
+    supabase_config 'Inbucket URL'
+}
+
+supabase_anon_key() {
+    supabase_config 'anon key'
+}
+
+supabase_service_role_key() {
+    supabase_config 'service_role key'
+}
+
+supabase_config() {
+    command supabase status | command sed -ne "s/\s*$@[^:]*:\s*//p"
+}
+
+project_type() {
+    if [[ -f 'vite.config.js' ]]; then
+        echo 'vite' && return
+    fi
+}
+
+main "$@"
