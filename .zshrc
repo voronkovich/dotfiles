@@ -191,6 +191,79 @@ _dokku() {
 }
 
 compdef _dokku dokku
+
+supa() {
+    case $1 in
+        psql )
+            shift
+            supabase-psql "$@"
+            ;;
+        pg_dump )
+            shift
+            supabase-pg_dump "$@"
+            ;;
+        studio )
+            shift
+            supabase-studio "$@" &>/dev/null
+            ;;
+        emails )
+            shift
+            supabase-emails "$@" &>/dev/null
+            ;;
+        * )
+            supabase "$@"
+            ;;
+    esac
+}
+
+supabase-psql() {
+    declare opts=''
+    if [[ $# -gt 0 && ! "$@" == -* ]]; then
+        opts='-c'
+    fi
+
+    command psql "$(supabase-postres-url)" ${opts} "$@"
+}
+
+supabase-curl() {
+    declare -r apiKey="$(supabase-service-role-key)"
+
+    command curl \
+        -H "apikey: ${apiKey}" \
+        -H "Authorization: Bearer ${apiKey}" \
+        -H "Content-Type: application/json" \
+        -H "Prefer: return=representation" \
+        -X "${1:u}" \
+        -d "${3}" \
+        "http://localhost:54321/rest/v1/${2//\/}"
+}
+
+supabase-httpie() {
+    command http \
+        -A bearer -a "$(supabase-service-role-key)" \
+        "http://localhost:54321/rest/v1/${*//\/}" \
+        apiKey:"$(supabase-service-role-key)"
+}
+
+supabase-pg_dump() {
+    command pg_dump "$(supabase-postres-url)" ${opts} "$@"
+}
+
+supabase-emails() {
+    open "$(command supabase status | command sed -ne 's/\s*Inbucket URL:\s*//p')/monitor"
+}
+
+supabase-studio() {
+    open "$(command supabase status | command sed -ne 's/\s*Studio URL:\s*//p')"
+}
+
+supabase-postres-url() {
+    command supabase status | command grep -o 'postgresql://\S\+'
+}
+
+supabase-service-role-key() {
+    command supabase status | command sed -ne 's/\s*service_role key:\s*//p'
+}
 # }}}
 
 # Automatically run ls on blank line for faster navigation {{{
