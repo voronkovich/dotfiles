@@ -36,6 +36,7 @@ cscope.po.out
 
 # php-cs-fixer
 .php_cs.cache
+.php-cs-fixer.cache
 
 # phpunit
 .phpunit.result.cache
