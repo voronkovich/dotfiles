@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+readonly mysql_version=8.0
+readonly database_url="mysql://db:db@db:3306/db?serverVersion=${mysql_version}&charset=utf8mb4"
+
+"${0:a:h}/symfony-ddev" && \
+    ddev config --database="mysql:${mysql_version}" --omit-containers=dba && \
+    ddev composer require symfony/orm-pack && \
+    echo "DATABASE_URL=\"${database_url}\"" >> .env.dev && \
