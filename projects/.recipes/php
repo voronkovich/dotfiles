@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 mkdir src tests
+
 echo '{
     "autoload": {
         "psr-4": {
@@ -14,3 +15,5 @@ echo '{
     }
 }' > composer.json
 composer dump
+
+echo '/vendor/' > .gitignore
