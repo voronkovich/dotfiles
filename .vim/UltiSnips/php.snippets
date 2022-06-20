@@ -2,8 +2,16 @@ snippet @a "@Assert"
 @Assert\\${1:NotBlank}${2:(${3})}
 endsnippet
 
+snippet #a "#[Assert"
+#[Assert\\${1:NotBlank}${2:(${3})}]
+endsnippet
+
 snippet @o "@ORM"
-@ORM\\${1})}
+@ORM\\${1}
+endsnippet
+
+snippet #o "#[ORM"
+#[ORM\\${1}]
 endsnippet
 
 snippet vd "var_dump()" b
