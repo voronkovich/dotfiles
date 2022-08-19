@@ -571,6 +571,7 @@ au FileType php setlocal omnifunc=phpactor#Complete
 au FileType php nnoremap gd :call phpactor#GotoDefinition()<CR>
 au FileType php nnoremap <Leader>m :call phpactor#ContextMenu()<CR>
 au FileType php nnoremap <Leader>ua :call phpactor#UseAdd() <bar> :call PhpSortUse()<CR>
+au FileType php nnoremap <Leader>um :call phpactor#ImportMissingClasses() <bar> :call PhpSortUse()<CR>
 au FileType php nnoremap <Leader>us :call PhpSortUse()<CR>
 
 " PHP folding
