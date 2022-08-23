@@ -78,7 +78,6 @@ Plug 'voronkovich/ultisnips-vue'
 " PHP
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'StanAngeloff/php.vim'
-Plug 'afternoon/vim-phpunit'
 Plug 'arnaud-lb/vim-php-namespace'
 Plug 'evidens/vim-twig'
 Plug 'phpactor/phpactor', { 'do': 'composer install --no-dev -o -n' }
