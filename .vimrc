@@ -237,15 +237,21 @@ nnoremap <Leader>ts :TestSuite<CR>
 nnoremap <Leader>tv :TestVisit<CR>
 let test#php#phpunit#options = { 'file': '--testdox' }
 let test#php#phpspec#options = '--format=pretty'
-function! DDEVTransform(cmd) abort
-    if !filereadable('.ddev/config.yaml')
-        return a:cmd
+function! CustomTransform(cmd) abort
+    if filereadable('.ddev/config.yaml')
+        return 'ddev exec -- '.a:cmd
     endif
 
-    return 'ddev exec '.a:cmd
+    if filereadable('symfony.lock')
+        return 'symfony run -- '.a:cmd
+    endif
+
+    return a:cmd
 endfunction
-let g:test#custom_transformations = {'ddev': function('DDEVTransform')}
-let g:test#transformation = 'ddev'
+let g:test#custom_transformations = {
+    \ 'custom': function('CustomTransform'),
+\ }
+let g:test#transformation = 'custom'
 
 " Saving by Ctrl+a
 nnoremap <C-a> <Esc>:w<CR>
