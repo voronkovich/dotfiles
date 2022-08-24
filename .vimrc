@@ -319,6 +319,7 @@ let g:ale_fixers = {
 \ }
 " Fix code style
 command! CS ALEFix
+nnoremap <Leader>cs :CS<CR>
 
 let g:airline#extensions#ale#enabled = 1
 
