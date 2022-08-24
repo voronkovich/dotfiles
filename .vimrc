@@ -234,6 +234,7 @@ nnoremap <Leader>tl :TestLast<CR>
 nnoremap <Leader>tn :TestNearest<CR>
 nnoremap <Leader>ts :TestSuite<CR>
 nnoremap <Leader>tv :TestVisit<CR>
+let g:test#runner_commands = ['PHPUnit']
 let test#php#phpunit#options = { 'file': '--testdox' }
 let test#php#phpspec#options = '--format=pretty'
 function! CustomTransform(cmd) abort
