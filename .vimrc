@@ -89,6 +89,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 
 " Html
+Plug 'AndrewRadev/tagalong.vim'
 Plug 'Valloric/MatchTagAlways'
 Plug 'mattn/emmet-vim'
 
