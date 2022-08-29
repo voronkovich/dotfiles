@@ -243,7 +243,11 @@ function! CustomTransform(cmd) abort
         return 'ddev exec -- '.a:cmd
     endif
 
-    if filereadable('symfony.lock')
+    if executable('symfony') && filereadable('symfony.lock')
+        if stridx(a:cmd, 'phpunit') > -1
+            return 'symfony php '.a:cmd
+        endif
+
         return 'symfony run -- '.a:cmd
     endif
 
