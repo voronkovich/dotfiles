@@ -129,7 +129,10 @@ if which symfony >/dev/null; then
         local database_name="$(sed -nr -e 's/.*DATABASE_DATABASE=(.+)/\1/p' <<<"${vars}")"
         local database_user="$(sed -nr -e 's/.*DATABASE_USER=(.+)/\1/p' <<<"${vars}")"
 
-        command docker-compose exec "${service_name}" psql "${database_name}" "${database_user}"
+        command docker-compose exec "${service_name}" psql \
+            --dbname "${database_name}" \
+            --username "${database_user}" \
+            "$@"
     }
 fi
 # }}}
