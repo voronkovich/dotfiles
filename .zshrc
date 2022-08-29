@@ -117,6 +117,21 @@ alias dcomposer='docker-compose exec php composer'
 if which htop >/dev/null; then
     alias top=htop
 fi
+if which symfony >/dev/null; then
+    # alias sf='symfony console'
+    alias c='symfony composer'
+    alias sftest='symfony php bin/phpunit --colors'
+
+    sfpsql() {
+        local vars="$(symfony var:export --debug --multiline 2>&1)"
+
+        local service_name="$(sed -nr -e 's/.*exposing service "(.+)"/\1/p' <<<"${vars}")"
+        local database_name="$(sed -nr -e 's/.*DATABASE_DATABASE=(.+)/\1/p' <<<"${vars}")"
+        local database_user="$(sed -nr -e 's/.*DATABASE_USER=(.+)/\1/p' <<<"${vars}")"
+
+        command docker-compose exec "${service_name}" psql "${database_name}" "${database_user}"
+    }
+fi
 # }}}
 
 # {{{ Hashes
