@@ -1,3 +1,6 @@
+# https://askubuntu.com/a/452576
+stty sane
+
 # Environment ariables {{{
 export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${HOME}/.local/bin:${HOME}/.composer/vendor/bin:${HOME}/.symfony/bin:vendor/bin:node_modules/.bin:$PATH"
 if which ruby >/dev/null && which gem >/dev/null; then
@@ -44,6 +47,7 @@ zplug 'molovo/revolver', as:command, use:revolver
 zplug 'willghatch/zsh-snippets'
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug 'zunit-zsh/zunit', as:command, use:zunit, hook-build:'./build.zsh'
+zplug "voronkovich/symfony.plugin.zsh"
 # }}}
 
 if ! zplug check --verbose; then
@@ -90,8 +94,8 @@ alias ytmp3='youtube-dl -x --audio-format=mp3'
 alias ytm4a='youtube-dl -f m4a'
 alias ytlist='youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s"'
 alias gs='git status -sb'
-alias sf="bin/console"
-alias sfdql="bin/console d:q:d"
+alias sfdql="sf d:q:d"
+alias sfsql="sf d:q:s"
 alias ide="tmux -2 new-session $EDITOR \; split-window \; resize-pane -D 4"
 alias k='k -h'
 alias la='ls -lah'
@@ -245,19 +249,6 @@ if [[ -r $HOME/.zsh_custom ]]; then
     source $HOME/.zsh_custom
 fi
 
-# Symfony console autocompletion
-if which symfony-autocomplete >/dev/null; then
-    eval "$(symfony-autocomplete)"
-    compdef _symfony manalize
-    compdef _symfony peridot
-    compdef _symfony phpactor
-    compdef _symfony phpstan
-    compdef _symfony phpunit-watcher
-    compdef _symfony phpspec
-    compdef _symfony phive
-    compdef _symfony bin/console
-fi
-
 # phpbrew
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
@@ -278,4 +269,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+compdef _sf sf
+compdef _symfony_console bin/console
+compdef _symfony_console composer
+compdef _symfony_console php-cs-fixer
 # vim: foldmethod=marker
