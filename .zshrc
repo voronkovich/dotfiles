@@ -2,7 +2,13 @@
 stty sane
 
 # Environment ariables {{{
-export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${HOME}/.local/bin:${HOME}/.composer/vendor/bin:${HOME}/.symfony/bin:vendor/bin:node_modules/.bin:$PATH"
+export PATH
+if [[ -d '/home/linuxbrew/.linuxbrew/bin' ]]; then
+    PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
+fi
+if [[ -d '/home/linuxbrew/.linuxbrew/sbin' ]]; then
+    PATH="/home/linuxbrew/.linuxbrew/sbin:${PATH}"
+fi
 if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts "#{Gem.dir}/bin:#{Gem.user_dir}/bin"'):${PATH}"
 fi
