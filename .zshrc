@@ -95,6 +95,7 @@ alias drr='docker run --rm'
 alias dup='docker-compose up'
 alias dub='docker-compose up --build'
 alias e="$EDITOR"
+alias foredev='foreman start --procfile=Procfile.dev'
 alias youtube-dl='yt-dlp'
 alias ytmp3='youtube-dl -x --audio-format=mp3'
 alias ytm4a='youtube-dl -f m4a'
