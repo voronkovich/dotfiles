@@ -252,10 +252,6 @@ bindkey -e
 
 bindkey '^ ' autosuggest-accept
 
-if [[ -r $HOME/.zsh_custom ]]; then
-    source $HOME/.zsh_custom
-fi
-
 # phpbrew
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
