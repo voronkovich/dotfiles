@@ -38,6 +38,7 @@ omz npm
 omz vagrant
 omz yarn
 omz fancy-ctrl-z
+omz magic-enter
 zplug "aperezdc/zsh-fzy"
 zplug "mafredri/zsh-async", defer:0
 zplug "sindresorhus/pure", as:theme, use:pure.zsh
@@ -232,25 +233,15 @@ _dokku() {
 compdef _dokku dokku
 # }}}
 
-# Automatically run ls on blank line for faster navigation {{{
-auto-ls () {
-    if [[ -z $BUFFER ]]; then
-        zle -I
-        k
-        echo
-    else
-        zle ".$WIDGET"
-    fi
-}
-zle -N accept-line auto-ls
-zle -N other-widget auto-ls
-# }}}
-
 # Enable Emacs keybindings
 # See https://superuser.com/a/751378
 bindkey -e
 
 bindkey '^ ' autosuggest-accept
+
+# OMZ magic-enter
+MAGIC_ENTER_GIT_COMMAND='k'
+MAGIC_ENTER_OTHER_COMMAND='k'
 
 # phpbrew
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
