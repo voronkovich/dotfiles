@@ -2,15 +2,8 @@
 stty sane
 
 # Environment ariables {{{
-export PATH
-if [[ -d '/home/linuxbrew/.linuxbrew/bin' ]]; then
-    PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
-fi
-if [[ -d '/home/linuxbrew/.linuxbrew/sbin' ]]; then
-    PATH="/home/linuxbrew/.linuxbrew/sbin:${PATH}"
-fi
-if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -r rubygems -e 'puts "#{Gem.dir}/bin:#{Gem.user_dir}/bin"'):${PATH}"
+if [[ -d "/home/linuxbrew/.linuxbrew/share/zsh/site-functions" ]]; then
+    fpath=( "/home/linuxbrew/.linuxbrew/share/zsh/site-functions" $fpath )
 fi
 
 export LC_ALL=en_US.UTF-8
@@ -19,8 +12,6 @@ export MANPAGER='most'
 export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="${XDG_RUNTIME_DIR}/projects"
 export DOKKU_HOST=dokku
-
-ZSH_PLUGIN_DDEV_TOOLS=(composer yarn npm npx mysql psql console bin/console)
 # }}}
 
 # Bootstrap {{{
@@ -30,6 +21,7 @@ omz() { zplug "plugins/$1", from:oh-my-zsh; }
 # }}}
 
 # Bundles {{{
+omz brew
 omz composer
 omz extract
 omz git
@@ -39,23 +31,23 @@ omz vagrant
 omz yarn
 omz fancy-ctrl-z
 omz magic-enter
-zplug "aperezdc/zsh-fzy"
-zplug "mafredri/zsh-async", defer:0
-zplug "sindresorhus/pure", as:theme, use:pure.zsh
-zplug "supercrabtree/k"
-zplug "voronkovich/ddev.plugin.zsh"
-zplug "voronkovich/gitignore.plugin.zsh"
-zplug "voronkovich/phpcs.plugin.zsh"
-zplug "voronkovich/phpunit.plugin.zsh"
-zplug "voronkovich/project.plugin.zsh"
-zplug "zdharma-continuum/fast-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions", use:src
+zplug 'aperezdc/zsh-fzy'
+zplug 'mafredri/zsh-async', defer:0
+zplug 'sindresorhus/pure', as:theme, use:pure.zsh
+zplug 'supercrabtree/k'
+zplug 'voronkovich/ddev.plugin.zsh'
+zplug 'voronkovich/gitignore.plugin.zsh'
+zplug 'voronkovich/phpcs.plugin.zsh'
+zplug 'voronkovich/project.plugin.zsh'
+zplug 'voronkovich/symfony-complete.plugin.zsh'
+zplug 'voronkovich/symfony.plugin.zsh'
+zplug 'zdharma-continuum/fast-syntax-highlighting', defer:2
+zplug 'zsh-users/zsh-autosuggestions'
+zplug 'zsh-users/zsh-completions', use:src
 zplug 'molovo/revolver', as:command, use:revolver
 zplug 'willghatch/zsh-snippets'
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug 'zunit-zsh/zunit', as:command, use:zunit, hook-build:'./build.zsh'
-zplug "voronkovich/symfony.plugin.zsh"
 # }}}
 
 if ! zplug check --verbose; then
@@ -107,6 +99,7 @@ alias gs='git status -sb'
 alias sfmc='sf make:controller'
 alias sfme='sf make:entity'
 alias sfmf='sf make:form'
+alias sfmt='sf make:test'
 alias sfmm='sf make:migration'
 alias sffl='sf doctrine:fixtures:load -n'
 alias sflf='sf doctrine:fixtures:load -n'
@@ -137,24 +130,6 @@ alias dsymfony='docker-compose exec php bin/console'
 alias dcomposer='docker-compose exec php composer'
 if which htop >/dev/null; then
     alias top=htop
-fi
-if which symfony >/dev/null; then
-    # alias sf='symfony console'
-    alias c='symfony composer'
-    alias sftest='symfony php bin/phpunit --colors'
-
-    sfpsql() {
-        local vars="$(symfony var:export --debug --multiline 2>&1)"
-
-        local service_name="$(sed -nr -e 's/.*exposing service "(.+)"/\1/p' <<<"${vars}")"
-        local database_name="$(sed -nr -e 's/.*DATABASE_DATABASE=(.+)/\1/p' <<<"${vars}")"
-        local database_user="$(sed -nr -e 's/.*DATABASE_USER=(.+)/\1/p' <<<"${vars}")"
-
-        command docker-compose exec "${service_name}" psql \
-            --dbname "${database_name}" \
-            --username "${database_user}" \
-            "$@"
-    }
 fi
 # }}}
 
@@ -263,8 +238,22 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-compdef _sf sf
-compdef _symfony_console bin/console
-compdef _symfony_console composer
-compdef _symfony_console php-cs-fixer
+# Ruby & Ruby Gems
+if which ruby >/dev/null && which gem >/dev/null; then
+    path+=( "$(ruby -r rubygems -e 'puts "#{Gem.dir}/bin:#{Gem.user_dir}/bin"')" )
+fi
+
+# Symfony
+artisan() {
+    SF_CONSOLE='artisan' SF_RUNNER='docker-compose exec -- laravel.test' sf "$@"
+}
+
+compdef _sf artisan
+
+compdef _symfony_complete console
+compdef _symfony_complete composer
+compdef _symfony_complete php-cs-fixer
+compdef _symfony_complete phpstan
+compdef _symfony_complete phpspec
+
 # vim: foldmethod=marker
