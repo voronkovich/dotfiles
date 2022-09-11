@@ -230,11 +230,11 @@ nnoremap <C-n> :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen = 1
 
 " vim-test
-nnoremap <Leader>tf :TestFile<CR>
-nnoremap <Leader>tl :TestLast<CR>
-nnoremap <Leader>tn :TestNearest<CR>
-nnoremap <Leader>ts :TestSuite<CR>
-nnoremap <Leader>tv :TestVisit<CR>
+nnoremap <Leader>t :TestNearest<CR>
+nnoremap <Leader>Tf :TestFile<CR>
+nnoremap <Leader>Tl :TestLast<CR>
+nnoremap <Leader>Ts :TestSuite<CR>
+nnoremap <Leader>Tv :TestVisit<CR>
 let g:test#runner_commands = ['PHPUnit']
 let test#php#phpunit#options = { 'file': '--testdox' }
 let test#php#phpspec#options = '--format=pretty'
@@ -245,7 +245,7 @@ function! CustomTransform(cmd) abort
 
     if executable('symfony') && filereadable('symfony.lock')
         if stridx(a:cmd, 'phpunit') > -1
-            return 'symfony php '.a:cmd
+            return 'SYMFONY_DEPRECATIONS_HELPER="disabled=1" symfony php '.a:cmd
         endif
 
         return 'symfony run -- '.a:cmd
@@ -371,6 +371,7 @@ let g:projectionist_heuristics = {
                 \ 'src/Repository/{}Repository.php',
                 \ 'src/Controller/{}Controller.php',
                 \ 'src/Controller/Admin/{}Controller.php',
+                \ 'src/Factory/{}Factory.php',
                 \ 'src/Form/{}Type.php'
             \ ],
         \ },
@@ -387,6 +388,10 @@ let g:projectionist_heuristics = {
         \ },
         \ 'src/Exception/*Exception.php': {
             \ 'type': 'exception',
+        \ },
+        \ 'src/Factory/*Factory.php': {
+            \ 'type': 'factory',
+            \ 'alternate': 'src/Entity/{}.php',
         \ },
         \ 'src/Form/*Type.php': {
             \ 'type': 'form',
@@ -467,14 +472,18 @@ let g:projectionist_heuristics = {
         \ 'translations/*.xlf': {
             \ 'type': 'translation',
         \ },
-        \ 'assets/css/*.css': {
-            \ 'type': 'css',
+        \ 'assets/styles/*.css': {
+            \ 'type': 'astyle',
         \ },
-        \ 'assets/js/*.js': {
-            \ 'type': 'js',
+        \ 'assets/lib/*.js': {
+            \ 'type': 'alib',
+        \ },
+        \ 'assets/components/*.js': {
+            \ 'type': 'acomponent',
+            \ 'skeleton': 'wcbase',
         \ },
         \ 'assets/controllers/*_controller.js': {
-            \ 'type': 'jscontroller',
+            \ 'type': 'acontroller',
             \ 'skeleton': 'stcontroller',
         \ },
         \ 'var/log/*.log': {
