@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-vue create --default --bare --no-git --merge . && echo '' > src/App.vue && rm -rf src/assets/;
