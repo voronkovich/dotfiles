@@ -90,7 +90,7 @@ alias dup='docker-compose up'
 alias dupd='docker-compose up -d'
 alias dub='docker-compose up --build'
 alias e="$EDITOR"
-alias foredev='foreman start --procfile=Procfile.dev'
+alias procdev='foreman start --procfile=Procfile.dev'
 alias youtube-dl='yt-dlp'
 alias ytmp3='youtube-dl -x --audio-format=mp3'
 alias ytm4a='youtube-dl -f m4a'
@@ -104,8 +104,10 @@ alias sfmm='sf make:migration'
 alias sffl='sf doctrine:fixtures:load -n'
 alias sflf='sf doctrine:fixtures:load -n'
 alias sfdm='sf doctrine:migration:migrate'
-alias sfdql="sf doctrine:query:dql"
-alias sfsql="sf dbal:run-sql"
+alias sfdql='sf doctrine:query:dql'
+alias sfsql='sf dbal:run-sql'
+alias sfo='sf open'
+alias sfom='sf mails'
 alias ide="tmux -2 new-session $EDITOR \; split-window \; resize-pane -D 4"
 alias k='k -h'
 alias la='ls -lah'
