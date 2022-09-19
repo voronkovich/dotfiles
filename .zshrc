@@ -247,7 +247,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Ruby & Ruby Gems
 if which ruby >/dev/null && which gem >/dev/null; then
-    path+=( "$(ruby -r rubygems -e 'puts "#{Gem.dir}/bin:#{Gem.user_dir}/bin"')" )
+    path+=( $(ruby -r rubygems -e 'puts "#{Gem.dir}/bin #{Gem.user_dir}/bin"') )
 fi
 
 # Symfony
