@@ -90,6 +90,7 @@ alias dup='docker-compose up'
 alias dupd='docker-compose up -d'
 alias dub='docker-compose up --build'
 alias e="$EDITOR"
+alias epub='npx percollate epub'
 alias procdev='foreman start --procfile=Procfile.dev'
 alias youtube-dl='yt-dlp'
 alias ytmp3='youtube-dl -x --audio-format=mp3'
