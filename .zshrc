@@ -6,6 +6,10 @@ if [[ -d "/home/linuxbrew/.linuxbrew/share/zsh/site-functions" ]]; then
     fpath=( "/home/linuxbrew/.linuxbrew/share/zsh/site-functions" $fpath )
 fi
 
+if [[ -d "${HOME}/.phive/.local/bin" ]]; then
+    fpath=( "${HOME}/.phive/.local/bin" $fpath )
+fi
+
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export MANPAGER='most'
