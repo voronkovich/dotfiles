@@ -7,7 +7,7 @@ if [[ -d "/home/linuxbrew/.linuxbrew/share/zsh/site-functions" ]]; then
 fi
 
 if [[ -d "${HOME}/.phive/.local/bin" ]]; then
-    fpath=( "${HOME}/.phive/.local/bin" $fpath )
+    path=( "${HOME}/.phive/.local/bin" $path )
 fi
 
 export LC_ALL=en_US.UTF-8
@@ -213,6 +213,14 @@ _dokku() {
 }
 
 compdef _dokku dokku
+
+paths() {
+    local p; for p in "${path[@]}"; do; echo "${p}"; done;
+}
+
+fpaths() {
+    local p; for p in "${fpath[@]}"; do; echo "${p}"; done;
+}
 # }}}
 
 # Enable Emacs keybindings
