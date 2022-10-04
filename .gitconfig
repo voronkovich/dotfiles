@@ -4,7 +4,6 @@
 [push]
 	default = simple
 [core]
-	excludesfile = ~/.gitignore_global
 	compression = 9
 [init]
 	defaultBranch = main
