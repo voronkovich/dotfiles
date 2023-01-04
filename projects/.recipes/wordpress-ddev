@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+ddev config --project-type=wordpress \
+    && ddev start \
+    && ddev wp core download \
+    && ddev wp core install \
+        --url="${DDEV_PRIMARY_URL}" \
+        --title="${WP_TITLE:-${PWD##*/}}" \
+        --admin_user="${WP_USER:-admin}" \
+        --admin_password="${WP_PASSWORD:-admin}" \
+        --admin_email="${WP_EMAIL:-oleg-voronkovich@yandex.ru}"
