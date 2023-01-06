@@ -1,0 +1,35 @@
+snippet wpplug "WordPress / Plugin"
+<?php`!v sniphpets#header()`
+
+/** Plugin Name: ${1:`!v sniphpets#basename()`} */
+
+defined('ABSPATH') or die('Direct access denied.');
+endsnippet
+
+snippet wpreq "WordPress / Require"
+require_once ABSPATH . WPINC . '/${1}.php';
+endsnippet
+
+snippet wpact "WordPress / add_action()"
+add_action('${1}', ${2});
+endsnippet
+
+snippet wpfil "WordPress / add_filter()"
+add_filter('${1}', ${2});
+endsnippet
+
+snippet wploop "WordPress / The Loop"
+<?php while ( have_posts() ) : the_post(); ?>
+	${VISUAL}${0}
+<?php endwhile; ?>
+endsnippet
+
+snippet wploopif "WordPress / The Loop"
+<?php if ( have_posts() ) : ?>
+	<?php while ( have_posts() ) : the_post(); ?>
+		${VISUAL}${0}
+	<?php endwhile; ?>
+<?php else: ?>
+	${1}
+<?php endif ?>
+endsnippet
