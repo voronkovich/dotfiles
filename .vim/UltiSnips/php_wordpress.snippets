@@ -1,9 +1,20 @@
+global !p
+import re
+
+def snake_to_words(snake, delimiter = '_'):
+	components = snake.split(delimiter)
+	return ' '.join(x.title() for x in components)
+
+def text_to_attr(text):
+	return re.sub('\s+', '-', text).lower()
+endglobal
+
 snippet wpplug "WordPress / Plugin"
-<?php`!v sniphpets#header()`
+<?php
 
 /** Plugin Name: ${1:`!v sniphpets#basename()`} */
 
-defined('ABSPATH') or die('Direct access denied.');
+defined( 'ABSPATH' ) || exit;
 endsnippet
 
 snippet wpreq "WordPress / Require"
@@ -11,11 +22,11 @@ require_once ABSPATH . WPINC . '/${1}.php';
 endsnippet
 
 snippet wpact "WordPress / add_action()"
-add_action('${1}', ${2});
+add_action( '${1:init}', ${2} );
 endsnippet
 
 snippet wpfil "WordPress / add_filter()"
-add_filter('${1}', ${2});
+add_filter( '${1}', ${2} );
 endsnippet
 
 snippet wploop "WordPress / The Loop"
@@ -32,4 +43,28 @@ snippet wploopif "WordPress / The Loop"
 <?php else: ?>
 	${1}
 <?php endif ?>
+endsnippet
+
+snippet wpcpt "WordPress / Custom Post Type"
+register_post_type( 'app_${1}', [
+	'public' => true,
+	'labels' => [
+		'name' => '${2:`!p snip.rv = snake_to_words(t[1])`s}',
+		'singular_name' => '${3:`!p snip.rv = snake_to_words(t[1])`}',
+		'add_new_item' => 'Add New $3',
+		'edit_item' => 'Edit $3',
+		'view_item' => 'View $3',
+		'all_items' => 'All $2',
+		'search_items' => 'Search $2',
+		'not_found' => 'No items found',
+		'not_found_in_trash' => 'No items found in Trash',
+	],
+	'rewrite' => [
+		'slug' => '`!p snip.rv = t[1].replace('_', '-')`',
+	],${0}
+]);
+endsnippet
+
+snippet wpmetabox "WordPress / Add meta box"
+add_meta_box( 'app-`!p snip.rv = text_to_attr(t[1])`', '${1:Title}', '${2:callback}' );
 endsnippet
