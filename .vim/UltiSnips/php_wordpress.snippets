@@ -5,8 +5,8 @@ def snake_to_words(snake, delimiter = '_'):
 	components = snake.split(delimiter)
 	return ' '.join(x.title() for x in components)
 
-def text_to_attr(text):
-	return re.sub('\s+', '-', text).lower()
+def text_to_snake(text, delimiter = '-'):
+	return re.sub('\s+', delimiter, text).lower()
 endglobal
 
 snippet wpf "WordPress / Function"
@@ -35,7 +35,7 @@ snippet wpplug "WordPress / Plugin" b
  * License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * Author:      `!v get(g:, 'snips_author', 'Please, set g:snips_author')`
  * Author URI:  `!v get(g:, 'snips_author_url', 'Please, set g:snips_author_url')`
- * Text Domain: `!p snip.rv = text_to_attr(t[1])`
+ * Text Domain: `!p snip.rv = text_to_snake(t[1])`
  * Domain Path: /languages
  */
 
@@ -86,6 +86,14 @@ snippet wploopif "WordPress / The Loop" b
 <?php endif ?>
 endsnippet
 
+snippet wppostsave "WordPress / Post save hook" b
+function `!v get(g:, 'snips_wp_prefix', 'app')`_$2( \$post_id, \$post, \$update ) {
+	${VISUAL}${0}
+}
+
+add_action( 'save_post_${1}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2}', 10, 3 );
+endsnippet
+
 snippet wpposttype "WordPress / Custom Post Type" b
 register_post_type( '`!v get(g:, 'snips_wp_prefix', 'app')`_${1}', [
 	'public' => true,
@@ -104,7 +112,7 @@ register_post_type( '`!v get(g:, 'snips_wp_prefix', 'app')`_${1}', [
 	'rewrite' => [
 		'slug' => '`!p snip.rv = t[1].replace('_', '-')`',
 	],${0}
-]);
+] );
 endsnippet
 
 snippet wptaxonomy "WordPress / Taxonomy" b
@@ -114,7 +122,7 @@ register_taxonomy( '`!v get(g:, 'snips_wp_prefix', 'app')`_${1}', [ ${2} ], [
 	'labels' => [
 		'name' => esc_html__( '${3:`!p snip.rv = snake_to_words(t[1])`s}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
 		'singular_name' => esc_html__( '${4:`!p snip.rv = snake_to_words(t[1])`}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'add_new_item' => esc_html__( 'Add New $3', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
+		'add_new_item' => esc_html__( 'Add New $4', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
 		'edit_item' => esc_html__( 'Edit $4', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
 		'view_item' => esc_html__( 'View $4', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
 		'all_items' => esc_html__( 'All $3', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
@@ -125,11 +133,21 @@ register_taxonomy( '`!v get(g:, 'snips_wp_prefix', 'app')`_${1}', [ ${2} ], [
 	'rewrite' => [
 		'slug' => '`!p snip.rv = t[1].replace('_', '-')`',
 	],${0}
-]);
+] );
+endsnippet
+
+snippet wpsidebar "WordPress / Sidebar" b
+register_sidebar( [
+	'id' => '`!p snip.rv = text_to_snake(t[1])`',
+	'name' => esc_html__( '${1}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
+	'description' => esc_html__( '${2}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
+	'before_widget' => '<section id="%1$s" class="widget %2$s">',
+	'after_widget' => '</section>',
+] );
 endsnippet
 
 snippet wpmetabox "WordPress / Meta Box" b
-add_meta_box( '`!v get(g:, 'snips_wp_prefix', 'app')`-`!p snip.rv = text_to_attr(t[1])`', '${1:Title}', '`!v get(g:, 'snips_wp_prefix', 'app')_`${2:callback}' );
+add_meta_box( '`!v get(g:, 'snips_wp_prefix', 'app')`-`!p snip.rv = text_to_snake(t[1])`', '${1:Title}', '`!v get(g:, 'snips_wp_prefix', 'app')_`${2:callback}' );
 endsnippet
 
 snippet wpifdef "WordPress / If defined" b
