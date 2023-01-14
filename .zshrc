@@ -82,17 +82,17 @@ alias ubuntu='docker run -it --rm ubuntu'
 alias phpinsights='docker run -it --rm -v "$(pwd):/app" nunomaduro/phpinsights'
 alias phars='/bin/sh -c "cd ~/.phive && phive status"'
 alias d='docker'
-alias dc='docker-compose'
+alias dc='docker compose'
 alias di='docker images'
-alias dop='docker-compose stop'
+alias dop='docker compose stop'
 alias dp='docker ps'
 alias dpa='docker ps -a'
 alias dpl='docker ps -l'
 alias dr='docker run'
 alias drr='docker run --rm'
-alias dup='docker-compose up'
-alias dupd='docker-compose up -d'
-alias dub='docker-compose up --build'
+alias dup='docker compose up'
+alias dupd='docker compose up -d'
+alias dub='docker compose up --build'
 alias e="$EDITOR"
 alias epub='npx percollate epub'
 alias procdev='foreman start --procfile=Procfile.dev'
@@ -133,6 +133,7 @@ alias zshrc="$EDITOR ~/.zshrc"
 alias vpn="sudo protonvpn connect --fastest"
 alias vpnd="sudo protonvpn disconnect"
 alias vpns="protonvpn status"
+alias wp='ddev wp'
 alias dsymfony='docker-compose exec php bin/console'
 alias dcomposer='docker-compose exec php composer'
 if which htop >/dev/null; then
@@ -221,6 +222,10 @@ paths() {
 fpaths() {
     local p; for p in "${fpath[@]}"; do; echo "${p}"; done;
 }
+
+localrun() {
+    command ssh -R "80:localhost:${1:-8000}" nokey@localhost.run
+}
 # }}}
 
 # Enable Emacs keybindings
@@ -270,5 +275,8 @@ compdef _symfony_complete composer
 compdef _symfony_complete php-cs-fixer
 compdef _symfony_complete phpstan
 compdef _symfony_complete phpspec
+
+# DDEV
+ddev-tools wp-cli
 
 # vim: foldmethod=marker

@@ -1,3 +1,12 @@
 snippet incl "Include local file" b
 #include "${1:`!v expand('%:r')`}.h"
 endsnippet
+
+snippet fail "exit(EXIT_FAILURE)" b
+exit(EXIT_FAILURE);
+endsnippet
+
+snippet faile "Fail" b
+perror("${1}()");
+exit(EXIT_FAILURE);
+endsnippet

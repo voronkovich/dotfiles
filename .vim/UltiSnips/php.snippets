@@ -83,3 +83,7 @@ if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
 	${VISUAL}${0}
 }
 endsnippet
+
+snippet "(^|[^\w])e" "<?php echo" r
+`!p snip.rv = match.group(1)`<?php echo ${1}; ?>
+endsnippet

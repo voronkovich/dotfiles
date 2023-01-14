@@ -201,7 +201,7 @@ nnoremap <leader>R :call Replace(expand('<cWORD>'))<CR>
 " 1}}}
 
 set path=**
-au FileType c setlocal path=.,/usr/include,,
+au FileType c,cpp setlocal path=.,/usr/include,/usr/include/x86_64-linux-gnu,,
 set wildignore+=*/vendor/*,*/node_modules/*,*/var/*,*/public/build/*
 
 " Ultisnips {{{
@@ -210,6 +210,8 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:snips_author = "Oleg Voronkovich <oleg-voronkovich@yandex.ru>"
+let g:snips_author_url = "https://github.com/voronkovich"
 " }}}
 
 " Airline
