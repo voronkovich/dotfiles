@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+dotenvs() {
+    cat > .env << 'ENV'
+DB_NAME=db
+DB_USER=db
+DB_PASSWORD=db
+DB_HOST=db
+WP_HOME=${DDEV_PRIMARY_URL}
+WP_SITEURL=${WP_HOME}/wp
+WP_ENV=development
+ENV
+}
+
+ddev config --project-type=wordpress --docroot=web --create-docroot \
+    && ddev start \
+    && ddev composer create -y roots/bedrock \
+    && dotenvs \
+    && ddev wp core install \
+        --url="${DDEV_PRIMARY_URL}" \
+        --title="${WP_TITLE:-${PWD##*/}}" \
+        --admin_user="${WP_USER:-admin}" \
+        --admin_password="${WP_PASSWORD:-admin}" \
+        --admin_email="${WP_EMAIL:-oleg-voronkovich@yandex.ru}"
