@@ -2,23 +2,40 @@
 
 dotenvs() {
     cat > .env << 'ENV'
-DB_NAME=db
-DB_USER=db
-DB_PASSWORD=db
-DB_HOST=db
+WP_ENV=development
 WP_HOME=${DDEV_PRIMARY_URL}
 WP_SITEURL=${WP_HOME}/wp
-WP_ENV=development
+DATABASE_URL='mysql://db:db@db:3306/db'
 ENV
+}
+
+wordpress_install() {
+    ddev wp core install \
+        --url="\${DDEV_PRIMARY_URL}" \
+        --title="${WP_TITLE:-${PWD##*/}}" \
+        --admin_user="${WP_USER:-admin}" \
+        --admin_password="${WP_PASSWORD:-admin}" \
+        --admin_email="${WP_EMAIL:-oleg-voronkovich@yandex.ru}"
+}
+
+plugins_configure() {
+    ddev composer config --json 'extra.installer-paths.web/app/mu-plugins/{$name}/' $'[
+        "type:wordpress-muplugin",
+        "johnbillion/query-monitor",
+        "wpackagist/query-monitor"
+    ]'
+}
+
+plugins_install() {
+    ddev composer require --dev \
+        'johnbillion/query-monitor' \
 }
 
 ddev config --project-type=wordpress --docroot=web --create-docroot \
     && ddev start \
     && ddev composer create -y roots/bedrock \
+    && rm web/wp-config-ddev.php \
     && dotenvs \
-    && ddev wp core install \
-        --url="${DDEV_PRIMARY_URL}" \
-        --title="${WP_TITLE:-${PWD##*/}}" \
-        --admin_user="${WP_USER:-admin}" \
-        --admin_password="${WP_PASSWORD:-admin}" \
-        --admin_email="${WP_EMAIL:-oleg-voronkovich@yandex.ru}"
+    && wordpress_install \
+    && plugins_configure \
+    && plugins_install \

@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+"${0:a:h}/wordpress-bedrock-ddev" \
+    && ddev composer require wpackagist-plugin/woocommerce \
+    && ddev wp plugin activate woocommerce \
