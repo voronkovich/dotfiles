@@ -133,7 +133,8 @@ alias zshrc="$EDITOR ~/.zshrc"
 alias vpn="sudo protonvpn connect --fastest"
 alias vpnd="sudo protonvpn disconnect"
 alias vpns="protonvpn status"
-alias wp='ddev wp'
+alias wp='wp-cli'
+alias woo='wp-cli wc'
 alias dsymfony='docker-compose exec php bin/console'
 alias dcomposer='docker-compose exec php composer'
 if which htop >/dev/null; then
@@ -277,6 +278,6 @@ compdef _symfony_complete phpstan
 compdef _symfony_complete phpspec
 
 # DDEV
-ddev-tools wp-cli
+ddev-tools wp-cli composer
 
 # vim: foldmethod=marker
