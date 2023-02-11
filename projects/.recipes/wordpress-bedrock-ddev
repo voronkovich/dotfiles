@@ -31,10 +31,9 @@ plugins_install() {
         'johnbillion/query-monitor' \
 }
 
-ddev config --project-type=wordpress --docroot=web --create-docroot \
+ddev config --project-type=wordpress --docroot=web --create-docroot --disable-settings-management \
     && ddev start \
     && ddev composer create -y roots/bedrock \
-    && rm web/wp-config-ddev.php \
     && dotenvs \
     && wordpress_install \
     && plugins_configure \
