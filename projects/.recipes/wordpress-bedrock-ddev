@@ -29,6 +29,7 @@ plugins_configure() {
 plugins_install() {
     ddev composer require --dev \
         'johnbillion/query-monitor' \
+        'symfony/var-dumper' \
 }
 
 ddev config --project-type=wordpress --docroot=web --create-docroot --disable-settings-management \
