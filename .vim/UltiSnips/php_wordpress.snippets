@@ -67,7 +67,7 @@ function `!v get(g:, 'snips_wp_prefix', 'app')`_$2( \$${3:value} ) {
 	${VISUAL}${0}
 }
 
-add_action( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:callback}' );
+add_filter( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:callback}' );
 endsnippet
 
 snippet wploop "WordPress / The Loop" b
