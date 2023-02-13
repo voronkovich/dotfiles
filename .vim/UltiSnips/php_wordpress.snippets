@@ -15,7 +15,7 @@ function `!v get(g:, 'wp_prefix', 'app_')`${1}( ${2} ) {
 }
 endsnippet
 
-snippet wphead "WordPress / File header" b
+snippet wpfile "WordPress / File Header" b
 <?php
 
 defined( 'ABSPATH' ) || exit;
@@ -86,15 +86,7 @@ snippet wploopif "WordPress / The Loop" b
 <?php endif ?>
 endsnippet
 
-snippet wppostsave "WordPress / Post save hook" b
-function `!v get(g:, 'snips_wp_prefix', 'app')`_$2( \$post_id, \$post, \$update ) {
-	${VISUAL}${0}
-}
-
-add_action( 'save_post_${1}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2}', 10, 3 );
-endsnippet
-
-snippet wpposttype "WordPress / Custom Post Type" b
+snippet wpregposttype "WordPress / Register Post Type" b
 register_post_type( '`!v get(g:, 'snips_wp_prefix', 'app')`_${1}', [
 	'public' => true,
 	'show_in_rest' => true,
@@ -116,7 +108,15 @@ register_post_type( '`!v get(g:, 'snips_wp_prefix', 'app')`_${1}', [
 ] );
 endsnippet
 
-snippet wptaxonomy "WordPress / Taxonomy" b
+snippet wppostsave "WordPress / Post Save Hook" b
+function `!v get(g:, 'snips_wp_prefix', 'app')`_$2( \$post_id, \$post, \$update ) {
+	${VISUAL}${0}
+}
+
+add_action( 'save_post_${1}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2}', 10, 3 );
+endsnippet
+
+snippet wpregtaxonomy "WordPress / Register Taxonomy" b
 register_taxonomy( '`!v get(g:, 'snips_wp_prefix', 'app')`_${1}', [ ${2} ], [
 	'public' => true,
 	'show_in_rest' => true,
@@ -141,7 +141,7 @@ register_taxonomy( '`!v get(g:, 'snips_wp_prefix', 'app')`_${1}', [ ${2} ], [
 ] );
 endsnippet
 
-snippet wpsidebar "WordPress / Sidebar" b
+snippet wpregsidebar "WordPress / Register Sidebar" b
 register_sidebar( [
 	'id' => '`!p snip.rv = text_to_snake(t[1])`',
 	'name' => esc_html__( '${1}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
@@ -151,7 +151,17 @@ register_sidebar( [
 ] );
 endsnippet
 
-snippet wpmetabox "WordPress / Meta Box" b
+snippet wpsidebar "WordPress / Show Sidebar"
+<?php if ( is_active_sidebar( '${1:sidebar}' ) ) : ?>
+
+	<aside class="sidebar-$1">
+		<?php dynamic_sidebar( '$1' ); ?>
+	</aside>
+
+<?php endif; ?>
+endsnippet
+
+snippet wpregmetabox "WordPress / Register Meta Box" b
 add_meta_box(
 	'`!v get(g:, 'snips_wp_prefix', 'app')`-`!p snip.rv = text_to_snake(t[1])`',
 	esc_html__( '${1:Title}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
@@ -179,6 +189,19 @@ snippet wpmetaboxfield "WordPress / Meta Box Field" b
 		/>
 	</td>
 </tr>
+endsnippet
+
+snippet wpregmenu "WordPress / Register Menu" b
+register_nav_menu( '`!p snip.rv = text_to_snake(t[1])`', __( '${1:Primary}', '`!v get(g:, 'snips_wp_prefix', 'app')`' ) );
+endsnippet
+
+snippet wpmenu "WordPress / Show Menu" b
+<?php wp_nav_menu( [
+	'theme_location' => '${1:primary}',
+	'menu_id' => 'menu-$1',
+	'container' => 'nav',
+	'container_class' => 'menu-$1-container',${2}
+] ); ?>
 endsnippet
 
 snippet wpifdef "WordPress / If defined" b
