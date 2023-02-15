@@ -6,12 +6,22 @@ def snake_to_words(snake, delimiter = '_'):
 	return ' '.join(x.title() for x in components)
 
 def text_to_snake(text, delimiter = '-'):
+	text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
+
 	return re.sub('\s+', delimiter, text).lower()
 endglobal
 
 snippet wpf "WordPress / Function"
 function `!v get(g:, 'wp_prefix', 'app_')`${1}( ${2} ) {
 	${VISUAL}${0}
+}
+endsnippet
+
+snippet wpft "WordPress / Function With Template"
+function `!v get(g:, 'wp_prefix', 'app_')`${1}( ${2} ) {
+	?>
+		${VISUAL}${0}
+	<?php
 }
 endsnippet
 
@@ -47,7 +57,7 @@ require_once ABSPATH . WPINC . '/${1}.php';
 endsnippet
 
 snippet wpact "WordPress / add_action()" b
-add_action( '${1:init}', ${2:'`!v get(g:, 'snips_wp_prefix', 'app_')`${3}'} );
+add_action( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:$1}' );
 endsnippet
 
 snippet wpactf "WordPress / add_action()" b
@@ -55,11 +65,11 @@ function `!v get(g:, 'snips_wp_prefix', 'app')`_$2() {
 	${VISUAL}${0}
 }
 
-add_action( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:callback}' );
+add_action( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:$1}' );
 endsnippet
 
 snippet wpfil "WordPress / add_filter()" b
-add_filter( '${1}', ${2:'`!v get(g:, 'snips_wp_prefix', 'app_')`${3}'} );
+add_action( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:$1}' );
 endsnippet
 
 snippet wpfilf "WordPress / add_filter()" b
@@ -67,7 +77,7 @@ function `!v get(g:, 'snips_wp_prefix', 'app')`_$2( \$${3:value} ) {
 	${VISUAL}${0}
 }
 
-add_filter( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:callback}' );
+add_filter( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:$1}' );
 endsnippet
 
 snippet wploop "WordPress / The Loop" b
@@ -165,30 +175,18 @@ snippet wpregmetabox "WordPress / Register Meta Box" b
 add_meta_box(
 	'`!v get(g:, 'snips_wp_prefix', 'app')`-`!p snip.rv = text_to_snake(t[1])`',
 	esc_html__( '${1:Title}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-	'`!v get(g:, 'snips_wp_prefix', 'app')`_${2:callback}',${3}
+	'`!v get(g:, 'snips_wp_prefix', 'app')`_${2:callback}'${3}
 );
 endsnippet
 
-snippet wpmetaboxform "WordPress / Meta Box Form" b
-<table class="form-table">
-	${VISUAL}${0}
-</table>
-endsnippet
-
 snippet wpmetaboxfield "WordPress / Meta Box Field" b
-<tr class="form-field form-required">
-	<th scope="row">
-		<label for="`!v get(g:, 'snips_wp_prefix', 'app')`-`!p snip.rv = text_to_snake(t[1])`">${1}</label>
-	</th>
-	<td>
-		<input
-			type="${2:text}"
-			id="`!v get(g:, 'snips_wp_prefix', 'app')`-`!p snip.rv = text_to_snake(t[1])`"
-			name="`!v get(g:, 'snips_wp_prefix', 'app')`_`!p snip.rv = text_to_snake(t[1], '_')`"
-			value="<?php echo $post->`!v get(g:, 'snips_wp_prefix', 'app')`_`!p snip.rv = text_to_snake(t[1], '_')`; ?>
-		/>
-	</td>
-</tr>
+<label for="`!v get(g:, 'snips_wp_prefix', 'app')`-`!p snip.rv = text_to_snake(t[1])`">${1}</label>
+<input
+	type="${2:text}"
+	id="`!v get(g:, 'snips_wp_prefix', 'app')`-`!p snip.rv = text_to_snake(t[1])`"
+	name="`!v get(g:, 'snips_wp_prefix', 'app')`_`!p snip.rv = text_to_snake(t[1], '_')`"
+	value="<?php echo \$post->_`!v get(g:, 'snips_wp_prefix', 'app')`_`!p snip.rv = text_to_snake(t[1], '_')`; ?>"
+/>
 endsnippet
 
 snippet wpregmenu "WordPress / Register Menu" b
@@ -199,8 +197,10 @@ snippet wpmenu "WordPress / Show Menu" b
 <?php wp_nav_menu( [
 	'theme_location' => '${1:primary}',
 	'menu_id' => 'menu-$1',
+	'menu_class' => 'menu',
 	'container' => 'nav',
-	'container_class' => 'menu-$1-container',${2}
+	'container_id' => 'menu-container-$1',
+	'container_class' => 'menu-container',${2}
 ] ); ?>
 endsnippet
 
@@ -220,4 +220,8 @@ snippet wpifautosave "WordPress / If DOING_AUTOSAVE" b
 if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 	${VISUAL}${0}
 }
+endsnippet
+
+snippet wpthe "WordPress / Template Tag" i
+<?php the_${1:content}(${2}); ?>
 endsnippet
