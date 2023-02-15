@@ -22,7 +22,9 @@ plugins_configure() {
     ddev composer config --json 'extra.installer-paths.web/app/mu-plugins/{$name}/' $'[
         "type:wordpress-muplugin",
         "johnbillion/query-monitor",
-        "wpackagist/query-monitor"
+        "roots/soil",
+        "wpackagist-plugin/query-monitor",
+        "wpackagist-plugin/soil"
     ]'
 }
 
@@ -30,6 +32,12 @@ plugins_install() {
     ddev composer require --dev \
         'johnbillion/query-monitor' \
         'symfony/var-dumper' \
+
+    ddev composer require \
+        'roots/soil' \
+        'wpackagist-plugin/autoptimize' \
+        'wpackagist-plugin/html-editor-syntax-highlighter' \
+        'wpackagist-plugin/surge' \
 }
 
 ddev config --project-type=wordpress --docroot=web --create-docroot --disable-settings-management \
