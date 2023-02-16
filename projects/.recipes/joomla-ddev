@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+ddev config --project-type=php --disable-settings-management \
+    && ddev start \
+    && ddev composer global require joomlatools/console \
+    && ddev exec -- ln -s '~/.composer/vendor/bin/joomla' '/usr/local/bin' \
+    && ddev exec -- joomla site:download app \
+        --use-webroot-dir \
+        --www '${PWD}' \
+
+    # && ddev exec -- joomla site:configure app \
+    #     --use-webroot-dir \
+    #     --www '${PWD}' \
+    #     --mysql-host=db \
+    #     --mysql-database=db \
+    #     --mysql-login db:db \
+    # && ddev exec -- joomla database:install app \
+    #     --use-webroot-dir \
+    #     --www '${PWD}' \
