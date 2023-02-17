@@ -9,16 +9,36 @@ def text_to_snake(text, delimiter = '-'):
 	text = re.sub(r'[^a-zA-Z0-9\s]', '', text)
 
 	return re.sub('\s+', delimiter, text).lower()
+
+def get_prefix():
+    matches = re.search('/(themes|plugins|mu-plugins)/([^/]+)/?', path)
+
+    if matches:
+        return matches.group(2).replace('.php', '')
+
+    return 'app'
+
+def is_plugin():
+    return re.search('/(plugins|mu-plugins)/', path)
+
+def is_theme():
+    return re.search('/themes/', path)
+
+def assets_uri():
+	if is_theme():
+		return 'get_template_directory_uri()'
+
+	return 'plugin_dir_url( __FILE__ )'
 endglobal
 
 snippet wpf "WordPress / Function"
-function `!v get(g:, 'wp_prefix', 'app_')`${1}( ${2} ) {
+function `!p snip.rv = get_prefix()`_${1}( ${2} ) {
 	${VISUAL}${0}
 }
 endsnippet
 
 snippet wpft "WordPress / Function With Template"
-function `!v get(g:, 'wp_prefix', 'app_')`${1}( ${2} ) {
+function `!p snip.rv = get_prefix()`_${1}( ${2} ) {
 	?>
 		${VISUAL}${0}
 	<?php
@@ -57,27 +77,27 @@ require_once ABSPATH . WPINC . '/${1}.php';
 endsnippet
 
 snippet wpact "WordPress / add_action()" b
-add_action( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:$1}' );
+add_action( '${1:init}', '`!p snip.rv = get_prefix()`_${2:$1}' );
 endsnippet
 
 snippet wpactf "WordPress / add_action()" b
-function `!v get(g:, 'snips_wp_prefix', 'app')`_$2() {
+function `!p snip.rv = get_prefix()`_$2() {
 	${VISUAL}${0}
 }
 
-add_action( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:$1}' );
+add_action( '${1:init}', '`!p snip.rv = get_prefix()`_${2:$1}' );
 endsnippet
 
 snippet wpfil "WordPress / add_filter()" b
-add_action( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:$1}' );
+add_action( '${1:init}', '`!p snip.rv = get_prefix()`_${2:$1}' );
 endsnippet
 
 snippet wpfilf "WordPress / add_filter()" b
-function `!v get(g:, 'snips_wp_prefix', 'app')`_$2( \$${3:value} ) {
+function `!p snip.rv = get_prefix()`_$2( \$${3:value} ) {
 	${VISUAL}${0}
 }
 
-add_filter( '${1:init}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2:$1}' );
+add_filter( '${1:init}', '`!p snip.rv = get_prefix()`_${2:$1}' );
 endsnippet
 
 snippet wploop "WordPress / The Loop" b
@@ -97,20 +117,20 @@ snippet wploopif "WordPress / The Loop" b
 endsnippet
 
 snippet wpregposttype "WordPress / Register Post Type" b
-register_post_type( '`!v get(g:, 'snips_wp_prefix', 'app')`_${1}', [
+register_post_type( '`!p snip.rv = get_prefix()`_${1}', [
 	'public' => true,
 	'show_in_rest' => true,
 	'labels' => [
-		'name' => esc_html__( '${2:`!p snip.rv = snake_to_words(t[1])`s}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'singular_name' => esc_html__( '${3:`!p snip.rv = snake_to_words(t[1])`}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'all_items' => esc_html__( 'All $2', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'add_new_item' => esc_html__( 'Add New $3', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'edit_item' => esc_html__( 'Edit $3', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'view_item' => esc_html__( 'View $3', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'parent_item_colon' => esc_html__( 'View $4', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'search_items' => esc_html__( 'Search $2', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'not_found' => esc_html__( 'No items found', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'not_found_in_trash' => esc_html__( 'No items found in Trash', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
+		'name' => esc_html__( '${2:`!p snip.rv = snake_to_words(t[1])`s}', '`!p snip.rv = get_prefix()`' ),
+		'singular_name' => esc_html__( '${3:`!p snip.rv = snake_to_words(t[1])`}', '`!p snip.rv = get_prefix()`' ),
+		'all_items' => esc_html__( 'All $2', '`!p snip.rv = get_prefix()`' ),
+		'add_new_item' => esc_html__( 'Add New $3', '`!p snip.rv = get_prefix()`' ),
+		'edit_item' => esc_html__( 'Edit $3', '`!p snip.rv = get_prefix()`' ),
+		'view_item' => esc_html__( 'View $3', '`!p snip.rv = get_prefix()`' ),
+		'parent_item_colon' => esc_html__( 'View $4', '`!p snip.rv = get_prefix()`' ),
+		'search_items' => esc_html__( 'Search $2', '`!p snip.rv = get_prefix()`' ),
+		'not_found' => esc_html__( 'No items found', '`!p snip.rv = get_prefix()`' ),
+		'not_found_in_trash' => esc_html__( 'No items found in Trash', '`!p snip.rv = get_prefix()`' ),
 	],
 	'rewrite' => [
 		'slug' => '`!p snip.rv = t[1].replace('_', '-')`',
@@ -119,31 +139,31 @@ register_post_type( '`!v get(g:, 'snips_wp_prefix', 'app')`_${1}', [
 endsnippet
 
 snippet wppostsave "WordPress / Post Save Hook" b
-function `!v get(g:, 'snips_wp_prefix', 'app')`_$2( \$post_id, \$post, \$update ) {
+function `!p snip.rv = get_prefix()`_$2( \$post_id, \$post, \$update ) {
 	${VISUAL}${0}
 }
 
-add_action( 'save_post_${1}', '`!v get(g:, 'snips_wp_prefix', 'app')`_${2}', 10, 3 );
+add_action( 'save_post_${1}', '`!p snip.rv = get_prefix()`_${2}', 10, 3 );
 endsnippet
 
 snippet wpregtaxonomy "WordPress / Register Taxonomy" b
-register_taxonomy( '`!v get(g:, 'snips_wp_prefix', 'app')`_${1}', [ ${2} ], [
+register_taxonomy( '`!p snip.rv = get_prefix()`_${1}', [ ${2} ], [
 	'public' => true,
 	'show_in_rest' => true,
 	'labels' => [
-		'name' => esc_html__( '${3:`!p snip.rv = snake_to_words(t[1])`s}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'singular_name' => esc_html__( '${4:`!p snip.rv = snake_to_words(t[1])`}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'all_items' => esc_html__( 'All $3', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'popular_items' => esc_html__( 'Popular $3', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'add_new_item' => esc_html__( 'Add New $4', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'edit_item' => esc_html__( 'Edit $4', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'view_item' => esc_html__( 'View $4', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'parent_item' => esc_html__( 'Parent $4', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'parent_item_colon' => esc_html__( 'View $4', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'search_items' => esc_html__( 'Search $3', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'not_found' => esc_html__( 'No items found', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'separate_items_with_commas' => esc_html__( 'Separate $3 with commas', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-		'choose_from_most_used' => esc_html__( 'Choose most used $3', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
+		'name' => esc_html__( '${3:`!p snip.rv = snake_to_words(t[1])`s}', '`!p snip.rv = get_prefix()`' ),
+		'singular_name' => esc_html__( '${4:`!p snip.rv = snake_to_words(t[1])`}', '`!p snip.rv = get_prefix()`' ),
+		'all_items' => esc_html__( 'All $3', '`!p snip.rv = get_prefix()`' ),
+		'popular_items' => esc_html__( 'Popular $3', '`!p snip.rv = get_prefix()`' ),
+		'add_new_item' => esc_html__( 'Add New $4', '`!p snip.rv = get_prefix()`' ),
+		'edit_item' => esc_html__( 'Edit $4', '`!p snip.rv = get_prefix()`' ),
+		'view_item' => esc_html__( 'View $4', '`!p snip.rv = get_prefix()`' ),
+		'parent_item' => esc_html__( 'Parent $4', '`!p snip.rv = get_prefix()`' ),
+		'parent_item_colon' => esc_html__( 'View $4', '`!p snip.rv = get_prefix()`' ),
+		'search_items' => esc_html__( 'Search $3', '`!p snip.rv = get_prefix()`' ),
+		'not_found' => esc_html__( 'No items found', '`!p snip.rv = get_prefix()`' ),
+		'separate_items_with_commas' => esc_html__( 'Separate $3 with commas', '`!p snip.rv = get_prefix()`' ),
+		'choose_from_most_used' => esc_html__( 'Choose most used $3', '`!p snip.rv = get_prefix()`' ),
 	],
 	'rewrite' => [
 		'slug' => '`!p snip.rv = t[1].replace('_', '-')`',
@@ -154,8 +174,8 @@ endsnippet
 snippet wpregsidebar "WordPress / Register Sidebar" b
 register_sidebar( [
 	'id' => '`!p snip.rv = text_to_snake(t[1])`',
-	'name' => esc_html__( '${1}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-	'description' => esc_html__( '${2}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
+	'name' => esc_html__( '${1}', '`!p snip.rv = get_prefix()`' ),
+	'description' => esc_html__( '${2}', '`!p snip.rv = get_prefix()`' ),
 	'before_widget' => '<section id="%1$s" class="widget %2$s">',
 	'after_widget' => '</section>',
 ] );
@@ -173,24 +193,24 @@ endsnippet
 
 snippet wpregmetabox "WordPress / Register Meta Box" b
 add_meta_box(
-	'`!v get(g:, 'snips_wp_prefix', 'app')`-`!p snip.rv = text_to_snake(t[1])`',
-	esc_html__( '${1:Title}', '`!v get(g:, 'snips_wp_textdomain', 'app')`' ),
-	'`!v get(g:, 'snips_wp_prefix', 'app')`_${2:callback}'${3}
+	'`!p snip.rv = get_prefix()`-`!p snip.rv = text_to_snake(t[1])`',
+	esc_html__( '${1:Title}', '`!p snip.rv = get_prefix()`' ),
+	'`!p snip.rv = get_prefix()`_${2:callback}'${3}
 );
 endsnippet
 
 snippet wpmetaboxfield "WordPress / Meta Box Field" b
-<label for="`!v get(g:, 'snips_wp_prefix', 'app')`-`!p snip.rv = text_to_snake(t[1])`">${1}</label>
+<label for="`!p snip.rv = get_prefix()`-`!p snip.rv = text_to_snake(t[1])`">${1}</label>
 <input
 	type="${2:text}"
-	id="`!v get(g:, 'snips_wp_prefix', 'app')`-`!p snip.rv = text_to_snake(t[1])`"
-	name="`!v get(g:, 'snips_wp_prefix', 'app')`_`!p snip.rv = text_to_snake(t[1], '_')`"
-	value="<?php echo \$post->_`!v get(g:, 'snips_wp_prefix', 'app')`_`!p snip.rv = text_to_snake(t[1], '_')`; ?>"
+	id="`!p snip.rv = get_prefix()`-`!p snip.rv = text_to_snake(t[1])`"
+	name="`!p snip.rv = get_prefix()`_`!p snip.rv = text_to_snake(t[1], '_')`"
+	value="<?php echo \$post->_`!p snip.rv = get_prefix()`_`!p snip.rv = text_to_snake(t[1], '_')`; ?>"
 />
 endsnippet
 
 snippet wpregmenu "WordPress / Register Menu" b
-register_nav_menu( '`!p snip.rv = text_to_snake(t[1])`', __( '${1:Primary}', '`!v get(g:, 'snips_wp_prefix', 'app')`' ) );
+register_nav_menu( '`!p snip.rv = text_to_snake(t[1])`', __( '${1:Primary}', '`!p snip.rv = get_prefix()`' ) );
 endsnippet
 
 snippet wpmenu "WordPress / Show Menu" b
@@ -228,14 +248,14 @@ endsnippet
 
 snippet wpenstyle "WordPress / Enqueue Style" b
 wp_enqueue_style(
-	'`!v get(g:, 'snips_wp_prefix', 'app')`-$1',
-	get_template_directory_uri() . '/assets/css/${1}.css',
+	'`!p snip.rv = get_prefix()`-$1',
+	`!p snip.rv = assets_uri()` . 'assets/css/${1}.css',
 );
 endsnippet
 
 snippet wpenscript "WordPress / Enqueue Script" b
 wp_enqueue_script(
-	'`!v get(g:, 'snips_wp_prefix', 'app')`-$1',
-	get_template_directory_uri() . '/assets/js/${1}.js',
+	'`!p snip.rv = get_prefix()`-$1',
+	`!p snip.rv = assets_uri()` . 'assets/js/${1}.js',
 );
 endsnippet
