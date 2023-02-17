@@ -225,3 +225,17 @@ endsnippet
 snippet wpthe "WordPress / Template Tag" i
 <?php the_${1:content}(${2}); ?>
 endsnippet
+
+snippet wpenstyle "WordPress / Enqueue Style" b
+wp_enqueue_style(
+	'`!v get(g:, 'snips_wp_prefix', 'app')`-$1',
+	get_template_directory_uri() . '/assets/css/${1}.css',
+);
+endsnippet
+
+snippet wpenscript "WordPress / Enqueue Script" b
+wp_enqueue_script(
+	'`!v get(g:, 'snips_wp_prefix', 'app')`-$1',
+	get_template_directory_uri() . '/assets/js/${1}.js',
+);
+endsnippet
