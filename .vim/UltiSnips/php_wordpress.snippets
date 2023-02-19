@@ -88,6 +88,10 @@ function `!p snip.rv = get_prefix()`_$2() {
 add_action( '${1:init}', '`!p snip.rv = get_prefix()`_${2:$1}' );
 endsnippet
 
+snippet wpactdo "WordPress / do_action()" b
+do_action( '`!p snip.rv = get_prefix()`_${1}'${2} );
+endsnippet
+
 snippet wpfil "WordPress / add_filter()" b
 add_action( '${1:init}', '`!p snip.rv = get_prefix()`_${2:$1}' );
 endsnippet
@@ -98,6 +102,10 @@ function `!p snip.rv = get_prefix()`_$2( \$${3:value} ) {
 }
 
 add_filter( '${1:init}', '`!p snip.rv = get_prefix()`_${2:$1}' );
+endsnippet
+
+snippet wpfildo "WordPress / do_filter()" b
+do_filter( '`!p snip.rv = get_prefix()`_${1}', ${2} );
 endsnippet
 
 snippet wploop "WordPress / The Loop" b
