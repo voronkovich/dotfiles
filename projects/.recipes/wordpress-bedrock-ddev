@@ -3,9 +3,10 @@
 dotenvs() {
     cat > .env << 'ENV'
 WP_ENV=development
-WP_HOME=${DDEV_PRIMARY_URL}
-WP_SITEURL=${WP_HOME}/wp
+WP_HOME="${DDEV_PRIMARY_URL}"
+WP_SITEURL="${WP_HOME}/wp"
 DATABASE_URL='mysql://db:db@db:3306/db'
+MAIL_URL='sendmail://localhost'
 ENV
 }
 
@@ -21,8 +22,10 @@ wordpress_install() {
 plugins_configure() {
     ddev composer config --json 'extra.installer-paths.web/app/mu-plugins/{$name}/' $'[
         "type:wordpress-muplugin",
+        "awesomemotive/wp-mail-smtp",
         "johnbillion/query-monitor",
         "roots/soil",
+        "soberwp/intervention",
         "wpackagist-plugin/query-monitor",
         "wpackagist-plugin/soil"
     ]'
@@ -35,6 +38,8 @@ plugins_install() {
 
     ddev composer require \
         'roots/soil' \
+        'voronkovich/wordpress-mail-url' \
+        'yoast/wordpress-seo' \
         'wpackagist-plugin/autoptimize' \
         'wpackagist-plugin/html-editor-syntax-highlighter' \
         'wpackagist-plugin/surge' \
