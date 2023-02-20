@@ -6,7 +6,7 @@ WP_ENV=development
 WP_HOME="${DDEV_PRIMARY_URL}"
 WP_SITEURL="${WP_HOME}/wp"
 DATABASE_URL='mysql://db:db@db:3306/db'
-MAIL_URL='sendmail://localhost'
+MAILER_DSN='smtp://localhost:1025'
 ENV
 }
 
@@ -38,7 +38,7 @@ plugins_install() {
 
     ddev composer require \
         'roots/soil' \
-        'voronkovich/wordpress-mail-url' \
+        'voronkovich/wordpress-mailer-dsn' \
         'yoast/wordpress-seo' \
         'wpackagist-plugin/autoptimize' \
         'wpackagist-plugin/html-editor-syntax-highlighter' \
