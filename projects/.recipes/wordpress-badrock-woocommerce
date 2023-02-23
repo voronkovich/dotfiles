@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+extra_packages=(
+    'wpackagist-plugin/woocommerce'
+)
+
+export BADROCK_EXTRA_PACKAGES="${BADROCK_EXTRA_PACKAGES} ${extra_packages}"
+
+"${0:a:h}/wordpress-badrock"
