@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+ddev config \
+    --project-type='wordpress' \
+    --disable-settings-management \
+    --docroot='public' \
+    --create-docroot \
+    --php-version='8.2' \
+    && ddev composer create -y 'popartdesign/badrock:@dev' \
+    && ddev exec wp-cli core install \
+        --url='"${DDEV_PRIMARY_URL}"' \
+        --title='"${DDEV_PROJECT}"' \
+        --admin_user='admin' \
+        --admin_password='admin' \
+        --admin_email='"admin@${DDEV_HOSTNAME}"' \
+    && ddev composer require \
+        'wpackagist-plugin/autoptimize' \
+        'wpackagist-plugin/html-editor-syntax-highlighter' \
+        'wpackagist-plugin/slim-seo' \
+        'wpackagist-plugin/surge' \
+    && ddev wp rewrite structure '/%year%/%monthnum%/%day%/%postname%/'
