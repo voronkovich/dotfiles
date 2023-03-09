@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
 extra_packages=(
+    'wpackagist-plugin/autodescription'
     'wpackagist-plugin/autoptimize'
     'wpackagist-plugin/html-editor-syntax-highlighter'
-    'wpackagist-plugin/slim-seo'
     'wpackagist-plugin/surge'
 )
 
