@@ -61,8 +61,8 @@ snippet wpplug "WordPress / Plugin" b
  * Plugin URI:  `!v get(g:, 'snips_author_url', 'Please, set g:snips_author_url')`
  * Description: ${2}
  * Version:     0.0.1
- * License:     GPLv2 or later
- * License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * License:     GPLv3 or later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
  * Author:      `!v get(g:, 'snips_author', 'Please, set g:snips_author')`
  * Author URI:  `!v get(g:, 'snips_author_url', 'Please, set g:snips_author_url')`
  * Text Domain: `!p snip.rv = text_to_snake(t[1])`
@@ -93,7 +93,7 @@ do_action( '`!p snip.rv = get_prefix()`_${1}'${2} );
 endsnippet
 
 snippet wpfil "WordPress / add_filter()" b
-add_action( '${1:init}', '`!p snip.rv = get_prefix()`_${2:$1}' );
+add_filter( '${1:init}', '`!p snip.rv = get_prefix()`_${2:$1}' );
 endsnippet
 
 snippet wpfilf "WordPress / add_filter()" b
