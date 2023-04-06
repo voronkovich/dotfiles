@@ -139,7 +139,7 @@ register_post_type('`!p snip.rv = get_prefix()`_${1}', [
 		'add_new_item' => esc_html__('Add New $3', '`!p snip.rv = get_prefix()`'),
 		'edit_item' => esc_html__('Edit $3', '`!p snip.rv = get_prefix()`'),
 		'view_item' => esc_html__('View $3', '`!p snip.rv = get_prefix()`'),
-		'parent_item_colon' => esc_html__('View $4', '`!p snip.rv = get_prefix()`'),
+		'parent_item_colon' => esc_html__('Parent $3', '`!p snip.rv = get_prefix()`'),
 		'search_items' => esc_html__('Search $2', '`!p snip.rv = get_prefix()`'),
 		'not_found' => esc_html__('No items found', '`!p snip.rv = get_prefix()`'),
 		'not_found_in_trash' => esc_html__('No items found in Trash', '`!p snip.rv = get_prefix()`'),
@@ -233,7 +233,8 @@ snippet wpmenu "WordPress / Show Menu" b
 	'menu_class' => 'menu',
 	'container' => 'nav',
 	'container_id' => 'menu-container-$1',
-	'container_class' => 'menu-container',${2}
+	'container_class' => 'menu-container',
+	'fallback_cb' => false,${2}
 ]); ?>
 endsnippet
 
@@ -271,4 +272,17 @@ wp_enqueue_script(
 	'`!p snip.rv = get_prefix()`-$1',
 	`!p snip.rv = assets_uri()` . 'assets/js/${1}.js',
 );
+endsnippet
+
+snippet wpdb "description" i
+$wpdb->
+endsnippet
+
+snippet wpsql "WordPress / SQL Query" i
+\$wpdb->${1:get_results}(
+	\$wpdb->prepare(
+		"${1}",
+		${2}
+	)
+)
 endsnippet
