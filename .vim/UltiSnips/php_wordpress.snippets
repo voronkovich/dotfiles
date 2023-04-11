@@ -280,9 +280,21 @@ endsnippet
 
 snippet wpsql "WordPress / SQL Query" i
 \$wpdb->${1:get_results}(
+	"${1}"
+)
+endsnippet
+
+snippet wpsqlp "WordPress / SQL Prepared Query" i
+\$wpdb->${1:get_results}(
 	\$wpdb->prepare(
 		"${1}",
 		${2}
 	)
 )
+endsnippet
+
+snippet wpquery "WordPress / Query posts"
+$posts = (new WP_Query())->query([
+	${1}
+]);
 endsnippet
