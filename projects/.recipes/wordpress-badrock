@@ -9,4 +9,4 @@ extra_packages=(
 
 export BADROCK_EXTRA_PACKAGES="${BADROCK_EXTRA_PACKAGES} ${extra_packages}"
 
-badrock
+badrock init && badrock install
