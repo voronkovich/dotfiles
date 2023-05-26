@@ -1,3 +1,0 @@
-#!/usr/bin/env zsh
-
-composer create-project altis/skeleton .
