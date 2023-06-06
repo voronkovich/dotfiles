@@ -1,0 +1,23 @@
+snippet supa "Supabase"
+const { data, error } = await supabase
+	.from('${1}')
+	.${0}
+endsnippet
+
+snippet supai "Supabase / insert"
+const { data, error } = await supabase
+	.from('${1}')
+	.insert(${0})
+endsnippet
+
+snippet supau "Supabase / update"
+const { data, error } = await supabase
+	.from('${1}')
+	.insert(${0})
+endsnippet
+
+snippet supad "Supabase / delete"
+const { data, error } = await supabase
+	.from('${1}')
+	.insert(${0})
+endsnippet

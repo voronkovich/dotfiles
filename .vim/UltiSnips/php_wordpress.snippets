@@ -79,7 +79,7 @@ require_once ABSPATH . WPINC . '/${1}.php';
 endsnippet
 
 snippet wpact "WordPress / add_action()" b
-add_action('${1:init}', '`!p snip.rv = get_prefix()`${2:$1}');
+add_action('${1:init}', ${2:'`!p snip.rv = get_prefix()`${3:$1}'});
 endsnippet
 
 snippet wpactf "WordPress / add_action()" b
@@ -108,8 +108,8 @@ function `!p snip.rv = get_prefix()`$2(\$${3:value})
 add_filter('${1:init}', '`!p snip.rv = get_prefix()`${2:$1}');
 endsnippet
 
-snippet wpfildo "WordPress / do_filter()" b
-do_filter('`!p snip.rv = get_prefix()`${1}', ${2});
+snippet wpfila "WordPress / apply_filters()"
+apply_filters('`!p snip.rv = get_prefix()`${1}', ${2})
 endsnippet
 
 snippet wploop "WordPress / The Loop" b
