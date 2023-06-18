@@ -12,8 +12,24 @@ static values = {
 }
 endsnippet
 
+snippet sttargets "Stimulus / Controller / Targets" b
+static targets = [ '${1}' ]
+endsnippet
+
 snippet stchanged "Stimulus / Controller / Value changed" b
 ${1}ValueChanged(value, previousValue) {
 	${VISUAL}${0}
 }
+endsnippet
+
+snippet "(^|[^\w])ste" "Stimulus / Controller / this.element" r
+`!p snip.rv = match.group(1)`this.element
+endsnippet
+
+snippet "(^|[^\w])stt" "Stimulus / Controller / this.*Target" r
+`!p snip.rv = match.group(1)`this.${1}Target
+endsnippet
+
+snippet "(^|[^\w])stv" "Stimulus / Controller / this.*Value" r
+`!p snip.rv = match.group(1)`this.${1}Value
 endsnippet
