@@ -2,10 +2,6 @@
 stty sane
 
 # Environment ariables {{{
-if [[ -d "/home/linuxbrew/.linuxbrew/share/zsh/site-functions" ]]; then
-    fpath=( "/home/linuxbrew/.linuxbrew/share/zsh/site-functions" $fpath )
-fi
-
 if [[ -d "${HOME}/.phive/.local/bin" ]]; then
     path=( "${HOME}/.phive/.local/bin" $path )
 fi
