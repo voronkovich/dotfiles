@@ -101,6 +101,9 @@ Plug 'clones/vim-zsh'
 
 " Ansible
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
+
+" C
+Plug 'bfrg/vim-cpp-modern'
 call plug#end()
 endif
 " }}}
