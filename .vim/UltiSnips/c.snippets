@@ -1,5 +1,56 @@
+snippet prog "Programm" b
+#define _GNU_SOURCE
+
+#include <err.h>
+#include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int
+main(int argc, char *argv[])
+{
+	${0}
+
+	return EXIT_SUCCESS;
+}
+endsnippet
+
 snippet incl "Include local file" b
 #include "${1:`!v expand('%:r')`}.h"
+endsnippet
+
+snippet fu "Function"
+${1:void}
+${2:name}()
+{
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet ifn "if NULL"
+if (${1} == NULL) {
+	${VISUAL}${0}
+}
+endsnippet
+
+snippet err "err()" b
+err${1:x}(EXIT_FAILURE, "${2}");
+endsnippet
+
+snippet errx "errx()" b
+errx(EXIT_FAILURE, "${1}");
+endsnippet
+
+snippet warn "warn()" b
+warn${1:x}("${2}");
+endsnippet
+
+snippet warnx "warnx()" b
+warnx("${1}");
+endsnippet
+
+snippet exit "exit()" b
+exit(${1:EXIT_SUCCESS});
 endsnippet
 
 snippet fail "exit(EXIT_FAILURE)" b
@@ -9,4 +60,19 @@ endsnippet
 snippet faile "Fail" b
 perror("${1}()");
 exit(EXIT_FAILURE);
+endsnippet
+
+snippet try "Try" b
+if (${1} == ${2:-1}) {
+	perror("${3}()");
+	exit(EXIT_FAILURE);
+}
+endsnippet
+
+snippet uint "unsigned int"
+unsigned int
+endsnippet
+
+snippet progname "program_invocation_short_name"
+program_invocation_short_name
 endsnippet
