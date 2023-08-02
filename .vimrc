@@ -104,6 +104,8 @@ Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 
 " C
 Plug 'bfrg/vim-cpp-modern'
+Plug 'xaizek/vim-inccomplete'
+Plug 'zhaohuaxishi/ctrlp-header'
 call plug#end()
 endif
 " }}}
@@ -186,6 +188,9 @@ nmap <silent> <leader>vr :so $MYVIMRC<CR>
 
 " Write file with root permissions
 command! W w !sudo tee %
+
+" Man viewer
+set keywordprg=:Man
 
 " Working with buffers {{{2
 nnoremap <Leader>q :Bdelete<CR>
