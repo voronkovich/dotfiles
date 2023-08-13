@@ -47,6 +47,42 @@ local plugins = {
     end,
   },
 
+  {
+    "phaazon/hop.nvim",
+    lazy = false,
+    config = function()
+      require'hop'.setup()
+    end,
+  },
+
+  -- https://github.com/gbprod/phpactor.nvim/issues/13#issuecomment-1580372976
+  {
+    "gbprod/phpactor.nvim",
+    ft = "php",
+    opts = {
+      install = {
+        path = vim.fn.stdpath("data") .. "/mason/phpactor",
+        bin = vim.fn.stdpath("data") .. "/mason/bin/phpactor",
+      },
+    },
+    keys = {
+      {
+        "<leader>m",
+        function()
+          require("phpactor").rpc("context_menu", {})
+        end,
+        desc = "PhpActor: context menu",
+      },
+      {
+        "<leader>ua",
+        function()
+          require("phpactor").rpc("import_class", {})
+        end,
+        desc = "PhpActor: import class",
+      },
+    },
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
@@ -60,13 +96,6 @@ local plugins = {
   --   "mg979/vim-visual-multi",
   --   lazy = false,
   -- }
-  {
-    "phaazon/hop.nvim",
-    lazy = false,
-    config = function()
-      require'hop'.setup()
-    end,
-  }
 }
 
 return plugins
