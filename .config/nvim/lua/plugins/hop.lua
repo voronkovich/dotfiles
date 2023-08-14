@@ -4,7 +4,7 @@ return {
     branch = "v2",
     config = true,
     keys = {
-      { "<Leader>w", "<cmd>HopWord<CR>", desc = "Go to word" },
+      { "<Leader>w", "<cmd>HopWord<CR>", nowait = true, desc = "Go to word" },
     },
   },
 }
