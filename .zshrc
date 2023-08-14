@@ -1,5 +1,5 @@
 # https://askubuntu.com/a/452576
-stty sane
+stty sane stop ""
 
 # Environment ariables {{{
 if [[ -d "${HOME}/.phive/.local/bin" ]]; then
@@ -7,8 +7,8 @@ if [[ -d "${HOME}/.phive/.local/bin" ]]; then
 fi
 
 export LC_ALL=en_US.UTF-8
-export EDITOR=vim
-export MANPAGER='most'
+export EDITOR=nvim
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="${XDG_RUNTIME_DIR}/projects"
 export DOKKU_HOST=dokku
@@ -41,6 +41,7 @@ zplug 'voronkovich/phpcs.plugin.zsh'
 zplug 'voronkovich/project.plugin.zsh'
 zplug 'voronkovich/symfony-complete.plugin.zsh'
 zplug 'voronkovich/symfony.plugin.zsh'
+zplug "${PROJECTS}/phpunit.plugin.zsh", from:local
 zplug 'zdharma-continuum/fast-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions', use:src
@@ -112,6 +113,7 @@ alias sfdql='sf doctrine:query:dql'
 alias sfsql='sf dbal:run-sql'
 alias sfo='sf open'
 alias sfom='sf mails'
+alias signals='ps -o pid,comm,sig_pend,sig_catch,sig_block,sig_ignore'
 alias ide="tmux -2 new-session $EDITOR \; split-window \; resize-pane -D 4"
 alias k='k -h'
 alias la='ls -lah'
@@ -138,6 +140,10 @@ alias dsymfony='docker-compose exec php bin/console'
 alias dcomposer='docker-compose exec php composer'
 if which htop >/dev/null; then
     alias top=htop
+fi
+if which batcat >/dev/null; then
+    alias cat=batcat
+    alias bat=batcat
 fi
 # }}}
 
@@ -280,3 +286,8 @@ compdef _symfony_complete phpspec
 ddev-tools wp-cli composer
 
 # vim: foldmethod=marker
+
+# BEGIN SNIPPET: Platform.sh CLI configuration
+HOME=${HOME:-'/home/oleg'}
+export PATH="$HOME/"'.platformsh/bin':"$PATH"
+if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET
