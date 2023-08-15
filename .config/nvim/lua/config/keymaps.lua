@@ -4,3 +4,7 @@
 local map = vim.keymap.set
 
 map("n", ";", ":")
+
+-- Move backward and forward in insert mode
+map("i", "<C-h>", "<C-o>h")
+map("i", "<C-l>", "<C-o>l")
