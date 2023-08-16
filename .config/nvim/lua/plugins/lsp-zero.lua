@@ -22,6 +22,7 @@ return {
 
       lsp.ensure_installed({
         "intelephense",
+        "tsserver",
       })
 
       lsp.setup()
