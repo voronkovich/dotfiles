@@ -5,6 +5,9 @@ stty sane stop ""
 if [[ -d "${HOME}/.phive/.local/bin" ]]; then
     path=( "${HOME}/.phive/.local/bin" $path )
 fi
+if [[ -d "${HOME}/.luarocks/bin" ]]; then
+    path=( "${HOME}/.luarocks/bin" $path )
+fi
 
 export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
@@ -131,6 +134,7 @@ alias vb='virtualbox'
 alias vspec=~/.vim/plugged/vim-vspec/bin/vspec
 alias zshrc-reload="source ~/.zshrc"
 alias zshrc="$EDITOR ~/.zshrc"
+alias zshrl="exec zsh"
 alias vpn="sudo protonvpn connect --fastest"
 alias vpnd="sudo protonvpn disconnect"
 alias vpns="protonvpn status"
@@ -151,6 +155,7 @@ fi
 hash -d desk=~/Desktop
 hash -d docs=~/Documents
 hash -d down=~/Downloads
+hash -d nv=~/.config/nvim
 hash -d logs=/var/log
 # }}}
 
