@@ -13,3 +13,5 @@ o.expandtab = true
 o.smarttab = true
 o.smartindent = true
 o.shiftwidth = 0
+
+o.swapfile = false
