@@ -9,7 +9,7 @@ o.wildignore = "*/vendor/*,*/node_modules/*,*/var/*,*/public/build/*"
 
 -- Code indentation
 o.tabstop = 4
-o.shiftwidth = 4
-o.smarttab = true
 o.expandtab = true
+o.smarttab = true
 o.smartindent = true
+o.shiftwidth = 0
