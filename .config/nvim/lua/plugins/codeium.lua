@@ -2,6 +2,20 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
+    config = function()
+      vim.g.codeium_no_map_tab = true
+    end,
+    keys = {
+      {
+        "<C-g>",
+        function()
+          return vim.fn["codeium#Accept"]()
+        end,
+        mode = "i",
+        expr = true,
+        desc = "Codeium Accept",
+      },
+    },
   },
   {
     "jcdickinson/codeium.nvim",
