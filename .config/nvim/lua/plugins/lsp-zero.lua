@@ -24,6 +24,7 @@ return {
         "intelephense",
         "tsserver",
         "clangd",
+        "volar",
       })
 
       require("lspconfig").intelephense.setup({
