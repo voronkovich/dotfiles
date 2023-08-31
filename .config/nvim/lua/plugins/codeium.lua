@@ -1,5 +1,9 @@
 return {
   {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+  },
+  {
     "jcdickinson/codeium.nvim",
     -- https://github.com/jcdickinson/codeium.nvim/issues/80
     enabled = false,
