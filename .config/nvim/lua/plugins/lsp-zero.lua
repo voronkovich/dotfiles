@@ -21,33 +21,10 @@ return {
       end)
 
       lsp.ensure_installed({
-        "intelephense",
+        "phpactor",
         "tsserver",
         "clangd",
         "volar",
-      })
-
-      require("lspconfig").intelephense.setup({
-        settings = {
-          -- https://github.com/bmewburn/intelephense-docs/blob/master/installation.md#configuration-options
-          intelephense = {
-            files = {
-              exclude = {
-                "**/.git/**",
-                "**/.svn/**",
-                "**/.hg/**",
-                "**/CVS/**",
-                "**/.DS_Store/**",
-                "**/node_modules/**",
-                "**/bower_components/**",
-                "**/vendor/**/{Tests,tests}/**",
-                "**/.history/**",
-                "**/vendor/**/vendor/**",
-                "**/var/cache/**",
-              },
-            },
-          },
-        },
       })
 
       lsp.setup()
