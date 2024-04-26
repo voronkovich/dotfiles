@@ -121,6 +121,7 @@ alias ide="tmux -2 new-session $EDITOR \; split-window \; resize-pane -D 4"
 alias k='k -h'
 alias la='ls -lah'
 alias ll='ls -lG'
+alias lara='artisan'
 alias localhost8080='sudo iptables -t nat -A OUTPUT -d localhost -p tcp --dport 80 -j REDIRECT --to-port 8080'
 alias ls='ls --color=auto'
 alias m='make'
@@ -132,6 +133,7 @@ alias v="vagrant"
 alias vb='virtualbox'
 # alias vim="stty stop '' -ixoff ; vim"
 alias vspec=~/.vim/plugged/vim-vspec/bin/vspec
+alias vusted='VUSTED_USE_LOCAL=1 vusted tests'
 alias zshrc-reload="source ~/.zshrc"
 alias zshrc="$EDITOR ~/.zshrc"
 alias zshrl="exec zsh"
@@ -276,7 +278,11 @@ fi
 
 # Symfony
 artisan() {
-    SF_CONSOLE='artisan' SF_RUNNER='docker-compose exec -- laravel.test' sf "$@"
+    if [[ -x "${PWD}/vendor/bin/sail" ]]; then
+        SF_CONSOLE='artisan' SF_RUNNER='docker-compose exec -- laravel.test' sf "$@"
+    else
+        SF_CONSOLE='artisan' sf "$@"
+    fi
 }
 
 compdef _sf artisan
