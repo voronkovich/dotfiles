@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+composer create-project laravel/laravel . &&
+	composer remove --dev laravel/sail

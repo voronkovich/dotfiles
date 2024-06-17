@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+"${0:a:h}/laravel" &&
+	npm install -D tailwindcss postcss autoprefixer &&
+	npx tailwindcss init -p &&
+	rsync --recursive "${PROJECTS}/.templates/laravel-tailwind/" ./
