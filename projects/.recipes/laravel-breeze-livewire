@@ -2,4 +2,4 @@
 
 "${0:a:h}/laravel" && \
     composer require --dev laravel/breeze && \
-    php artisan breeze:install --pest
+    php artisan breeze:install --pest livewire

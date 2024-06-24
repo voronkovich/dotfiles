@@ -1,4 +1,20 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
+
+symfony_local() {
+	echo -n "# https://symfony.com/doc/current/setup/symfony_server.html#configuration-file
+
+proxy:
+  domains:
+    - '${1}'
+
+workers:
+  # Auto start Docker compose when starting server
+  # docker_compose: ~
+
+  vite:
+    cmd: ['./node_modules/.bin/vite']"
+}
 
 composer create-project laravel/laravel . &&
-	composer remove --dev laravel/sail
+	composer remove --dev laravel/sail &&
+	symfony_local "${PWD##*/}" > .symfony.local.yaml
