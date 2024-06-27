@@ -20,6 +20,7 @@ install_pest() {
 	composer remove --dev phpunit/phpunit &&
     composer require pestphp/pest pestphp/pest-plugin-laravel --dev --with-all-dependencies &&
     yes 'no' | vendor/bin/pest --init &&
+    find tests -iname ExampleTest.php -delete &&
     sed -iE \
         -e 's@<!-- <env name="DB_CONNECTION" value="sqlite"/> -->@<env name="DB_CONNECTION" value="sqlite"/>@' \
         -e 's@<!-- <env name="DB_DATABASE" value=":memory:"/> -->@<env name="DB_DATABASE" value=":memory:"/>@' \
