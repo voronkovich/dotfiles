@@ -8,6 +8,9 @@ fi
 if [[ -d "${HOME}/.luarocks/bin" ]]; then
     path=( "${HOME}/.luarocks/bin" $path )
 fi
+if [[ -d "${HOME}/.local/share/bob/nvim-bin" ]]; then
+    path=( "${HOME}/.local/share/bob/nvim-bin" $path )
+fi
 
 export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
@@ -121,7 +124,19 @@ alias ide="tmux -2 new-session $EDITOR \; split-window \; resize-pane -D 4"
 alias k='k -h'
 alias la='ls -lah'
 alias ll='ls -lG'
-alias lara='artisan'
+alias lr='artisan'
+alias lrcs='lr php vendor/bin/pint --test'
+alias lrcsfix='lr php vendor/bin/pint'
+alias lrpest='APP_ENV=testing lr php vendor/bin/pest'
+alias lrroutes='lr route:list --except-vendor'
+alias lrfresh='lr migrate:fresh --seed'
+alias lro='lr open'
+alias lrt='lr tinker'
+alias lrmm='lr make:model -m'
+alias lrmmi='lr make:migration'
+alias lrmf='lr make:factory'
+alias lrmc='lr make:controller'
+alias lrmv='lr make:view'
 alias localhost8080='sudo iptables -t nat -A OUTPUT -d localhost -p tcp --dport 80 -j REDIRECT --to-port 8080'
 alias ls='ls --color=auto'
 alias m='make'
@@ -277,17 +292,18 @@ if which ruby >/dev/null && which gem >/dev/null; then
 fi
 
 # Symfony
-artisan() {
-    if [[ -x "${PWD}/vendor/bin/sail" ]]; then
-        SF_CONSOLE='artisan' SF_RUNNER='docker-compose exec -- laravel.test' sf "$@"
-    else
-        SF_CONSOLE='artisan' sf "$@"
-    fi
-}
+# artisan() {
+#     if [[ -x "${PWD}/vendor/bin/sail" ]]; then
+#         SF_CONSOLE='artisan' SF_RUNNER='docker-compose exec -- laravel.test' sf "$@"
+#     else
+#         SF_CONSOLE='artisan' sf "$@"
+#     fi
+# }
 
 compdef _sf artisan
 
 compdef _symfony_complete console
+compdef _symfony_complete laravel
 compdef _symfony_complete composer
 compdef _symfony_complete php-cs-fixer
 compdef _symfony_complete phpstan
