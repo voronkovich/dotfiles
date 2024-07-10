@@ -1,0 +1,11 @@
+[Unit]
+Description=Opera Proxy Service
+After=network.target snapd.service
+
+[Service]
+Type=simple
+ExecStart=/snap/bin/opera-proxy
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
