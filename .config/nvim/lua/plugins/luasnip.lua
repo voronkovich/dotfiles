@@ -26,6 +26,17 @@ return {
         },
       },
     },
+    keys = {
+      {
+        "<Tab>",
+        function()
+          return require("luasnip").expand_or_jumpable() and "<Plug>luasnip-expand-or-jump" or "<Tab>"
+        end,
+        expr = true,
+        silent = true,
+        mode = "i",
+      },
+    },
     opts = {
       store_selection_keys = "<Tab>",
     },
