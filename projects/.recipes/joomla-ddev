@@ -16,7 +16,7 @@ download_url() {
 ddev config \
     --project-type=php \
     --disable-settings-management \
-    --upload-dir='images' &&
+    --upload-dirs='images' &&
     ddev start &&
     ddev exec -- "curl -sL "$(download_url ${joomla_version})" | tar -xzv -C ." &&
     ddev exec -- php installation/joomla.php install \
@@ -31,4 +31,5 @@ ddev config \
         --db-name=db \
         --db-user=db \
         --db-pass=db &&
-    ddev exec -- php cli/joomla.php user:reset-password --username admin --password admin
+    ddev exec -- php cli/joomla.php user:reset-password --username admin --password admin &&
+    ddev exec -- php cli/joomla.php config:set sef_rewrite=true
