@@ -1,19 +1,34 @@
 #!/usr/bin/env zsh
 
-ddev config --project-type=php --disable-settings-management \
-    && ddev start \
-    && ddev composer global require joomlatools/console \
-    && ddev exec -- ln -s '~/.composer/vendor/bin/joomla' '/usr/local/bin' \
-    && ddev exec -- joomla site:download app \
-        --use-webroot-dir \
-        --www '${PWD}' \
+declare -r joomla_version="${JOOMLA_VERSION:-latest}"
 
-    # && ddev exec -- joomla site:configure app \
-    #     --use-webroot-dir \
-    #     --www '${PWD}' \
-    #     --mysql-host=db \
-    #     --mysql-database=db \
-    #     --mysql-login db:db \
-    # && ddev exec -- joomla database:install app \
-    #     --use-webroot-dir \
-    #     --www '${PWD}' \
+download_url() {
+    version="${1:-latest}"
+
+    if [[ "${version}" == 'latest' ]]; then
+        url="$(ddev exec -- curl -sL -o /dev/null -w %{url_effective} 'https://github.com/joomla/joomla-cms/releases/latest')"
+        version="${url##*/}"
+    fi
+
+    echo "https://github.com/joomla/joomla-cms/releases/download/${version}/Joomla_${version}-Stable-Full_Package.tar.gz"
+}
+
+ddev config \
+    --project-type=php \
+    --disable-settings-management \
+    --upload-dir='images' &&
+    ddev start &&
+    ddev exec -- "curl -sL "$(download_url ${joomla_version})" | tar -xzv -C ." &&
+    ddev exec -- php installation/joomla.php install \
+        --no-interaction \
+        --site-name='"${DDEV_PROJECT}"' \
+        --admin-user=admin \
+        --admin-username=admin \
+        --admin-password=adminpassword \
+        --admin-email='"admin@${DDEV_HOSTNAME}"' \
+        --db-type=mysqli \
+        --db-host=db \
+        --db-name=db \
+        --db-user=db \
+        --db-pass=db &&
+    ddev exec -- php cli/joomla.php user:reset-password --username admin --password admin
