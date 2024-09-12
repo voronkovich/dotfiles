@@ -15,3 +15,8 @@ o.smartindent = true
 o.shiftwidth = 0
 
 o.swapfile = false
+
+-- LSP Server to use for PHP.
+-- Set to "intelephense" to use intelephense instead of phpactor.
+-- https://www.lazyvim.org/extras/lang/php#options
+vim.g.lazyvim_php_lsp = "intelephense"
