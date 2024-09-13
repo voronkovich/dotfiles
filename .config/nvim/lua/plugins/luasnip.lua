@@ -23,6 +23,9 @@ return {
           eloquent = {
             enabled = true,
           },
+          joomla = {
+            enabled = true,
+          },
         },
       },
     },
@@ -44,7 +47,9 @@ return {
       require("luasnip").config.set_config(opts)
 
       require("luasnip.loaders.from_lua").lazy_load({
-        paths = vim.fn.stdpath("config") .. "/snippets",
+        paths = {
+          vim.fn.stdpath("config") .. "/snippets",
+        },
       })
     end,
   },
