@@ -19,4 +19,4 @@ o.swapfile = false
 -- LSP Server to use for PHP.
 -- Set to "intelephense" to use intelephense instead of phpactor.
 -- https://www.lazyvim.org/extras/lang/php#options
-vim.g.lazyvim_php_lsp = "intelephense"
+vim.g.lazyvim_php_lsp = "phpactor"
