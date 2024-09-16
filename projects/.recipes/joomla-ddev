@@ -32,4 +32,7 @@ ddev config \
         --db-user=db \
         --db-pass=db &&
     ddev exec -- php cli/joomla.php user:reset-password --username admin --password admin &&
-    ddev exec -- php cli/joomla.php config:set sef_rewrite=true
+    ddev exec -- php cli/joomla.php config:set \
+        sef_rewrite=true \
+        debug=true \
+        error_reporting=maximum \
