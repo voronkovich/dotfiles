@@ -1,9 +1,9 @@
 return {
   {
-    "nvim-telescope/telescope.nvim",
+    "ibhagwan/fzf-lua",
     keys = {
-      { "<CR>", "<cmd>Telescope find_files<CR>", desc = "Telescope files" },
-      { "<Leader>l", "<cmd>Telescope buffers<CR>", desc = "Telescope buffers" },
+      { "<CR>", "<cmd>FzfLua files<CR>", desc = "FzfLua files" },
+      { "<Leader>l", "<cmd>FzfLua buffers<CR>", desc = "FzfLua buffers" },
     },
   },
 }
