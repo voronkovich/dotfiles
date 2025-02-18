@@ -1,18 +1,20 @@
 #!/usr/bin/env zsh
 
-readonly php_version=8.1
-readonly mailer_dsn='smtp://localhost:1025'
+declare -a config_options=('--project-type=symfony' '--docroot=public')
+declare -a composer_packages=('symfony/debug-pack')
 
-ddev config \
-    --project-type=php \
-    --php-version="${php_version}" \
-    --docroot=public \
-    --create-docroot \
-    --omit-containers=db,dba && \
-    ddev composer create -y symfony/skeleton && \
-    echo "MAILER_DSN=\"${mailer_dsn}\"" >> .env.dev && \
+if [[ -n "${DDEV_DATABASE}" ]]; then
+    config_options+=("--database=${DDEV_DATABASE}")
+    composer_packages+=('symfony/orm-pack')
+else
+    config_options+=('--omit-containers=db')
+fi
+
+ddev config ${config_options} && \
+    ddev composer create -n symfony/skeleton && \
+    ddev composer require -n ${composer_packages} && \
     # https://dev.to/devtonight/how-to-fix-npm-timeout-errors-on-slow-internet-connections-2kn4
     ddev exec npm config set fetch-retries 3 && \
     ddev exec npm config set fetch-retry-mintimeout 100000 && \
     ddev exec npm config set fetch-retry-maxtimeout 600000 && \
-    ddev exec npm config set cache-min 3600 && \
+    ddev exec npm config set prefer-offline && \

@@ -1,9 +1,3 @@
 #!/usr/bin/env zsh
 
-readonly postgres_version=14
-readonly database_url="postgresql://db:db@db:5432/db?serverVersion=${postgres_version}&charset=utf8"
-
-"${0:a:h}/symfony-ddev" && \
-    ddev config --database="postgres:${postgres_version}" --omit-containers=dba && \
-    ddev composer require symfony/orm-pack && \
-    echo "DATABASE_URL=\"${database_url}\"" >> .env.dev && \
+DDEV_DATABASE='postgres:17' "${0:a:h}/symfony-ddev" 
