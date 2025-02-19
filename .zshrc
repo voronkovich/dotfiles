@@ -101,6 +101,7 @@ alias devm='dev mails'
 alias devd='dev dba'
 alias e="$EDITOR"
 alias epub='npx percollate epub'
+alias gpa='git remote | xargs -n1 git push'
 alias procdev='foreman start --procfile=Procfile.dev'
 alias youtube-dl='yt-dlp'
 alias ytmp3='youtube-dl -x --audio-format=mp3'
@@ -120,7 +121,6 @@ alias sfsql='sf dbal:run-sql'
 alias sfo='sf open'
 alias sfom='sf mails'
 alias signals='ps -o pid,comm,sig_pend,sig_catch,sig_block,sig_ignore'
-alias ide="tmux -2 new-session $EDITOR \; split-window \; resize-pane -D 4"
 alias k='k -h'
 alias la='ls -lah'
 alias ll='ls -lG'
@@ -147,6 +147,7 @@ alias proxy-start="systemctl --user start opera-proxy"
 alias proxy-restart="systemctl --user restart opera-proxy"
 alias proxy-status="systemctl --user status opera-proxy"
 alias proxy-stop="systemctl --user stop opera-proxy"
+alias mirror-site="httrack --footer '' --user-agent 'Mozilla/5.0 (compatible; SiteMirror)'"
 alias root='sudo -s'
 alias v="vagrant"
 alias vb='virtualbox'
@@ -254,6 +255,14 @@ fpaths() {
 
 localrun() {
     command ssh -R "80:localhost:${1:-8000}" nokey@localhost.run
+}
+
+function ai() {
+    if [[ "$#" -eq 0 ]]; then
+        tgpt -i "$@"
+    else
+        tgpt "$@"
+    fi
 }
 # }}}
 
