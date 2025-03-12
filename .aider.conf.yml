@@ -1,3 +1,8 @@
-model: openrouter/deepseek/deepseek-r1
+# Free models: https://openrouter.ai/models?max_price=0
+# Rankings:    https://openrouter.ai/rankings/programming?view=day
+model: openrouter/deepseek/deepseek-r1:free
 
 env-file: /home/oleg/.secrets/ai/aider
+
+# Use global gitignore
+gitignore: false
