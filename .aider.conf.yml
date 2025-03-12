@@ -2,7 +2,7 @@
 # Rankings:    https://openrouter.ai/rankings/programming?view=day
 model: openrouter/deepseek/deepseek-r1:free
 
-env-file: /home/oleg/.secrets/ai/aider
+env-file: /home/oleg/.secrets/envs
 
 # Use global gitignore
 gitignore: false
