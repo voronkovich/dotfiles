@@ -6,3 +6,5 @@ env-file: /home/oleg/.secrets/envs
 
 # Use global gitignore
 gitignore: false
+
+auto-commits: false
