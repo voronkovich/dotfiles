@@ -1,8 +1,26 @@
 #!/usr/bin/env sh
 
+find_file() {
+    local file="${1}"
+    local dir="${PWD}"
+
+    while [ -n "${dir}" ]; do
+        if [ -f "${dir}/${file}" ]; then
+            echo "${dir}/${file}"
+            return 0
+        fi
+
+        dir="${dir%/*}"
+    done
+
+    return 1
+}
+
 get_version() {
-    if [ -f "${PWD}/.ansible-version" ]; then
-        cat "${PWD}/.ansible-version"
+    local version_file="$(find_file .ansible-version)"
+
+    if [ -n "${version_file}" ]; then
+        cat "${version_file}"
     else
         echo "${ANSIBLE_VERSION:-alpine}"
     fi
