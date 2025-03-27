@@ -1,10 +1,20 @@
+# OpenRouter
+#
 # Free models: https://openrouter.ai/models?max_price=0
 # Rankings:    https://openrouter.ai/rankings/programming?view=day
-model: openrouter/deepseek/deepseek-r1:free
+#
+# https://openrouter.ai/deepseek/deepseek-r1:free
+# model: openrouter/deepseek/deepseek-r1:free
+
+# Together AI
+#
+# https://api.together.ai/models/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free
+model: together_ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free
 
 env-file: /home/oleg/.secrets/envs
 
+git: false
+auto-commits: false
+
 # Use global gitignore
 gitignore: false
-
-auto-commits: false
