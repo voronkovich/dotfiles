@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-ansible-playbook -c local /dev/stdin <<EOF
-    - hosts: localhost
-      tasks:
-          - include: "'$(pwd)/$1'"
-EOF
