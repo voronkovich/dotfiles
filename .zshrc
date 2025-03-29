@@ -18,6 +18,9 @@ export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="${XDG_RUNTIME_DIR}/projects"
 export DOKKU_HOST=dokku
+export ANSIBLE_HOST_KEY_CHECKING=False
+export NVM_COMPLETION=true
+export NVM_LAZY_LOAD=true
 # }}}
 
 # Bootstrap {{{
@@ -38,6 +41,7 @@ omz yarn
 omz fancy-ctrl-z
 omz magic-enter
 zplug 'aperezdc/zsh-fzy'
+zplug 'lukechilds/zsh-nvm'
 zplug 'mafredri/zsh-async', defer:0
 zplug 'sindresorhus/pure', as:theme, use:pure.zsh
 zplug 'supercrabtree/k'
@@ -290,11 +294,6 @@ bindkey '\eg' snippet-expand
 if which pack >/dev/null; then
     . $(pack completion --shell zsh)
 fi
-
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Ruby & Ruby Gems
 if which ruby >/dev/null && which gem >/dev/null; then
