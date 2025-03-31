@@ -6,7 +6,7 @@
 #
 model: main
 weak-model: weak
-editor-model: editor
+editor-model: main
 show-model-warnings: false
 alias:
   # https://openrouter.ai/deepseek/deepseek-r1:free
@@ -16,7 +16,9 @@ alias:
   # https://api.together.ai/models/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free
   - 'editor:together_ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free'
 
-env-file: ~/.secrets/envs
+env-file: /home/oleg/.secrets/envs
+
+cache-prompts: true
 
 #
 # Git
