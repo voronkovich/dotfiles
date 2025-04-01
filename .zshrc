@@ -11,6 +11,9 @@ fi
 if [[ -d "${HOME}/.local/share/bob/nvim-bin" ]]; then
     path=( "${HOME}/.local/share/bob/nvim-bin" $path )
 fi
+if [[ -d "${HOME}/projects/ansibled/bin" ]]; then
+    path=( "${HOME}/projects/ansibled/bin" $path )
+fi
 
 export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
