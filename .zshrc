@@ -21,6 +21,10 @@ export DOKKU_HOST=dokku
 export ANSIBLE_HOST_KEY_CHECKING=False
 export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
+
+# gpt4free
+export OPENAI_API_BASE=http://localhost:1337/v1/
+export OPENAI_API_KEY=secret
 # }}}
 
 # Bootstrap {{{
@@ -261,12 +265,26 @@ localrun() {
     command ssh -R "80:localhost:${1:-8000}" nokey@localhost.run
 }
 
-function ai() {
+ai() {
     if [[ "$#" -eq 0 ]]; then
         tgpt -i "$@"
     else
         tgpt "$@"
     fi
+}
+
+gpt4free() {
+    declare -r temp="$(mktemp -d)"
+    cd "${temp}"
+    mkdir -p "${PWD}/har_and_cookies" "${PWD}/generated_images"
+    docker run --rm \
+        -p 1337:1337 \
+        -v "${PWD}/har_and_cookies:/app/har_and_cookies" \
+        -v "${PWD}/generated_images:/app/generated_images" \
+        hlohaus789/g4f:latest-slim \
+        rm -rf '/app/g4f/' \
+        && pip install -U 'g4f[slim]' \
+        && python -m g4f --debug
 }
 # }}}
 
