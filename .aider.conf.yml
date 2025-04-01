@@ -10,11 +10,10 @@ editor-model: main
 show-model-warnings: false
 alias:
   # https://openrouter.ai/deepseek/deepseek-r1:free
-  - 'main:openrouter/deepseek/deepseek-r1:free'
+  # - 'main:openrouter/deepseek/deepseek-r1:free'
+  - 'main:openai/gpt-4o'
   # https://api.together.ai/models/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free
   - 'weak:together_ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free'
-  # https://api.together.ai/models/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free
-  - 'editor:together_ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free'
 
 env-file: /home/oleg/.secrets/envs
 
