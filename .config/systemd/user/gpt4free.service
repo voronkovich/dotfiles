@@ -1,0 +1,17 @@
+[Unit]
+Description=GPT4free Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/mkdir -p %h/.local/state/gpt4free %h/Pictures/gpt4free
+ExecStartPre=-/usr/bin/podman create \
+          --name gpt4free \
+          -p 1337:1337 \
+          -v %h/.local/state/gpt4free:/app/har_and_cookies \
+          -v %h/Pictures/gpt4free:/app/generated_images \
+          docker://hlohaus789/g4f:latest-slim \
+          /bin/sh -c 'rm -rf /app/g4f/ && pip install -U g4f[slim] && python -m g4f --debug'
+ExecStart=/usr/bin/podman start -a gpt4free
+ExecStop=/usr/bin/podman stop gpt4free
+Restart=on-failure
