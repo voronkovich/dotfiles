@@ -113,12 +113,18 @@ alias devd='dev dba'
 alias e="$EDITOR"
 alias epub='npx percollate epub'
 alias gpa='git remote | xargs -n1 git push'
+alias gs='git status -sb'
+alias gpt4free-start='systemctl --user start gpt4free'
+alias gpt4free-restart='systemctl --user restart gpt4free'
+alias gpt4free-status='systemctl --user status gpt4free'
+alias gpt4free-stop='systemctl --user stop gpt4free'
+alias gpt4free-chat='open http://localhost:1337/chat &>/dev/null'
+alias gpt4free-docs='open http://localhost:1337/docs &>/dev/null'
 alias procdev='foreman start --procfile=Procfile.dev'
 alias youtube-dl='yt-dlp'
 alias ytmp3='youtube-dl -x --audio-format=mp3'
 alias ytm4a='youtube-dl -f m4a'
 alias ytlist='youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s"'
-alias gs='git status -sb'
 alias sfmc='sf make:controller'
 alias sfme='sf make:entity'
 alias sfmf='sf make:form'
@@ -274,20 +280,6 @@ ai() {
     else
         tgpt "$@"
     fi
-}
-
-gpt4free() {
-    declare -r temp="$(mktemp -d)"
-    cd "${temp}"
-    mkdir -p "${PWD}/har_and_cookies" "${PWD}/generated_images"
-    docker run --rm \
-        -p 1337:1337 \
-        -v "${PWD}/har_and_cookies:/app/har_and_cookies" \
-        -v "${PWD}/generated_images:/app/generated_images" \
-        hlohaus789/g4f:latest-slim \
-        rm -rf '/app/g4f/' \
-        && pip install -U 'g4f[slim]' \
-        && python -m g4f --debug
 }
 # }}}
 
