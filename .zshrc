@@ -189,8 +189,11 @@ fi
 
 # Aider
 alias ai='aider'
-alias ask='aider --chat-mode ask --model openai/o1-mini --no-git'
-alias commit='aider --commit'
+alias aiask='aider --chat-mode ask'
+alias ailint='aider --lint'
+alias aitest='aider --test'
+alias aicommit='aider --commit'
+alias chat='aider --chat-mode ask --model openai/o1-mini --no-git --input-history-file=/dev/null --chat-history-file=/dev/null'
 # }}}
 
 # {{{ Hashes
