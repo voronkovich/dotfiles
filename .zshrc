@@ -26,7 +26,8 @@ export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
 
 # gpt4free
-export OPENAI_API_BASE=http://localhost:1337/v1/
+export GPT4FREE_API_BASE=http://localhost:1337/v1/
+export OPENAI_API_BASE="${GPT4FREE_API_BASE}"
 export OPENAI_API_KEY=secret
 # }}}
 
@@ -185,6 +186,11 @@ if which batcat >/dev/null; then
     alias cat=batcat
     alias bat=batcat
 fi
+
+# Aider
+alias ai='aider'
+alias ask='aider --chat-mode ask --model openai/o1-mini --no-git'
+alias commit='aider --commit'
 # }}}
 
 # {{{ Hashes
@@ -274,12 +280,41 @@ localrun() {
     command ssh -R "80:localhost:${1:-8000}" nokey@localhost.run
 }
 
-ai() {
-    if [[ "$#" -eq 0 ]]; then
-        tgpt -i "$@"
-    else
-        tgpt "$@"
+aider() {
+    if ! systemctl --user is-active --quiet gpt4free.service; then
+        systemctl --user start gpt4free.service
     fi
+
+    command aider "$@"
+}
+
+gpt() {
+    if [[ "$#" -eq 0 ]]; then
+        set -- '-i'
+    fi
+
+    tgpt "$@"
+}
+
+gpt4free() {
+    if [[ "$#" -eq 0 ]]; then
+        set -- '-i'
+    fi
+
+    tgpt \
+        --provider openai \
+        --model o1-mini \
+        --url "${GPT4FREE_API_BASE}chat/completions" \
+        --key "${OPENAI_API_KEY}" \
+        "${@}"
+}
+
+chatgpt() {
+    if [[ "$#" -eq 0 ]]; then
+        set -- '-i'
+    fi
+
+    gpt4free --model o1-mini "${@}"
 }
 # }}}
 
