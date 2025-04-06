@@ -11,7 +11,7 @@ show-model-warnings: false
 alias:
   # https://openrouter.ai/deepseek/deepseek-r1:free
   # - 'main:openrouter/deepseek/deepseek-r1:free'
-  - 'main:openai/gpt-4o'
+  - 'main:openai/o1-mini'
   # https://api.together.ai/models/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free
   - 'weak:together_ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free'
 
@@ -19,10 +19,7 @@ env-file: /home/oleg/.secrets/envs
 
 cache-prompts: true
 
-#
-# Git
-#
-git: false
+git: true
 auto-commits: false
 # Use global gitignore
 gitignore: false
