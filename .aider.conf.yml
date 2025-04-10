@@ -1,8 +1,14 @@
 #
 # Models
 #
-# Free models: https://openrouter.ai/models?max_price=0
-# Rankings:    https://openrouter.ai/rankings/programming?view=day
+# Free tier:
+# - https://openrouter.ai/models?max_price=0
+# - https://aistudio.google.com/app/prompts/new_chat
+# - https://github.com/marketplace?type=models
+#
+# Rankings:
+# - https://openrouter.ai/rankings/programming?view=day
+# - https://aider.chat/docs/leaderboards/
 #
 model: main
 weak-model: weak
@@ -10,8 +16,11 @@ editor-model: main
 show-model-warnings: false
 alias:
   # https://openrouter.ai/deepseek/deepseek-r1:free
-  # - 'main:openrouter/deepseek/deepseek-r1:free'
+  - 'main:openrouter/deepseek/deepseek-r1:free'
   - 'main:openai/o1-mini'
+  - 'main:github/Codestral-2501'
+  - 'main:github/gpt-4o-mini'
+  - 'main:gemini/gemini-2.0-flash-thinking-exp-01-21'
   # https://api.together.ai/models/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free
   - 'weak:together_ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free'
 
