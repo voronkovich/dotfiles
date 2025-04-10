@@ -22,8 +22,6 @@ export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="${XDG_RUNTIME_DIR}/projects"
 export DOKKU_HOST=dokku
 export ANSIBLE_HOST_KEY_CHECKING=False
-export NVM_COMPLETION=true
-export NVM_LAZY_LOAD=true
 
 # gpt4free
 export GPT4FREE_API_BASE=http://localhost:1337/v1/
@@ -372,9 +370,16 @@ compdef _symfony_complete phpspec
 # DDEV
 ddev-tools wp-cli composer
 
-# vim: foldmethod=marker
+# NVM
+export NVM_DIR="$HOME/.nvm"
+export NVM_COMPLETION=true
+export NVM_LAZY_LOAD=true
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # BEGIN SNIPPET: Platform.sh CLI configuration
 HOME=${HOME:-'/home/oleg'}
 export PATH="$HOME/"'.platformsh/bin':"$PATH"
 if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET
+
+# vim: foldmethod=marker
