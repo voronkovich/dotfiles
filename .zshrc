@@ -1,20 +1,17 @@
+# https://github.com/zdharma-continuum/zinit?tab=readme-ov-file#manual
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Enable Emacs keybindings
+# See https://superuser.com/a/751378
+bindkey -e
+
 # https://askubuntu.com/a/452576
 stty sane stop ""
 
 # Environment ariables {{{
-if [[ -d "${HOME}/.phive/.local/bin" ]]; then
-    path=( "${HOME}/.phive/.local/bin" $path )
-fi
-if [[ -d "${HOME}/.luarocks/bin" ]]; then
-    path=( "${HOME}/.luarocks/bin" $path )
-fi
-if [[ -d "${HOME}/.local/share/bob/nvim-bin" ]]; then
-    path=( "${HOME}/.local/share/bob/nvim-bin" $path )
-fi
-if [[ -d "${HOME}/projects/ansibled/bin" ]]; then
-    path=( "${HOME}/projects/ansibled/bin" $path )
-fi
-
 export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
@@ -28,60 +25,93 @@ export OPENAI_API_BASE="${GPT4FREE_API_BASE}"
 export OPENAI_API_KEY=secret
 # }}}
 
-# Bootstrap {{{
-source ~/.zplug/init.zsh
-
-omz() { zplug "plugins/$1", from:oh-my-zsh; }
-# }}}
-
-# Bundles {{{
-omz brew
-omz composer
-omz extract
-omz git
-omz github
-omz npm
-omz vagrant
-omz yarn
-omz fancy-ctrl-z
-omz magic-enter
-zplug 'hmgle/aider-zsh-complete'
-zplug 'lukechilds/zsh-nvm'
-zplug 'mafredri/zsh-async', defer:0
-zplug 'sindresorhus/pure', as:theme, use:pure.zsh
-zplug 'supercrabtree/k'
-zplug 'voronkovich/ddev.plugin.zsh'
-zplug 'voronkovich/gitignore.plugin.zsh'
-zplug 'voronkovich/phpcs.plugin.zsh'
-zplug 'voronkovich/project.plugin.zsh'
-zplug 'voronkovich/symfony-complete.plugin.zsh'
-zplug 'voronkovich/symfony.plugin.zsh'
-zplug "${PROJECTS}/phpunit.plugin.zsh", from:local
-zplug 'zdharma-continuum/fast-syntax-highlighting', defer:2
-zplug 'zsh-users/zsh-autosuggestions'
-zplug 'zsh-users/zsh-completions', use:src
-zplug 'molovo/revolver', as:command, use:revolver
-zplug 'willghatch/zsh-snippets'
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug 'zunit-zsh/zunit', as:command, use:zunit, hook-build:'./build.zsh'
-# }}}
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+if [[ -d "${HOME}/.phive/.local/bin" ]]; then
+    path=( "${HOME}/.phive/.local/bin" $path )
+fi
+if [[ -d "${HOME}/.luarocks/bin" ]]; then
+    path=( "${HOME}/.luarocks/bin" $path )
+fi
+if [[ -d "${HOME}/.local/share/bob/nvim-bin" ]]; then
+    path=( "${HOME}/.local/share/bob/nvim-bin" $path )
+fi
+if [[ -d "${HOME}/projects/ansibled/bin" ]]; then
+    path=( "${HOME}/projects/ansibled/bin" $path )
 fi
 
-zplug load
+# Plugins
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+
+zinit light zsh-users/zsh-autosuggestions
+bindkey '^ ' autosuggest-accept
+
+zinit ice wait lucid atload"zicompinit; zicdreplay"
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit ice as"program" pick"revolver"
+zinit light molovo/revolver
+
+zinit ice as"command" from"gh-r"
+zinit light zunit-zsh/zunit
+
+zinit ice wait lucid
+zinit light lukechilds/zsh-nvm
+
+zinit ice wait lucid
+zinit light zsh-users/zsh-completions
+
+zinit ice wait lucid
+zinit light supercrabtree/k
+
+zinit light hmgle/aider-zsh-complete
+
+zinit light voronkovich/ddev.plugin.zsh
+ddev-tools wp-cli composer
+
+zinit light voronkovich/gitignore.plugin.zsh
+
+zinit light voronkovich/project.plugin.zsh
+
+zinit ice wait lucid
+zinit light voronkovich/symfony-complete.plugin.zsh
+compdef _symfony_complete console
+compdef _symfony_complete laravel
+compdef _symfony_complete composer
+compdef _symfony_complete php-cs-fixer
+compdef _symfony_complete phpstan
+compdef _symfony_complete phpspec
+
+zinit ice wait lucid
+zinit light voronkovich/symfony.plugin.zsh
+compdef _sf artisan
+
+zinit ice wait lucid
+zinit light voronkovich/phpunit.plugin.zsh
+
+zinit snippet OMZP::extract
+zinit snippet OMZP::git
+zinit snippet OMZP::github
+zinit snippet OMZP::npm
+zinit snippet OMZP::vagrant
+zinit snippet OMZP::yarn
+zinit snippet OMZP::brew
+zinit snippet OMZP::composer
+zinit snippet OMZP::fancy-ctrl-z
+
+zinit snippet OMZP::magic-enter
+MAGIC_ENTER_GIT_COMMAND='k'
+MAGIC_ENTER_OTHER_COMMAND='k'
+# }}}
 
 # History settings {{{
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-setopt appendhistory
+setopt append_history
 setopt hist_ignore_all_dups
 setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_space
 # }}}
 
 # Aliases {{{
@@ -233,7 +263,6 @@ upsearch () {
     done
 }
 fix-autocompletion() {
-    zplug clear
     compaudit | xargs -I % chmod g-w "%";
     compaudit | xargs -I % chown $USER "%";
     rm ~/.zcompdump*;
@@ -328,16 +357,6 @@ chatgpt() {
 }
 # }}}
 
-# Enable Emacs keybindings
-# See https://superuser.com/a/751378
-bindkey -e
-
-bindkey '^ ' autosuggest-accept
-
-# OMZ magic-enter
-MAGIC_ENTER_GIT_COMMAND='k'
-MAGIC_ENTER_OTHER_COMMAND='k'
-
 # phpbrew
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
@@ -392,18 +411,6 @@ fi
 #     fi
 # }
 
-compdef _sf artisan
-
-compdef _symfony_complete console
-compdef _symfony_complete laravel
-compdef _symfony_complete composer
-compdef _symfony_complete php-cs-fixer
-compdef _symfony_complete phpstan
-compdef _symfony_complete phpspec
-
-# DDEV
-ddev-tools wp-cli composer
-
 # NVM
 export NVM_DIR="$HOME/.nvm"
 export NVM_COMPLETION=true
@@ -416,4 +423,6 @@ HOME=${HOME:-'/home/oleg'}
 export PATH="$HOME/"'.platformsh/bin':"$PATH"
 if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET
 
+autoload -Uz compinit
+compinit
 # vim: foldmethod=marker
