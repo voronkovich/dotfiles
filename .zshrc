@@ -45,7 +45,7 @@ omz vagrant
 omz yarn
 omz fancy-ctrl-z
 omz magic-enter
-zplug 'aperezdc/zsh-fzy'
+zplug 'hmgle/aider-zsh-complete'
 zplug 'lukechilds/zsh-nvm'
 zplug 'mafredri/zsh-async', defer:0
 zplug 'sindresorhus/pure', as:theme, use:pure.zsh
@@ -124,18 +124,7 @@ alias youtube-dl='yt-dlp'
 alias ytmp3='youtube-dl -x --audio-format=mp3'
 alias ytm4a='youtube-dl -f m4a'
 alias ytlist='youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s"'
-alias sfmc='sf make:controller'
-alias sfme='sf make:entity'
-alias sfmf='sf make:form'
-alias sfmt='sf make:test'
-alias sfmm='sf make:migration'
-alias sffl='sf doctrine:fixtures:load -n'
-alias sflf='sf doctrine:fixtures:load -n'
-alias sfdm='sf doctrine:migration:migrate'
-alias sfdql='sf doctrine:query:dql'
-alias sfsql='sf dbal:run-sql'
-alias sfo='sf open'
-alias sfom='sf mails'
+
 alias signals='ps -o pid,comm,sig_pend,sig_catch,sig_block,sig_ignore'
 alias k='k -h'
 alias la='ls -lah'
@@ -191,7 +180,26 @@ alias aiask='aider --chat-mode ask'
 alias ailint='aider --lint'
 alias aitest='aider --test'
 alias aicommit='aider --commit'
+alias aiconf="${EDITOR} ${HOME}/.aider.conf.yml"
 alias chat='aider --chat-mode ask --model openai/o1-mini --no-git --input-history-file=/dev/null --chat-history-file=/dev/null'
+
+# Symfony
+alias sfmc='sf make:controller'
+alias sfme='sf make:entity'
+alias sfmf='sf make:form'
+alias sfmt='sf make:test'
+alias sfmm='sf make:migration'
+alias sffl='sf doctrine:fixtures:load -n'
+alias sflf='sf doctrine:fixtures:load -n'
+alias sfdm='sf doctrine:migration:migrate'
+alias sfdql='sf doctrine:query:dql'
+alias sfsql='sf dbal:run-sql'
+alias sfo='sf open'
+alias sfom='sf mails'
+alias serve='symfony serve -d && symfony open:local'
+alias serve-stop='symfony server:stop'
+alias serve-log='symfony server:log'
+alias composer='symfony composer'
 # }}}
 
 # {{{ Hashes
@@ -225,6 +233,7 @@ upsearch () {
     done
 }
 fix-autocompletion() {
+    zplug clear
     compaudit | xargs -I % chmod g-w "%";
     compaudit | xargs -I % chown $USER "%";
     rm ~/.zcompdump*;
@@ -332,10 +341,6 @@ MAGIC_ENTER_OTHER_COMMAND='k'
 # phpbrew
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
-# Fuzzy
-bindkey '\ec' fzy-cd-widget
-bindkey '^T'  fzy-file-widget
-bindkey '^R'  fzy-history-widget
 
 bindkey '\eg' snippet-expand
 
