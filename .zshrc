@@ -20,7 +20,7 @@ export PROJECTS_TMP="${XDG_RUNTIME_DIR}/projects"
 export DOKKU_HOST=dokku
 
 # gpt4free
-export GPT4FREE_API_BASE=http://localhost:1337/v1/
+export GPT4FREE_API_BASE=http://localhost:1337
 export OPENAI_API_BASE="${GPT4FREE_API_BASE}"
 export OPENAI_API_KEY=secret
 # }}}
@@ -343,7 +343,7 @@ gpt4free() {
     tgpt \
         --provider openai \
         --model o1-mini \
-        --url "${GPT4FREE_API_BASE}chat/completions" \
+        --url "${GPT4FREE_API_BASE}/v1/chat/completions" \
         --key "${OPENAI_API_KEY}" \
         "${@}"
 }
