@@ -89,6 +89,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ack="ag"
+alias codemod=codemod2
 alias alpine='docker run -it --rm alpine'
 alias ubuntu='docker run -it --rm ubuntu'
 alias phpinsights='docker run -it --rm -v "$(pwd):/app" nunomaduro/phpinsights'
