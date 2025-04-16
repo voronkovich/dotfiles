@@ -6,6 +6,9 @@ return {
   },
   config = {
     adapters = {
+      opts = {
+        show_defaults = false,
+      },
       custom = function()
         return require("codecompanion.adapters").extend("openai_compatible", {
           env = {
@@ -23,6 +26,14 @@ return {
     strategies = {
       chat = {
         adapter = "custom",
+        keymaps = {
+          send = {
+            modes = {
+              n = { "<CR>", "<C-a>" },
+              i = { "<C-a>" },
+            },
+          },
+        },
       },
       cmd = {
         adapter = "custom",
