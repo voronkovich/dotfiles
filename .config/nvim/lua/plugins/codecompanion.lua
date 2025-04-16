@@ -9,7 +9,7 @@ return {
       custom = function()
         return require("codecompanion.adapters").extend("openai_compatible", {
           env = {
-            url = "http://localhost:1337",
+            url = "OPENAI_API_BASE",
             api_key = "OPENAI_API_KEY",
           },
           schema = {
