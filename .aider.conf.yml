@@ -37,3 +37,5 @@ git: true
 auto-commits: false
 # Use global gitignore
 gitignore: false
+
+aiderignore: /home/oleg/.config/git/ignore
