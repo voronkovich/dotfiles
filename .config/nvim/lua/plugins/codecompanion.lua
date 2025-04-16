@@ -1,3 +1,5 @@
+vim.g.codecompanion_auto_tool_mode = true
+
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
