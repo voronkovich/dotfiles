@@ -19,8 +19,13 @@ alias:
   # - "main:openai/o1-mini"
   # - "main:github/Codestral-2501"
   # - "main:github/gpt-4o-mini"
+  # - "main:gemini/gemini-2.0-flash-thinking-exp-01-21"
+  # - "main:gemini/gemini-2.0-flash"
   - "main:gemini/gemini-2.0-flash-thinking-exp-01-21"
   - "weak:together_ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free"
+  - "gemini:gemini/gemini-2.0-flash"
+  - "deepseek:openrouter/deepseek/deepseek-chat-v3-0324:free"
+  - "codestral:github/Codestral-2501"
 
 env-file: /home/oleg/.secrets/envs
 set-env:
