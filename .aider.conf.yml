@@ -20,8 +20,7 @@ alias:
   # - "main:github/Codestral-2501"
   # - "main:github/gpt-4o-mini"
   # - "main:gemini/gemini-2.0-flash-thinking-exp-01-21"
-  # - "main:gemini/gemini-2.0-flash"
-  - "main:gemini/gemini-2.0-flash-thinking-exp-01-21"
+  - "main:gemini/gemini-2.0-flash"
   - "weak:together_ai/deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free"
   - "gemini:gemini/gemini-2.0-flash"
   - "deepseek:openrouter/deepseek/deepseek-chat-v3-0324:free"
@@ -32,6 +31,8 @@ set-env:
   - HTTPS_PROXY=127.0.0.1:18080
 
 cache-prompts: true
+
+watch-files: true
 
 git: true
 auto-commits: false
