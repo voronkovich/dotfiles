@@ -4,8 +4,7 @@ return {
     "folke/snacks.nvim",
   },
   cmd = {
-    "AiderTerminalToggle",
-    "AiderHealth",
+    "Aider",
   },
   keys = {
     { "<leader>a/", "<cmd>Aider toggle<cr>", desc = "Open Aider" },
