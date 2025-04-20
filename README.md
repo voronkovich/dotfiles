@@ -31,7 +31,7 @@ My dotfiles.
 ## Utilities
 
 ```sh
-sudo apt install curl htop bat ripgrep fzy
+sudo apt install curl htop bat ripgrep fzf
 ```
 
 ## License
