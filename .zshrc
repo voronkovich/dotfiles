@@ -361,36 +361,14 @@ chatgpt() {
 [[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 # fzf
-fzf-files-widget() {
-    local selected preview_cmd search_cmd
-
-    if command -v batcat >/dev/null 2>&1; then
-        preview_cmd='batcat --color=always --style=numbers --line-range=:500 {} 2>/dev/null'
-    else
-        preview_cmd='cat {} 2>/dev/null'
-    fi
-
-    if command -v rg >/dev/null 2>&1; then
-        search_cmd="rg --files"
-    else
-        search_cmd="find . -type f -not -path '*/\.git/*'"
-    fi
-
-    selected="$(eval ${search_cmd} | fzf --height 50% --reverse \
-        --prompt="Files> " \
-        --bind 'ctrl-space:toggle+down' \
-        --info=inline \
-        --preview-window=right:50%:wrap \
-        --preview "${preview_cmd}")"
-
-    if [[ -n "${selected}" ]]; then
-        LBUFFER="${LBUFFER}${(q)selected}"
-    fi
-
-    zle redisplay
-}
-zle -N fzf-files-widget
-bindkey '^T' fzf-files-widget
+if which fzf >/dev/null; then
+    source <(fzf --zsh)
+    export FZF_CTRL_T_COMMAND='rg --files'
+    export FZF_CTRL_T_OPTS="
+    --style=full
+    --preview 'fzf-preview.sh {}'
+    --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+fi
 
 # Pack completion
 if which pack >/dev/null; then
