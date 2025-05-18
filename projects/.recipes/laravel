@@ -17,7 +17,7 @@ workers:
 
 install_pest() {
     # https://pestphp.com/docs/installation
-	composer remove --dev phpunit/phpunit &&
+    composer remove --dev phpunit/phpunit &&
     composer require pestphp/pest pestphp/pest-plugin-laravel --dev --with-all-dependencies &&
     yes 'no' | vendor/bin/pest --init &&
     find tests -iname ExampleTest.php -delete &&
@@ -28,7 +28,8 @@ install_pest() {
 }
 
 composer create-project laravel/laravel . &&
-	composer remove --dev laravel/sail &&
+    composer remove --dev laravel/sail &&
     install_pest &&
-	symfony_local "${PWD##*/}" > .symfony.local.yaml &&
+    npm install &&
+    symfony_local "${PWD##*/}" > .symfony.local.yaml &&
     git init

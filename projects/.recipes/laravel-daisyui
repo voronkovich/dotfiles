@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
-"${0:a:h}/laravel-tailwind" &&
-	rsync --recursive "${PROJECTS}/.templates/laravel-daisyui/" ./ &&
-    npm i -D daisyui@latest
+"${0:a:h}/laravel" &&
+    npm i -D daisyui@latest &&
+    echo $'\n@plugin "daisyui";' >> resources/css/app.css
