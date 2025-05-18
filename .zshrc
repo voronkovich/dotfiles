@@ -21,8 +21,11 @@ export DOKKU_HOST=dokku
 
 # gpt4free
 export GPT4FREE_API_BASE=http://localhost:1337
-export OPENAI_API_BASE="${GPT4FREE_API_BASE}"
+# litellm
 export OPENAI_API_KEY=secret
+export OPENAI_BASE_URL="${GPT4FREE_API_BASE}/v1"
+# Nvim CodeCompanion
+export OPENAI_API_BASE="${GPT4FREE_API_BASE}"
 # }}}
 
 if [[ -d "${HOME}/.phive/.local/bin" ]]; then
@@ -343,7 +346,7 @@ gpt4free() {
     tgpt \
         --provider openai \
         --model o1-mini \
-        --url "${GPT4FREE_API_BASE}/v1/chat/completions" \
+        --url "${OPENAI_BASE_URL}/chat/completions" \
         --key "${OPENAI_API_KEY}" \
         "${@}"
 }
