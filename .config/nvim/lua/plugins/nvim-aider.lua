@@ -11,9 +11,30 @@ return {
     { "<leader>as", "<cmd>Aider send<cr>", desc = "Send to Aider", mode = { "n", "v" } },
     { "<leader>ac", "<cmd>Aider command<cr>", desc = "Send Command To Aider" },
     { "<leader>ab", "<cmd>Aider buffer<cr>", desc = "Send Buffer To Aider" },
-    { "<leader>aa", "<cmd>Aider add<cr>", desc = "Add File to Aider" },
-    { "<leader>ad", "<cmd>Aider drop<cr>", desc = "Drop File from Aider" },
+    -- { "<leader>aa", "<cmd>Aider add<cr>", desc = "Add File to Aider" },
+    {
+      "<leader>aa",
+      function()
+        require("autoread").enable()
+        require("nvim_aider").api.add_current_file()
+      end,
+      desc = "Add File to Aider",
+    },
+    {
+      -- { "<leader>ad", "<cmd>Aider drop<cr>", desc = "Drop File from Aider" },
+      "<leader>ad",
+      function()
+        require("autoread").disable()
+        require("nvim_aider").api.drop_current_file()
+      end,
+      desc = "Drop File from Aider",
+    },
     { "<leader>ar", "<cmd>Aider add readonly<cr>", desc = "Add File as Read-Only" },
   },
-  config = true,
+  opts = {
+    auto_reload = true,
+    win = {
+      position = "bottom",
+    },
+  },
 }
