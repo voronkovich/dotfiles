@@ -1,6 +1,11 @@
 #!/usr/bin/env zsh
 
 symfony_local() {
+    vite="['npm', 'run', 'dev']"
+    if which bun &>/dev/null; then
+        vite="['bun', 'run', 'dev']"
+    fi
+
 	echo -n "# https://symfony.com/doc/current/setup/symfony_server.html#configuration-file
 
 # proxy:
@@ -15,7 +20,7 @@ workers:
   #    cmd: ['mailpit']
 
   vite:
-    cmd: ['bun', 'dev']"
+    cmd: ${vite}"
 }
 
 aider_conf() {
