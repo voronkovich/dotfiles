@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+terminal='/usr/bin/xfce4-terminal'
+args='--fullscreen --zoom=3'
+
+if which tmux &>/dev/null && [ $# -eq 0 ]; then
+    exec "${terminal}" ${args} --command tmux
+fi
+
+exec "${terminal}" ${args} "${@}"
