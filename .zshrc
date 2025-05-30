@@ -4,6 +4,9 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+autoload -Uz compinit
+compinit
+
 # Enable Emacs keybindings
 # See https://superuser.com/a/751378
 bindkey -e
@@ -222,7 +225,7 @@ alias serve='symfony serve -d && symfony open:local'
 alias serve-stop='symfony server:stop'
 alias serve-restart='serve-stop && symfony serve -d'
 alias serve-status='symfony server:stop'
-alias serve-open='symfony server:open'
+alias serve-open='symfony open:local'
 alias serve-log='symfony server:log'
 alias composer='symfony composer'
 alias mails='open http://localhost:8025 &>/dev/null'
@@ -414,6 +417,4 @@ HOME=${HOME:-'/home/oleg'}
 export PATH="$HOME/"'.platformsh/bin':"$PATH"
 if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET
 
-autoload -Uz compinit
-compinit
 # vim: foldmethod=marker
