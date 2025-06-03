@@ -1,20 +1,14 @@
 [Unit]
 Description=GPT4free Service
+Documentation=https://github.com/xtekky/gpt4free
 After=network.target
 Requires=opera-proxy.service
 
 [Service]
 Type=simple
 Environment=G4F_PROXY=http://127.0.0.1:18080
-ExecStartPre=/usr/bin/mkdir -p %h/.local/state/gpt4free %h/Pictures/gpt4free
-ExecStartPre=-/usr/bin/podman create \
-          --name gpt4free \
-          --userns=keep-id \
-          -p 1337:1337 \
-          -v %h/.local/state/gpt4free:/app/har_and_cookies \
-          -v %h/Pictures/gpt4free:/app/generated_images \
-          docker://hlohaus789/g4f:latest-slim \
-          /bin/sh -c 'rm -rf /app/g4f && pip install -U g4f[slim] && python -m g4f --debug'
-ExecStart=/usr/bin/podman start -a gpt4free
-ExecStop=/usr/bin/podman stop gpt4free
+WorkingDirectory=%h/.local/state/gpt4free
+ExecStartPre=/usr/bin/mkdir -p %h/.local/state/gpt4free/har_and_cookies %h/Pictures/gpt4free
+ExecStartPre=-/usr/bin/ln -s %h/Pictures/gpt4free %h/.local/state/gpt4free/generated_images
+ExecStart=%h/.local/bin/uvx --with unicorn,uvicorn,fastapi,python-multipart,aiohttp_socks g4f api
 Restart=on-failure

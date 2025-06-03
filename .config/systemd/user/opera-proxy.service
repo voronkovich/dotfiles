@@ -1,10 +1,11 @@
 [Unit]
 Description=Opera Proxy Service
-After=network.target snapd.service
+Documentation=https://github.com/Snawoot/opera-proxy
+After=network.target
 
 [Service]
 Type=simple
-ExecStart=/%h/.local/bin/opera-proxy
+ExecStart=%h/.local/bin/opera-proxy
 Restart=on-failure
 
 [Install]
