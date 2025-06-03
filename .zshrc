@@ -153,6 +153,7 @@ alias gpt4free-start='systemctl --user start gpt4free'
 alias gpt4free-restart='systemctl --user restart gpt4free'
 alias gpt4free-status='systemctl --user status gpt4free'
 alias gpt4free-stop='systemctl --user stop gpt4free'
+alias gpt4free-logs='journalctl --user -u gpt4free.service'
 alias gpt4free-chat='open http://localhost:1337/chat &>/dev/null'
 alias gpt4free-docs='open http://localhost:1337/docs &>/dev/null'
 alias procdev='foreman start --procfile=Procfile.dev'
@@ -181,7 +182,6 @@ alias mirror-site="httrack --footer '' --user-agent 'Mozilla/5.0 (compatible; Si
 alias root='sudo -s'
 alias v="vagrant"
 alias vb='virtualbox'
-# alias vim="stty stop '' -ixoff ; vim"
 alias vspec=~/.vim/plugged/vim-vspec/bin/vspec
 alias vusted='VUSTED_USE_LOCAL=1 vusted tests'
 alias zshrc-reload="source ~/.zshrc"
@@ -206,7 +206,7 @@ alias ailint='aider --lint'
 alias aitest='aider --test'
 alias aicommit='aider --commit'
 alias aiconf="${EDITOR} ${HOME}/.aider.conf.yml"
-alias chat='aider --chat-mode ask --model openai/o1-mini --no-git --input-history-file=/dev/null --chat-history-file=/dev/null'
+alias chat='aider --chat-mode ask --model openai/o4-mini --no-git --input-history-file=/dev/null --chat-history-file=/dev/null'
 
 # Symfony
 alias sfmc='sf make:controller'
@@ -224,10 +224,9 @@ alias sfom='sf mails'
 alias serve='symfony serve -d && symfony open:local'
 alias serve-stop='symfony server:stop'
 alias serve-restart='serve-stop && symfony serve -d'
-alias serve-status='symfony server:stop'
+alias serve-status='symfony server:status'
 alias serve-open='symfony open:local'
 alias serve-log='symfony server:log'
-alias composer='symfony composer'
 alias mails='open http://localhost:8025 &>/dev/null'
 
 # Laravel
@@ -266,27 +265,22 @@ gac() {
         git commit
     fi
 }
+
 genpass() {
     pwgen -0A ${1:-12} 1
 }
-upsearch () {
-    slashes=${PWD//[^\/]/}
-    directory="$PWD"
-    for (( n=${#slashes}; n>0; --n ))
-    do
-        test -e "$directory/$1" && echo "$directory/$1" && return
-        directory="$directory/.."
-    done
-}
+
 fix-autocompletion() {
     compaudit | xargs -I % chmod g-w "%";
     compaudit | xargs -I % chown $USER "%";
     rm ~/.zcompdump*;
     compinit;
 }
+
 f() {
     find -iname "*$1*" -print -o -name '.git' -prune | grep -i --color "$1"
 }
+
 smoke() {
     wget \
         --recursive \
@@ -296,32 +290,11 @@ smoke() {
         --no-verbose \
         "${1:-localhost:8000}"
 }
+
 dsh() {
     docker exec -it "${1:-$(docker ps -ql)}" "${2:-sh}"
 }
 compdef __docker_complete_running_containers dsh
-
-__dokku_commands_list() {
-    dokku --quiet help --all 2>/dev/null | \
-        sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g" | \
-        tr -cd '\11\12\15\40-\176' | \
-        sed -nE 's/^\s*([-a-z:]+).*\s{2,}(\w.*)?$/\1 \u\2/p' | \
-        sort -u
-}
-
-_dokku() {
-    local cache="/tmp/${USER}-dokku-completions-4623c3e3-e3a2-403c-9422-12f4a135f07a"
-
-    if [[ ! -f "$cache" ]]; then
-        __dokku_commands_list | sed -E -e 's/:/\\:/' -e 's/\s/:/' > "$cache"
-    fi
-
-    IFS=$'\n' local -a commands=($(cat "$cache"))
-
-    _describe 'commands' commands
-}
-
-compdef _dokku dokku
 
 paths() {
     local p; for p in "${path[@]}"; do; echo "${p}"; done;
@@ -358,7 +331,7 @@ gpt4free() {
 
     tgpt \
         --provider openai \
-        --model o1-mini \
+        --model o4-mini \
         --url "${OPENAI_BASE_URL}/chat/completions" \
         --key "${OPENAI_API_KEY}" \
         "${@}"
@@ -369,7 +342,7 @@ chatgpt() {
         set -- '-i'
     fi
 
-    gpt4free --model o1-mini "${@}"
+    gpt4free --model o4-mini "${@}"
 }
 # }}}
 
@@ -395,15 +368,6 @@ fi
 if which ruby >/dev/null && which gem >/dev/null; then
     path+=( $(ruby -r rubygems -e 'puts "#{Gem.dir}/bin #{Gem.user_dir}/bin"') )
 fi
-
-# Symfony
-# artisan() {
-#     if [[ -x "${PWD}/vendor/bin/sail" ]]; then
-#         SF_CONSOLE='artisan' SF_RUNNER='docker-compose exec -- laravel.test' sf "$@"
-#     else
-#         SF_CONSOLE='artisan' sf "$@"
-#     fi
-# }
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
