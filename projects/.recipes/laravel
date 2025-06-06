@@ -19,6 +19,9 @@ workers:
   # mailpit:
   #    cmd: ['mailpit']
 
+  artisan:queue:
+    cmd: ['symfony', 'php', 'artisan',  'queue:listen', '--tries=1']
+
   vite:
     cmd: ${vite}"
 }
