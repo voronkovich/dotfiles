@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
-"${0:a:h}/laravel-breeze-livewire" && \
+"${0:a:h}/laravel-daisyui" && \
     composer require robsontenorio/mary && \
     php artisan mary:install
