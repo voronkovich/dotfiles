@@ -173,6 +173,7 @@ alias ls='ls --color=auto'
 alias m='make'
 alias man='viman'
 alias pt='p -t'
+alias psysh='cpx psysh'
 alias phpspec='vendor/bin/phpspec'
 alias proxy-start="systemctl --user start opera-proxy"
 alias proxy-restart="systemctl --user restart opera-proxy"
@@ -230,8 +231,10 @@ alias serve-log='symfony server:log'
 alias mails='open http://localhost:8025 &>/dev/null'
 
 # Laravel
+alias laravel='cpx laravel'
 alias lrcs='lr php vendor/bin/pint --test'
 alias lrcsfix='lr php vendor/bin/pint'
+alias lrpint='lr php vendor/bin/pint'
 alias lrpest='APP_ENV=testing lr php vendor/bin/pest'
 alias lrroutes='lr route:list --except-vendor'
 alias lrfresh='lr migrate:fresh --seed'
