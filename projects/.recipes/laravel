@@ -1,11 +1,6 @@
 #!/usr/bin/env zsh
 
 symfony_local() {
-    vite="['npm', 'run', 'dev']"
-    if which bun &>/dev/null; then
-        vite="['bun', 'run', 'dev']"
-    fi
-
 	echo -n "# https://symfony.com/doc/current/setup/symfony_server.html#configuration-file
 
 # proxy:
@@ -23,11 +18,11 @@ workers:
     cmd: ['symfony', 'php', 'artisan',  'queue:listen', '--tries=1']
 
   vite:
-    cmd: ${vite}"
+    cmd: ['npm', 'run', 'dev']"
 }
 
 aider_conf() {
-    echo -n 'lint-cmd: "symfony php vendor/bin/pint"
+    echo -n 'lint-cmd: "symfony php vendor/bin/pint --test"
 test-cmd: "symfony php artisan test"'
 }
 
