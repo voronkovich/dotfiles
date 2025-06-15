@@ -3,7 +3,7 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        php = { "php_cs_fixer" },
+        php = { "pint", "php_cs_fixer" },
       },
       formatters = {
         php_cs_fixer = {
