@@ -29,6 +29,8 @@ export OPENAI_API_KEY=secret
 export OPENAI_BASE_URL="${GPT4FREE_API_BASE}/v1"
 # Nvim CodeCompanion
 export OPENAI_API_BASE="${GPT4FREE_API_BASE}"
+# gemini
+export GEMINI_MODEL=gemini-2.5-flash
 # }}}
 
 if [[ -d "${HOME}/.phive/.local/bin" ]]; then

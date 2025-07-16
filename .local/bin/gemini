@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+export HTTP_PROXY=http://127.0.0.1:18080
+export HTTPS_PROXY=http://127.0.0.1:18080
+export "$(grep GEMINI_API_KEY ${HOME}/.secrets/envs)"
+
+bunx @google/gemini-cli "$@"
