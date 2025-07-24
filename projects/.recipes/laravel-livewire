@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+"${0:a:h}/laravel" &&
+    composer require livewire/livewire &&
+    php artisan livewire:layout
