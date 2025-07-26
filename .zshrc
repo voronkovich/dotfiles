@@ -21,6 +21,7 @@ export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="${XDG_RUNTIME_DIR}/projects"
 export DOKKU_HOST=dokku
+export RIPGREP_CONFIG_PATH="${HOME}/.config/ripgrep"
 
 # gpt4free
 export GPT4FREE_API_BASE=http://localhost:1337

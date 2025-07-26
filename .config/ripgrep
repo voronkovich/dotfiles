@@ -1,0 +1,4 @@
+--type-add
+blade:*.blade.php
+
+--smart-case
