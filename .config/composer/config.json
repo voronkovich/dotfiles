@@ -5,11 +5,5 @@
             "symfony/runtime": true
         },
         "process-timeout": 10000
-    },
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://ephort.dk/packagist"
-        }
     }
 }
