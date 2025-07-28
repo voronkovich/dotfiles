@@ -40,6 +40,7 @@ install_pest() {
 
 composer create-project laravel/laravel . &&
     composer remove --dev laravel/sail &&
+    rsync --recursive "${PROJECTS}/.templates/laravel/" ./ &&
     install_pest &&
     npm install &&
     symfony_local "${PWD##*/}" > .symfony.local.yaml &&
