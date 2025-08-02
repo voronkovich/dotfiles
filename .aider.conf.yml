@@ -19,15 +19,18 @@ alias:
     # - "main:openai/o4-mini"
     # - "main:github/Codestral-2501"
     # - "main:github/gpt-4o-mini"
-    - "main:gemini/gemini-2.5-flash"
-    - "weak:gemini/gemma-3-27b-it"
+    - "main:gemini/gemini-2.5-flash-lite"
+    # - "weak:gemini/gemini-2.0-flash-lite"
+    - "weak:cohere_chat/command-a-03-2025"
     - "gemini:gemini/gemini-2.5-flash"
     - "deepseek:openrouter/deepseek/deepseek-chat-v3-0324:free"
     - "codestral:github/Codestral-2501"
+    - "cohere:cohere_chat/command-a-03-2025"
 
 env-file: /home/oleg/.secrets/envs
 set-env:
     - HTTPS_PROXY=127.0.0.1:18080
+    - GOOGLE_GENAI_USE_VERTEXAI=false
 
 cache-prompts: true
 
