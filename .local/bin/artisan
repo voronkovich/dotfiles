@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+if [[ -x "${PWD}/vendor/bin/sail" ]]; then
+    SF_CONSOLE='artisan' SF_RUNNER='docker-compose exec -- laravel.test' sf "$@"
+else
+    SF_CONSOLE='artisan' sf "$@"
+fi
