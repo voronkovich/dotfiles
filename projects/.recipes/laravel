@@ -28,15 +28,15 @@ test-cmd: "symfony php artisan test"'
 
 install_pest() {
     # https://pestphp.com/docs/installation
-    composer remove --dev phpunit/phpunit &&
-    composer require pestphp/pest pestphp/pest-plugin-laravel --dev --with-all-dependencies &&
-    yes 'no' | vendor/bin/pest --init &&
+    symfony composer remove --dev phpunit/phpunit &&
+    symfony composer require pestphp/pest pestphp/pest-plugin-laravel --dev --with-all-dependencies &&
+    yes 'no' | symfony php vendor/bin/pest --init &&
     find tests -iname ExampleTest.php -delete
 }
 
 composer create-project laravel/laravel . &&
     rsync --recursive "${PROJECTS}/.templates/laravel/" ./ &&
-    rm bootstrap/cache/*.php && composer remove --dev laravel/sail &&
+    rm bootstrap/cache/*.php && symfony composer remove --dev laravel/sail &&
     install_pest &&
     npm install &&
     symfony_local "${PWD##*/}" > .symfony.local.yaml &&
