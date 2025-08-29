@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
 "${0:a:h}/laravel-daisyui" && \
-    composer require robsontenorio/mary && \
-    php artisan mary:install
+    symfony composer require robsontenorio/mary && \
+    symfony php artisan mary:install

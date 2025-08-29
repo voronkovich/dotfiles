@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
 "${0:a:h}/laravel" &&
-    composer require livewire/livewire &&
-    php artisan livewire:layout
+    symfony composer require livewire/livewire &&
+    symfony php artisan livewire:layout
