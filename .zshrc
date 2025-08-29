@@ -31,11 +31,15 @@ export OPENAI_BASE_URL="${GPT4FREE_API_BASE}/v1"
 # Nvim CodeCompanion
 export OPENAI_API_BASE="${GPT4FREE_API_BASE}"
 # gemini
-export GEMINI_MODEL=gemini-2.5-flash
+# export GEMINI_MODEL=gemini-2.5-flash-lite
+export GOOGLE_CLOUD_PROJECT=gen-lang-client-0273337949
 # }}}
 
 if [[ -d "${HOME}/.phive/.local/bin" ]]; then
     path=( "${HOME}/.phive/.local/bin" $path )
+fi
+if [[ -d "${HOME}/.bun/bin" ]]; then
+    path=( "${HOME}/.bun/bin" $path )
 fi
 if [[ -d "${HOME}/.luarocks/bin" ]]; then
     path=( "${HOME}/.luarocks/bin" $path )
@@ -238,6 +242,7 @@ alias a='artisan'
 alias lr='artisan'
 alias lrcs='lr php vendor/bin/pint --test'
 alias lrcsfix='lr php vendor/bin/pint'
+alias lrconfig='lr config:show'
 alias lrpint='lr php vendor/bin/pint'
 alias lrtest='APP_ENV=testing lr test'
 alias lrtestu='lrtest --testsuite=Unit'
@@ -358,6 +363,14 @@ chatgpt() {
     fi
 
     gpt4free --model o4-mini "${@}"
+}
+
+lrdep-artisan() {
+    artisan php vendor/bin/dep run "{{bin/php}} artisan $*"
+}
+
+lrdep-composer() {
+    artisan php vendor/bin/dep run "{{bin/composer}} $*"
 }
 # }}}
 
