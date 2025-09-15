@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec bunx @qwen-code/qwen-code "$@"
