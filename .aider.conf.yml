@@ -41,3 +41,5 @@ auto-commits: false
 gitignore: false
 
 aiderignore: /home/oleg/.config/git/ignore
+
+read: AGENTS.md
