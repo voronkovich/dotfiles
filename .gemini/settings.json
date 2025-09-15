@@ -1,5 +1,6 @@
 {
     "theme": "Default",
-    "selectedAuthType": "gemini-api-key",
-    "preferredEditor": "neovim"
+    "selectedAuthType": "oauth-personal",
+    "preferredEditor": "neovim",
+    "contextFileName": "AGENTS.md"
 }
