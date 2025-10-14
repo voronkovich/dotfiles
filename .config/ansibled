@@ -1,2 +1,2 @@
-ANSIBLED_VERSION=alpine
+ANSIBLED_IMAGE=willhallonline/ansible:alpine
 ANSIBLED_RUNTIME=podman
