@@ -50,6 +50,11 @@ fi
 if [[ -d "${HOME}/projects/ansibled/bin" ]]; then
     path=( "${HOME}/projects/ansibled/bin" $path )
 fi
+export PHPENV_ROOT="${HOME}/.phpenv"
+if [[ -d "${PHPENV_ROOT}" ]]; then
+  export PATH="${PHPENV_ROOT}/bin:${PATH}"
+  eval "$(phpenv init -)"
+fi
 
 # Plugins
 zinit ice pick"async.zsh" src"pure.zsh"
@@ -156,6 +161,7 @@ alias e="$EDITOR"
 alias epub='npx percollate epub'
 alias gpa='git remote | xargs -n1 git push'
 alias gs='git status -sb'
+alias gho='gh repo view --web'
 alias gpt4free-start='systemctl --user start gpt4free'
 alias gpt4free-restart='systemctl --user restart gpt4free'
 alias gpt4free-status='systemctl --user status gpt4free'
@@ -180,11 +186,17 @@ alias m='make'
 alias man='viman'
 alias pt='p -t'
 alias psysh='cpx psysh'
+alias takeout='cpx tightenco/takeout'
 alias phpspec='vendor/bin/phpspec'
 alias proxy-start="systemctl --user start opera-proxy"
 alias proxy-restart="systemctl --user restart opera-proxy"
 alias proxy-status="systemctl --user status opera-proxy"
 alias proxy-stop="systemctl --user stop opera-proxy"
+alias byedpi-start="systemctl --user start byedpi"
+alias byedpi-restart="systemctl --user restart byedpi"
+alias byedpi-status="systemctl --user status byedpi"
+alias byedpi-stop="systemctl --user stop byedpi"
+alias byedpi-config="${EDITOR} ~/.config/byedpi"
 alias mirror-site="httrack --footer '' --user-agent 'Mozilla/5.0 (compatible; SiteMirror)'"
 alias root='sudo -s'
 alias v="vagrant"
