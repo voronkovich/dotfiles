@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=%h/.local/bin/opera-proxy
+ExecStart=%h/.local/bin/opera-proxy -config %h/.config/opera-proxy
 Restart=on-failure
 
 [Install]
