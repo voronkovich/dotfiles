@@ -3,7 +3,7 @@
 export "$(grep GEMINI_API_KEY ${HOME}/.secrets/envs)"
 
 if [ "${1}" = 'mcp' ]; then
-    exec bunx @google/gemini-cli "$@"
+    exec bunx --silent --bun @google/gemini-cli "$@"
 fi
 
-exec bunx @google/gemini-cli --proxy=http://127.0.0.1:18080 "$@"
+HTTPS_PROXY=http://127.0.0.1:18080 exec bunx --silent --bun @google/gemini-cli "$@"
