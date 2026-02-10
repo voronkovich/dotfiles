@@ -98,6 +98,9 @@ compdef _symfony_complete composer
 compdef _symfony_complete php-cs-fixer
 compdef _symfony_complete phpstan
 compdef _symfony_complete phpspec
+if which symfony &>/dev/null; then
+    . <(symfony completion)
+fi
 
 zinit ice wait lucid
 zinit light voronkovich/symfony.plugin.zsh
