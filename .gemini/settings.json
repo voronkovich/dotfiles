@@ -1,6 +1,21 @@
 {
-    "theme": "Default",
-    "selectedAuthType": "oauth-personal",
+  "context": {
+    "fileName": "AGENTS.md"
+  },
+  "general": {
     "preferredEditor": "neovim",
-    "contextFileName": "AGENTS.md"
+    "sessionRetention": {
+      "enabled": true,
+      "maxAge": "30d",
+      "warningAcknowledged": true
+    }
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {
+    "theme": "Default"
+  }
 }
