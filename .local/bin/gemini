@@ -1,9 +1,11 @@
-#!/usr/bin/env sh
+#!/usr/bin/bash
+
+readonly pkg='@google/gemini-cli'
 
 export "$(grep GEMINI_API_KEY ${HOME}/.secrets/envs)"
 
 if [ "${1}" = 'mcp' ]; then
-    exec bunx --silent --bun @google/gemini-cli "$@"
+    exec npx -y "${pkg}" "$@"
 fi
 
-HTTPS_PROXY=http://127.0.0.1:18080 exec bunx --silent --bun @google/gemini-cli "$@"
+HTTPS_PROXY=http://127.0.0.1:18080 exec npx -y "${pkg}" "$@"

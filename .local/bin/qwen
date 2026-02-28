@@ -1,3 +1,5 @@
-#!/usr/bin/env sh
+#!/usr/bin/bash
 
-exec bunx @qwen-code/qwen-code "$@"
+readonly pkg='@qwen-code/qwen-code'
+
+exec npx -y "${pkg}" "$@"
