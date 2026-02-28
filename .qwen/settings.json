@@ -1,4 +1,11 @@
 {
-    "selectedAuthType": "qwen-oauth",
-    "contextFileName": "AGENTS.md"
+  "context": {
+    "fileName": "AGENTS.md"
+  },
+  "security": {
+    "auth": {
+      "selectedType": "qwen-oauth"
+    }
+  },
+  "$version": 3
 }
