@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+#
+# https://github.com/charmbracelet/crush
+#
+
+set -eua
+
+source "${HOME}/.secrets/envs"
+set +a
+
+if ! systemctl --user is-active --quiet opera-proxy.service; then
+    systemctl --user start opera-proxy.service
+fi
+
+HTTPS_PROXY=127.0.0.1:18080 exec /usr/bin/crush
