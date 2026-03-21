@@ -8,6 +8,14 @@
             "generated_with": false
         }
     },
+    "lsp": {
+        "php": {
+            "command": "intelephense",
+            "args": [
+                "--stdio"
+            ]
+        }
+    },
     "providers": {
         "kilo": {
             "type": "openai-compat",
