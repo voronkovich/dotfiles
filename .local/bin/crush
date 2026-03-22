@@ -9,11 +9,9 @@ set -eua
 source "${HOME}/.secrets/envs"
 set +a
 
-if ! systemctl --user is-active --quiet opera-proxy.service; then
-    systemctl --user start opera-proxy.service
-fi
+declare -r proxy="$(proxy-start)"
 
-export HTTP_PROXY=127.0.0.1:18080
-export HTTPS_PROXY=127.0.0.1:18080
+export HTTP_PROXY="${proxy}"
+export HTTPS_PROXY="${proxy}"
 
 exec /usr/bin/crush

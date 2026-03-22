@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+shopt -s lastpipe nullglob dotglob
+
+if ! systemctl --user is-active --quiet opera-proxy.service; then
+    systemctl --user start opera-proxy.service
+fi
+
+declare addr="$(grep bind-address ~/.config/opera-proxy)"
+
+echo "${addr/bind-address /http://}"

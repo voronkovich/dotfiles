@@ -190,7 +190,6 @@ alias pt='p -t'
 alias psysh='cpx psysh'
 alias takeout='cpx tightenco/takeout'
 alias phpspec='vendor/bin/phpspec'
-alias proxy-start="systemctl --user start opera-proxy"
 alias proxy-restart="systemctl --user restart opera-proxy"
 alias proxy-status="systemctl --user status opera-proxy"
 alias proxy-stop="systemctl --user stop opera-proxy"
