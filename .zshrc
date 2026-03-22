@@ -52,10 +52,9 @@ if [[ -d "${HOME}/projects/ansibled/bin" ]]; then
 fi
 export PHPENV_ROOT="${HOME}/.phpenv"
 if [[ -d "${PHPENV_ROOT}" ]]; then
-  export PATH="${PHPENV_ROOT}/bin:${PATH}"
-  eval "$(phpenv init -)"
+    path=( "${PHPENV_ROOT}/bin" $path)
+    eval "$(phpenv init -)"
 fi
-
 # Plugins
 zinit ice pick"async.zsh" src"pure.zsh"
 zinit light sindresorhus/pure
@@ -195,6 +194,7 @@ alias proxy-start="systemctl --user start opera-proxy"
 alias proxy-restart="systemctl --user restart opera-proxy"
 alias proxy-status="systemctl --user status opera-proxy"
 alias proxy-stop="systemctl --user stop opera-proxy"
+alias proxy-logs="journalctl --user -feu opera-proxy"
 alias byedpi-start="systemctl --user start byedpi"
 alias byedpi-restart="systemctl --user restart byedpi"
 alias byedpi-status="systemctl --user status byedpi"
@@ -226,7 +226,6 @@ alias ai='aider'
 alias aiask='aider --chat-mode ask'
 alias ailint='aider --lint'
 alias aitest='aider --test'
-alias aicommit='aider --commit'
 alias aiconf="${EDITOR} ${HOME}/.aider.conf.yml"
 alias chat='aider --chat-mode ask --model openai/o4-mini --no-git --input-history-file=/dev/null --chat-history-file=/dev/null'
 
@@ -423,5 +422,10 @@ export NVM_LAZY_LOAD=true
 HOME=${HOME:-'/home/oleg'}
 export PATH="$HOME/"'.platformsh/bin':"$PATH"
 if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi # END SNIPPET
+
+# Should be a the end of file
+if [[ -d "${HOME}/.local/bin" ]]; then
+    path=( "${HOME}/.local/bin" $path )
+fi
 
 # vim: foldmethod=marker
