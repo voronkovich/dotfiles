@@ -2,6 +2,7 @@ vim.g.codecompanion_auto_tool_mode = true
 
 return {
   "olimorris/codecompanion.nvim",
+  enabled = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",

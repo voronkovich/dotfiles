@@ -1,6 +1,7 @@
 return {
   {
     "Exafunction/codeium.nvim",
+    enabled = false,
     config = function()
       require("codeium").setup({
         enable_chat = true,

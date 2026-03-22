@@ -4,6 +4,7 @@ return {
     opts = {
       adapters = {
         "neotest-phpunit",
+        "neotest-pest",
       },
     },
     keys = {
@@ -61,6 +62,17 @@ return {
     },
     config = function(_, opts)
       require("neotest-phpunit")(opts)
+    end,
+  },
+  {
+    -- Pest
+    "V13Axel/neotest-pest",
+    dependencies = {
+      "nvim-neotest/neotest",
+    },
+    opts = {},
+    config = function(_, opts)
+      require("neotest-pest")(opts)
     end,
   },
 }

@@ -8,6 +8,7 @@ return {
         opts = {
           strict_types = true,
           final_classes = true,
+          priority = 1001,
           common = {
             enabled = true,
           },
@@ -15,6 +16,9 @@ return {
             enabled = true,
           },
           symfony = {
+            enabled = true,
+          },
+          laravel = {
             enabled = true,
           },
           doctrine = {
