@@ -1,11 +1,25 @@
 #!/usr/bin/bash
 
-readonly pkg='@google/gemini-cli'
+set -euo pipefail
+shopt -s lastpipe nullglob dotglob
 
-export "$(grep GEMINI_API_KEY ${HOME}/.secrets/envs)"
+export "$(grep GEMINI_API_KEY "${HOME}/.secrets/envs")"
 
-if [ "${1}" = 'mcp' ]; then
-    exec npx -y "${pkg}" "$@"
+declare -r pkg='@google/gemini-cli'
+
+if ! npm list -g "${pkg}" &>/dev/null; then
+    npm install -gy "${pkg}"
 fi
 
-HTTPS_PROXY=http://127.0.0.1:18080 exec npx -y "${pkg}" "$@"
+if [ "${1:-}" = 'mcp' ]; then
+    exec npx "${pkg}" "$@"
+fi
+
+if ! systemctl --user is-active --quiet opera-proxy.service; then
+    systemctl --user start opera-proxy.service
+fi
+
+export HTTP_PROXY=http://127.0.0.1:18080
+export HTTPS_PROXY=http://127.0.0.1:18080
+
+exec npx "${pkg}" "$@"
