@@ -13,4 +13,7 @@ if ! systemctl --user is-active --quiet opera-proxy.service; then
     systemctl --user start opera-proxy.service
 fi
 
-HTTPS_PROXY=127.0.0.1:18080 exec /usr/bin/crush
+export HTTP_PROXY=127.0.0.1:18080
+export HTTPS_PROXY=127.0.0.1:18080
+
+exec /usr/bin/crush
