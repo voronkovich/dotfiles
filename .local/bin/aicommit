@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+shopt -s lastpipe nullglob dotglob
+
+# AICOMMIT_CMD='qwen --prompt' aicommit
+declare -r cmd="${AICOMMIT_CMD:-gemini --prompt}"
+# https://www.conventionalcommits.org
+declare -r prompt='
+Generate a commit message in Conventional Commits format.
+Rules:
+- Format: <type>(<scope>): <description>
+- Types: feat, fix, docs, style, refactor, perf, test, chore
+- Description: imperative mood, lowercase, no period
+- Keep under 72 characters
+- Use scope only when relevant
+Analyze the diff and output only the commit message.'
+
+if git diff --cached --exit-code --quiet; then
+    echo "⚠️ No staged changes found."
+
+    if git diff --exit-code --quiet; then
+        echo "❌ No changes to commit at all." >&2
+        exit 1
+    fi
+
+    echo "📝 Found unstaged changes. Adding all changes..."
+    git add .
+    echo "✅ All changes staged."
+fi
+
+echo "🤖 Generating commit message..."
+declare -r commit_message="$(git diff --cached | ${cmd} "${prompt}" 2>/dev/null)"
+
+if [[ -z "${commit_message}" ]]; then
+    echo "❌ Failed to generate commit message." >&2
+    exit 1
+fi
+
+echo "✅ Generated commit message: ${commit_message}"
+git commit -m "${commit_message}"
