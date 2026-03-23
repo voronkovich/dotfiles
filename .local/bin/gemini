@@ -9,10 +9,6 @@ if ! npm list -g "${pkg}" &>/dev/null; then
     npm install -gy "${pkg}"
 fi
 
-declare -r proxy="$(proxy-start)"
-
-export HTTP_PROXY="${proxy}"
-export HTTPS_PROXY="${proxy}"
 export "$(grep GEMINI_API_KEY "${HOME}/.secrets/envs")"
 
-exec npx "${pkg}" "$@"
+exec proxy-run npx "${pkg}" "$@"

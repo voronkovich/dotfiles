@@ -9,9 +9,4 @@ set -eua
 source "${HOME}/.secrets/envs"
 set +a
 
-declare -r proxy="$(proxy-start)"
-
-export HTTP_PROXY="${proxy}"
-export HTTPS_PROXY="${proxy}"
-
-exec /usr/bin/crush
+exec proxy-run /usr/bin/crush "$@"
