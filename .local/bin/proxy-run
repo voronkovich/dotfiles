@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+set -euo pipefail
+shopt -s lastpipe nullglob dotglob
+
+declare -r proxy="$(proxy-start)"
+
+export HTTP_PROXY="${proxy}"
+export HTTPS_PROXY="${proxy}"
+
+exec "$@"
