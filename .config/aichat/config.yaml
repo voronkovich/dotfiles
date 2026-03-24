@@ -1,0 +1,50 @@
+# see https://github.com/sigoden/aichat/blob/main/config.example.yaml
+
+model: groq:openai/gpt-oss-120b
+clients:
+    # https://artificialanalysis.ai/providers/cohere
+    - type: cohere
+
+    # https://artificialanalysis.ai/providers/groq
+    - name: groq
+      type: openai-compatible
+
+    - name: zhipuai
+      type: openai-compatible
+
+    - name: zai
+      type: openai-compatible
+      api_base: https://api.z.ai/api/paas/v4
+      models:
+          # https://docs.z.ai/guides/llm/glm-4.7#glm-4-7-flash
+          - name: glm-4.7-flash
+            max_input_tokens: 200000
+            max_output_tokens: 128000
+            supports_reasoning: true
+            supports_function_calling: true
+          # https://docs.z.ai/guides/llm/glm-4.5#glm-4-5-flash
+          - name: glm-4.5-flash
+            max_input_tokens: 128000
+            max_output_tokens: 96000
+            supports_reasoning: true
+            supports_function_calling: true
+
+    - name: kilo
+      type: openai-compatible
+      api_base: https://api.kilo.ai/api/gateway
+      models:
+          - name: kilo-auto/free
+            max_input_tokens: 204800
+            max_output_tokens: 131072
+            supports_reasoning: true
+            supports_function_calling: true
+          - name: minimax/minimax-m2.5:free
+            max_input_tokens: 204800
+            max_output_tokens: 131072
+            supports_reasoning: true
+            supports_function_calling: true
+          - name: x-ai/grok-code-fast-1:optimized:free
+            max_input_tokens: 256000
+            max_output_tokens: 10000
+            supports_reasoning: true
+            supports_function_calling: true
