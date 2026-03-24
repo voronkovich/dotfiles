@@ -39,7 +39,7 @@ if git diff --cached --exit-code --quiet; then
 fi
 
 echo "🤖 Generating commit message..."
-declare -r commit_message="$(git diff --cached | ${cmd} "${prompt}" 2>/dev/null)"
+declare -r commit_message="$(git diff --cached | ${cmd} "${prompt}" 2>/dev/null | tail -n1)"
 
 if [[ -z "${commit_message}" ]]; then
     echo "❌ Failed to generate commit message." >&2
