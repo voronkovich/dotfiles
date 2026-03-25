@@ -1,26 +1,26 @@
 {
-  "context": {
-    "fileName": "AGENTS.md"
-  },
-  "general": {
-    "preferredEditor": "neovim",
-    "sessionRetention": {
-      "enabled": true,
-      "maxAge": "30d",
-      "warningAcknowledged": true
+    "context": {
+        "fileName": "AGENTS.md"
     },
-    "enableAutoUpdate": false
-  },
-  "security": {
-    "auth": {
-      "selectedType": "oauth-personal"
+    "general": {
+        "preferredEditor": "neovim",
+        "sessionRetention": {
+            "enabled": true,
+            "maxAge": "30d"
+        },
+        "enableAutoUpdate": false
+    },
+    "security": {
+        "auth": {
+            "selectedType": "oauth-personal"
+        }
+    },
+    "ui": {
+        "theme": "Default",
+        "useAlternateBuffer": true,
+        "errorVerbosity": "full"
+    },
+    "model": {
+        "name": "auto-gemini-2.5"
     }
-  },
-  "ui": {
-    "theme": "Default",
-    "useAlternateBuffer": true
-  },
-  "model": {
-    "name": "auto-gemini-2.5"
-  }
 }
