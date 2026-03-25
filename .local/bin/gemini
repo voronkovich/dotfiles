@@ -3,12 +3,9 @@
 set -euo pipefail
 shopt -s lastpipe nullglob dotglob
 
-declare -r pkg='@google/gemini-cli'
-
-if ! npm list -g "${pkg}" &>/dev/null; then
-    npm install -gy "${pkg}"
-fi
+declare -r pkg='@google/gemini-cli@0.35.0'
 
 export "$(grep GEMINI_API_KEY "${HOME}/.secrets/envs")"
+export NODE_NO_WARNINGS=1
 
 exec proxy-run npx "${pkg}" "$@"
