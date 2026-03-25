@@ -1,0 +1,146 @@
+# Aliases extracted from .zshrc
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias ack="ag"
+alias codemod=codemod2
+alias alpine='docker run -it --rm alpine'
+alias ubuntu='docker run -it --rm ubuntu'
+alias phpinsights='docker run -it --rm -v "$(pwd):/app" nunomaduro/phpinsights'
+alias phars='/bin/sh -c "cd ~/.phive && phive status"'
+alias d='docker'
+alias dc='docker compose'
+alias di='docker images'
+alias dop='docker compose stop'
+alias dp='docker ps'
+alias dpa='docker ps -a'
+alias dpl='docker ps -l'
+alias dr='docker run'
+alias drr='docker run --rm'
+alias dup='docker compose up'
+alias dupd='docker compose up -d'
+alias dub='docker compose up --build'
+alias devo='dev open'
+alias devm='dev mails'
+alias devd='dev dba'
+alias e="$EDITOR"
+alias epub='npx percollate epub'
+alias gpa='git remote | xargs -n1 git push'
+alias gs='git status -sb'
+alias gho='gh repo view --web'
+alias gpt4free-start='systemctl --user start gpt4free'
+alias gpt4free-restart='systemctl --user restart gpt4free'
+alias gpt4free-status='systemctl --user status gpt4free'
+alias gpt4free-stop='systemctl --user stop gpt4free'
+alias gpt4free-logs='journalctl --user -u gpt4free.service'
+alias gpt4free-chat='open http://localhost:1337/chat &>/dev/null'
+alias gpt4free-docs='open http://localhost:1337/docs &>/dev/null'
+alias procdev='foreman start --procfile=Procfile.dev'
+alias yt-dlp='uvx yt-dlp'
+alias youtube-dl='yt-dlp'
+alias ytmp3='youtube-dl -x --audio-format=mp3'
+alias ytm4a='youtube-dl -f m4a'
+alias ytlist='youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s"'
+
+alias signals='ps -o pid,comm,sig_pend,sig_catch,sig_block,sig_ignore'
+alias k='k -h'
+alias la='ls -lah'
+alias ll='ls -lG'
+alias localhost8080='sudo iptables -t nat -A OUTPUT -d localhost -p tcp --dport 80 -j REDIRECT --to-port 8080'
+alias ls='ls --color=auto'
+alias m='make'
+alias man='viman'
+alias pt='p -t'
+alias psysh='cpx psysh'
+alias takeout='cpx tightenco/takeout'
+alias phpspec='vendor/bin/phpspec'
+alias proxy-config="${EDITOR} ~/.config/opera-proxy"
+alias proxy-restart="systemctl --user restart opera-proxy"
+alias proxy-status="systemctl --user status opera-proxy"
+alias proxy-stop="systemctl --user stop opera-proxy"
+alias proxy-logs="journalctl --user -feu opera-proxy"
+alias byedpi-start="systemctl --user start byedpi"
+alias byedpi-restart="systemctl --user restart byedpi"
+alias byedpi-status="systemctl --user status byedpi"
+alias byedpi-stop="systemctl --user stop byedpi"
+alias byedpi-config="${EDITOR} ~/.config/byedpi"
+alias mirror-site="httrack --footer '' --user-agent 'Mozilla/5.0 (compatible; SiteMirror)'"
+alias root='sudo -s'
+alias v="vagrant"
+alias vb='virtualbox'
+alias vspec=~/.vim/plugged/vim-vspec/bin/vspec
+alias vusted='VUSTED_USE_LOCAL=1 vusted tests'
+alias zshrc-reload="source ~/.zshrc"
+alias zshrc="$EDITOR ~/.zshrc"
+alias zshrl="exec zsh"
+alias wp='wp-cli'
+alias woo='wp-cli wc'
+alias dsymfony='docker-compose exec php bin/console'
+alias dcomposer='docker-compose exec php composer'
+if which htop >/dev/null; then
+    alias top=htop
+fi
+if which batcat >/dev/null; then
+    alias cat=batcat
+    alias bat=batcat
+fi
+
+# AI
+alias aiconf="${EDITOR} ~/.config/aichat/config.yaml"
+alias oc=opencode
+alias occonf="${EDITOR} ~/.config/opencode/opencode.json"
+alias ge=gemini
+alias geconf="${EDITOR} ~/.gemini/settings.json"
+compdef _aichat ai
+
+# Symfony
+alias sfmc='sf make:controller'
+alias sfme='sf make:entity'
+alias sfmf='sf make:form'
+alias sfmt='sf make:test'
+alias sfmm='sf make:migration'
+alias sffl='sf doctrine:fixtures:load -n'
+alias sflf='sf doctrine:fixtures:load -n'
+alias sfdm='sf doctrine:migration:migrate'
+alias sfdql='sf doctrine:query:dql'
+alias sfsql='sf dbal:run-sql'
+alias sfo='sf open'
+alias sfom='sf mails'
+alias serve='symfony serve -d && symfony open:local'
+alias serve-stop='symfony server:stop'
+alias serve-restart='serve-stop && symfony serve -d'
+alias serve-status='symfony server:status'
+alias serve-open='symfony open:local'
+alias serve-log='symfony server:log'
+alias mails='open http://localhost:8025 &>/dev/null'
+
+# Laravel
+alias laravel='cpx laravel'
+alias a='artisan'
+alias lr='artisan'
+alias lrcs='lr php vendor/bin/pint --test'
+alias lrcsfix='lr php vendor/bin/pint'
+alias lrconfig='lr config:show'
+alias lrpint='lr php vendor/bin/pint'
+alias lrtest='APP_ENV=testing lr test'
+alias lrtestu='lrtest --testsuite=Unit'
+alias lrtestf='lrtest --testsuite=Feature'
+alias lrdep='lr php vendor/bin/dep'
+alias lrdeploy='lrdep deploy'
+alias lrroutes='lr route:list --except-vendor'
+alias lrfresh='lr migrate:fresh --seed'
+alias lrschema='lr schema:dump --path=/dev/stdout'
+alias lrtable='lr db:table'
+alias lro='lr open'
+alias lrt='lr composer dump-autoload --quiet --no-plugins; lr tinker'
+alias lrmm='lr make:model -mf'
+alias lrmmi='lr make:migration'
+alias lrmf='lr make:factory'
+alias lrmc='lr make:controller'
+alias lrmco='lr make:component'
+alias lrmcoi='lr make:component --inline'
+alias lrmcoa='lr make:component --view'
+alias lrmv='lr make:view'
+alias pint='lrpint'
+alias pest='APP_ENV=testing lr php vendor/bin/pest'

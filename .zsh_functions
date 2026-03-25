@@ -1,0 +1,69 @@
+# Shell functions extracted from .zshrc
+
+gac() {
+    git add -A;
+    git ls-files --deleted -z | xargs -r0 git rm;
+    if [[ $# -gt 0 ]]; then
+        git commit -m "$*"
+    else
+        git commit
+    fi
+}
+
+genpass() {
+    pwgen -0A ${1:-12} 1
+}
+
+fix-autocompletion() {
+    compaudit | xargs -I % chmod g-w "%";
+    compaudit | xargs -I % chown $USER "%";
+    rm ~/.zcompdump*;
+    compinit;
+}
+
+f() {
+    find -iname "*$1*" -print -o -name '.git' -prune | grep -i --color "$1"
+}
+
+smoke() {
+    wget \
+        --recursive \
+        --level 0 \
+        --spider \
+        --no-directories \
+        --no-verbose \
+        "${1:-localhost:8000}"
+}
+
+dsh() {
+    docker exec -it "${1:-$(docker ps -ql)}" "${2:-sh}"
+}
+compdef __docker_complete_running_containers dsh
+
+paths() {
+    local p; for p in "${path[@]}"; do; echo "${p}"; done;
+}
+
+fpaths() {
+    local p; for p in "${fpath[@]}"; do; echo "${p}"; done;
+}
+
+localrun() {
+    command ssh -R "80:localhost:${1:-8000}" nokey@localhost.run
+}
+
+gpt() {
+    if [[ "$#" -eq 0 ]]; then
+        set -- '-i'
+    fi
+
+    tgpt --provider sky "$@"
+}
+
+lrdep-artisan() {
+    artisan php vendor/bin/dep run "{{bin/php}} artisan $*"
+}
+
+lrdep-composer() {
+    artisan php vendor/bin/dep run "{{bin/composer}} $*"
+}
