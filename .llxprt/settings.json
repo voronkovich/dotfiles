@@ -1,0 +1,8 @@
+{
+  "ui": {
+    "theme": "Default"
+  },
+  "oauthEnabledProviders": {
+    "gemini": true
+  }
+}

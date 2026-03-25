@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+set -euo pipefail
+shopt -s lastpipe nullglob dotglob
+
+# set -a
+# source "${HOME}/.secrets/envs"
+# set +a
+
+exec proxy-run npx @vybestack/llxprt-code@0.10.0-nightly.260323.71e63cb4f "$@"
