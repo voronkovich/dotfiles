@@ -22,6 +22,9 @@ export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="${XDG_RUNTIME_DIR}/projects"
 export DOKKU_HOST=dokku
 export RIPGREP_CONFIG_PATH="${HOME}/.config/ripgrep"
+# export AICOMMIT_CMD='ai --model cohere:command-a-03-2025 --prompt'
+# export AICOMMIT_CMD='ai --model groq:groq/compound-mini --prompt'
+export AICOMMIT_CMD='ai --model groq:openai/gpt-oss-120b --prompt'
 
 # gpt4free
 export GPT4FREE_API_BASE=http://localhost:1337
@@ -190,6 +193,7 @@ alias pt='p -t'
 alias psysh='cpx psysh'
 alias takeout='cpx tightenco/takeout'
 alias phpspec='vendor/bin/phpspec'
+alias proxy-config="${EDITOR} ~/.config/opera-proxy"
 alias proxy-restart="systemctl --user restart opera-proxy"
 alias proxy-status="systemctl --user status opera-proxy"
 alias proxy-stop="systemctl --user stop opera-proxy"
@@ -220,13 +224,13 @@ if which batcat >/dev/null; then
     alias bat=batcat
 fi
 
-# Aider
-alias ai='aider'
-alias aiask='aider --chat-mode ask'
-alias ailint='aider --lint'
-alias aitest='aider --test'
-alias aiconf="${EDITOR} ${HOME}/.aider.conf.yml"
-alias chat='aider --chat-mode ask --model openai/o4-mini --no-git --input-history-file=/dev/null --chat-history-file=/dev/null'
+# AI
+alias aiconf="${EDITOR} ~/.config/aichat/config.yaml"
+alias oc=opencode
+alias occonf="${EDITOR} ~/.config/opencode/opencode.json"
+alias ge=gemini
+alias geconf="${EDITOR} ~/.gemini/settings.json"
+compdef _aichat ai
 
 # Symfony
 alias sfmc='sf make:controller'
@@ -339,14 +343,6 @@ fpaths() {
 
 localrun() {
     command ssh -R "80:localhost:${1:-8000}" nokey@localhost.run
-}
-
-aider() {
-    if ! systemctl --user is-active --quiet gpt4free.service; then
-        systemctl --user start gpt4free.service
-    fi
-
-    command aider "$@"
 }
 
 gpt() {
