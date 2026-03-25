@@ -1,0 +1,26 @@
+snippet base "Bash App" b
+set -euo pipefail
+shopt -s lastpipe nullglob dotglob
+
+declare -rx progname="\${0##*/}"
+
+main() {
+	${VISUAL}${0}
+}
+
+warn() {
+    echo "\${progname}: \$*" >&2
+}
+
+err() {
+    status=1
+    if [[ \${1} =~ ^[[:digit:]]+\$ ]]; then
+        status="\${1}" && shift
+    fi
+
+    warn "\$*"
+    exit "\${status}"
+}
+
+main "\$@"
+endsnippet

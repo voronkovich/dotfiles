@@ -1,4 +1,4 @@
-snippet prog "Programm" b
+snippet base "Programm" b
 #define _GNU_SOURCE
 
 #include <err.h>
@@ -13,6 +13,10 @@ main(int argc, char *argv[])
 
 	return EXIT_SUCCESS;
 }
+endsnippet
+
+snippet in "#include" b
+#include ${0}
 endsnippet
 
 snippet incl "Include local file" b
@@ -75,4 +79,8 @@ endsnippet
 
 snippet progname "program_invocation_short_name"
 program_invocation_short_name
+endsnippet
+
+snippet sz "sizeof()"
+sizeof(${1})
 endsnippet

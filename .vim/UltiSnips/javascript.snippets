@@ -111,6 +111,16 @@ fetch(${1})
 	.catch(console.log)
 endsnippet
 
+snippet fetchform "fetch()" b
+fetch(${1:form}.action, {
+	method: $1.method,
+	body: new URLSearchParams(new FormData($1)),
+})
+	.then(res => res.json())
+	.then(data => ${2})
+	.catch(console.log)
+endsnippet
+
 snippet promise "Promise"
 new Promise((resolve, reject) => {
 	${VISUAL}${0}
