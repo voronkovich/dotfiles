@@ -60,6 +60,15 @@ gpt() {
     tgpt --provider sky "$@"
 }
 
+expert() {
+    declare -r system="
+You are an expert in ${*:-programming}.
+Provide clear, accurate, and practical guidance on this topic.
+"
+
+    gpt --preprompt "${system}" -i
+}
+
 lrdep-artisan() {
     artisan php vendor/bin/dep run "{{bin/php}} artisan $*"
 }

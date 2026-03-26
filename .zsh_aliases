@@ -73,6 +73,8 @@ alias vspec=~/.vim/plugged/vim-vspec/bin/vspec
 alias vusted='VUSTED_USE_LOCAL=1 vusted tests'
 alias zshrc-reload="source ~/.zshrc"
 alias zshrc="$EDITOR ~/.zshrc"
+alias zshrc-aliases="$EDITOR ~/.zsh_aliases"
+alias zshrc-functions="$EDITOR ~/.zsh_functions"
 alias zshrl="exec zsh"
 alias wp='wp-cli'
 alias woo='wp-cli wc'
@@ -92,6 +94,13 @@ alias oc=opencode
 alias occonf="${EDITOR} ~/.config/opencode/opencode.json"
 alias ge=gemini
 alias geconf="${EDITOR} ~/.gemini/settings.json"
+alias expert-bash='expert Bash'
+alias expert-git='expert Git'
+alias expert-js='expert JavaScript, TypeScript'
+alias expert-tailwind='expert TailwindCSS'
+alias expert-laravel='expert Laravel'
+alias expert-php='expert PHP programming'
+alias expert-tallstack='expert TALL stack: TailwindCSS, Alpine.JS Laravel and Livewire'
 compdef _aichat ai
 
 # Symfony
