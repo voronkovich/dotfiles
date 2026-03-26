@@ -1,6 +1,6 @@
 # see https://github.com/sigoden/aichat/blob/main/config.example.yaml
 
-model: groq:openai/gpt-oss-120b
+model: groq:groq/compound
 clients:
     # https://artificialanalysis.ai/providers/cohere
     - type: cohere
