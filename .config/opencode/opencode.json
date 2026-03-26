@@ -1,5 +1,6 @@
 {
     "$schema": "https://opencode.ai/config.json",
     "model": "kilo/kilo-auto/free",
+    "small_model": "google/gemini-flash-lite-latest",
     "autoupdate": false,
 }
