@@ -1,5 +1,5 @@
 #!/usr/bin/bash
 
-readonly pkg='@qwen-code/qwen-code'
+readonly pkg='@qwen-code/qwen-code@0.13.0'
 
 exec npx -y "${pkg}" "$@"
