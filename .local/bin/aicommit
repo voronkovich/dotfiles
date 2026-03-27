@@ -30,7 +30,8 @@ fi
 
 if git diff --cached --exit-code --quiet; then
     echo "⚠️ No staged changes found. Adding all changes..."
-    git add .
+    git add -A
+    git ls-files --deleted -z | xargs -r0 git rm
 fi
 
 if git diff --cached --exit-code --quiet; then
