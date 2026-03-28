@@ -1,13 +1,5 @@
 #!/usr/bin/env zsh
 
-php() {
-    symfony php "$@"
-}
-
-composer() {
-    symfony composer "$@"
-}
-
 remove_sail() {
     # https://laravel.com/docs/sail
     rm bootstrap/cache/*.php && composer remove --dev laravel/sail
@@ -59,10 +51,6 @@ setup_aider() {
 test-cmd: "php artisan test"' > .aider.conf.yml
 }
 
-setup_doenv() {
-    echo "\nSF_RUNNER=local" >> .env
-}
-
 symfony composer create-project laravel/laravel . &&
     rsync --recursive "${PROJECTS}/.templates/laravel/" ./ &&
     remove_sail &&
@@ -71,6 +59,5 @@ symfony composer create-project laravel/laravel . &&
     install_boost &&
     setup_php_version &&
     setup_symfony_cli &&
-    setup_doenv &&
     setup_aider &&
     git init && git add . && git commit -m 'Initial commit' >/dev/null
