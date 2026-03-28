@@ -46,5 +46,6 @@ composer create-project laravel/laravel . &&
     install_boost &&
     npm install &&
     symfony_local "${PWD##*/}" > .symfony.local.yaml &&
+    echo "\nSYMFONY_CONSOLE_PATH=artisan" >> .env &&
     aider_conf > .aider.conf.yml &&
     git init && git add . && git commit -m 'Initial commit' >/dev/null
