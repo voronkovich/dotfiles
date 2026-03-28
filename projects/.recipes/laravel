@@ -1,11 +1,44 @@
 #!/usr/bin/env zsh
 
-symfony_local() {
-	echo -n "# https://symfony.com/doc/current/setup/symfony_server.html#configuration-file
+php() {
+    symfony php "$@"
+}
+
+composer() {
+    symfony composer "$@"
+}
+
+remove_sail() {
+    # https://laravel.com/docs/sail
+    rm bootstrap/cache/*.php && composer remove --dev laravel/sail
+}
+
+install_pest() {
+    # https://pestphp.com/docs/installation
+    composer remove --dev phpunit/phpunit &&
+        composer require pestphp/pest pestphp/pest-plugin-laravel --dev --with-all-dependencies &&
+        yes 'no' | php vendor/bin/pest --init &&
+        find tests -iname ExampleTest.php -delete
+}
+
+install_boost() {
+    # https://laravel.com/docs/boost#installation
+    composer require --dev laravel/boost &&
+        php artisan boost:install -n
+}
+
+setup_php_version() {
+    php -v | read php version etc
+
+    echo "${version%.*}" > .php-version
+}
+
+setup_symfony_cli() {
+	echo -n "# https://symfony.com/doc/current/setup/symfony_cli.html#advanced-configuration
 
 # proxy:
 #   domains:
-#     - '${1}'
+#     - '${PWD##*/}'
 
 workers:
   # Auto start Docker compose when starting server
@@ -15,37 +48,29 @@ workers:
   #    cmd: ['mailpit']
 
   artisan:queue:
-    cmd: ['symfony', 'php', 'artisan',  'queue:listen', '--tries=1']
+    cmd: ['php', 'artisan',  'queue:listen', '--tries=1']
 
   vite:
-    cmd: ['npm', 'run', 'dev']"
+    cmd: ['npm', 'run', 'dev']" > .symfony.local.yaml
 }
 
-aider_conf() {
-    echo -n 'lint-cmd: "symfony php vendor/bin/pint --test"
-test-cmd: "symfony php artisan test"'
+setup_aider() {
+    echo -n 'lint-cmd: "php vendor/bin/pint --test"
+test-cmd: "php artisan test"' > .aider.conf.yml
 }
 
-install_pest() {
-    # https://pestphp.com/docs/installation
-    symfony composer remove --dev phpunit/phpunit &&
-        symfony composer require pestphp/pest pestphp/pest-plugin-laravel --dev --with-all-dependencies &&
-        yes 'no' | symfony php vendor/bin/pest --init &&
-        find tests -iname ExampleTest.php -delete
+setup_doenv() {
+    echo "\nSF_RUNNER=local" >> .env
 }
 
-install_boost() {
-    symfony composer require --dev laravel/boost &&
-        symfony php artisan boost:install -n
-}
-
-composer create-project laravel/laravel . &&
+symfony composer create-project laravel/laravel . &&
     rsync --recursive "${PROJECTS}/.templates/laravel/" ./ &&
-    rm bootstrap/cache/*.php && symfony composer remove --dev laravel/sail &&
+    remove_sail &&
+    npm install &&
     install_pest &&
     install_boost &&
-    npm install &&
-    symfony_local "${PWD##*/}" > .symfony.local.yaml &&
-    echo "\nSYMFONY_CONSOLE_PATH=artisan" >> .env &&
-    aider_conf > .aider.conf.yml &&
+    setup_php_version &&
+    setup_symfony_cli &&
+    setup_doenv &&
+    setup_aider &&
     git init && git add . && git commit -m 'Initial commit' >/dev/null
