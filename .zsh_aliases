@@ -91,7 +91,7 @@ fi
 # AI
 alias aiconf="${EDITOR} ~/.config/aichat/config.yaml"
 alias oc=opencode
-alias occonf="${EDITOR} ~/.config/opencode/opencode.json"
+alias occonf="${EDITOR} ~/.config/opencode/opencode.jsonc"
 alias ge=gemini
 alias geconf="${EDITOR} ~/.gemini/settings.json"
 alias expert-bash='expert Bash'
