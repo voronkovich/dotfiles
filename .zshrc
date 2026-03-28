@@ -66,9 +66,6 @@ if which ruby >/dev/null && which gem >/dev/null; then
     path+=( $(ruby -r rubygems -e 'puts "#{Gem.dir}/bin #{Gem.user_dir}/bin"') )
 fi
 
-# Platform.sh
-export PATH="$HOME/"'.platformsh/bin':"$PATH"
-
 # Local user binaries
 if [[ -d "${HOME}/.local/bin" ]]; then
     path=( "${HOME}/.local/bin" $path )
@@ -180,9 +177,6 @@ MAGIC_ENTER_OTHER_COMMAND='k'
 # ------------------------------------------------------------------------------
 # TOOL-SPECIFIC CONFIGURATIONS
 # ------------------------------------------------------------------------------
-# phpbrew
-[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
-
 # fzf
 if which fzf >/dev/null; then
     source <(fzf --zsh)
@@ -201,6 +195,3 @@ fi
 # nvm (the zinit plugin is for loading, this is for direct use)
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-# Platform.sh
-if [ -f "$HOME/"'.platformsh/shell-config.rc' ]; then . "$HOME/"'.platformsh/shell-config.rc'; fi
