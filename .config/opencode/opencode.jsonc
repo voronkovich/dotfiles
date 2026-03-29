@@ -129,11 +129,12 @@
     "context-mode": {
       "type": "local",
       "command": [
-        "context-mode"
+        "bun",
+        "{env:HOME}/.cache/opencode/node_modules/context-mode/cli.bundle.mjs"
       ]
     }
   },
   "plugin": [
-    "context-mode"
+    "context-mode@1.0.54"
   ]
 }
