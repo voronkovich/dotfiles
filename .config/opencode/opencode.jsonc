@@ -125,6 +125,15 @@
       "headers": {
         "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
       }
+    },
+    "context-mode": {
+      "type": "local",
+      "command": [
+        "context-mode"
+      ]
     }
-  }
+  },
+  "plugin": [
+    "context-mode"
+  ]
 }
