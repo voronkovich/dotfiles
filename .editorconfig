@@ -13,5 +13,11 @@ trim_trailing_whitespace = true
 [*.{js,ts,json,jsonc}]
 indent_size = 2
 
+[*.go]
+indent_style = tab
+
+[Makefile]
+indent_style = tab
+
 [**/.github/workflows/*.{yml,yaml}]
 indent_size = 2
