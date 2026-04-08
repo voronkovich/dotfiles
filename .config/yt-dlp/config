@@ -1,0 +1,6 @@
+-o '%(title)s.%(ext)s'
+-f bestvideo[height<=?1080]+bestaudio/best
+-t mp4
+--js-runtimes bun:/home/linuxbrew/.linuxbrew/bin/bun
+--remote-components ejs:github
+--proxy socks5://127.0.0.1:1080
