@@ -1,0 +1,2 @@
+workers:
+    docker_compose: ~

@@ -1,0 +1,50 @@
+#!/usr/bin/env zsh
+
+declare -r joomla_version="${JOOMLA_VERSION:-}"
+
+joomla_download() {
+    which joomla-download &>/dev/null && {
+        joomla-download . "${joomla_version}" && return
+        return $?
+    }
+
+    declare version="${joomla_version:-latest}"
+    if [[ "${version}" == 'latest' ]]; then
+        declare -r url="$(curl -sL -o /dev/null -w %{url_effective} 'https://github.com/joomla/joomla-cms/releases/latest')"
+        version="${url##*/}"
+    fi
+
+    declare -r download_url="https://github.com/joomla/joomla-cms/releases/download/${version}/Joomla_${version}-Stable-Full_Package.tar.gz"
+
+    curl -sL "${download_url}" | tar -xzv -C .
+}
+
+joomla_install() {
+    docker compose up --wait &&
+    symfony php installation/joomla.php install \
+        --no-interaction \
+        --site-name='App' \
+        --admin-user=admin \
+        --admin-username=admin \
+        --admin-password=adminpassword \
+        --admin-email='admin@admin' \
+        --db-type=mysqli \
+        --db-host=127.0.0.1 \
+        --db-name=app \
+        --db-user=app \
+        --db-pass=app
+}
+
+joomla_configure() {
+    symfony php cli/joomla.php user:reset-password --username admin --password admin &&
+    symfony php cli/joomla.php config:set \
+        sef_rewrite=true \
+        debug=true \
+        error_reporting=maximum
+}
+
+rsync --recursive "${PROJECTS}/.templates/joomla/" ./ &&
+    joomla_download &&
+    joomla_install &&
+    joomla_configure &&
+    symfony serve -d --open

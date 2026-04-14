@@ -1,0 +1,17 @@
+services:
+    database:
+        image: mysql:8
+        ports: ["3306:3306"]
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: yes
+            MYSQL_USER: app
+            MYSQL_PASSWORD: app
+            MYSQL_DATABASE: app
+        volumes:
+            - ./var/mysql:/var/lib/mysql
+        healthcheck:
+            test: ["CMD-SHELL", "mysql -u root -e 'USE app' || exit 1"]
+            interval: 10s
+            timeout: 5s
+            retries: 5
+            start_period: 30s

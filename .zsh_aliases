@@ -87,6 +87,13 @@ if which batcat >/dev/null; then
     alias bat=batcat
 fi
 
+# Joomla
+alias joomla='symfony php cli/joomla.php'
+alias joomla-admin='symfony open:local --path=/administrator/index.php'
+alias joomla-mysql='docker compose exec database mysql app'
+alias joomla-mysqldump='docker compose exec database mysqldump app'
+alias joomla-db='usql mysql://app:app@127.0.0.1:3306/app'
+
 # AI
 alias aiconf="${EDITOR} ~/.config/aichat/config.yaml"
 alias oc=opencode
