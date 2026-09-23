@@ -7,5 +7,4 @@ set -a
 source "${HOME}/.secrets/envs"
 set +a
 
-# exec bunx --bun opencode-ai@v1.18.32 "$@"
-npx @opencode/cli@2.0.15 "$@"
+exec bunx --bun opencode-ai@v1.18.32 "$@"
