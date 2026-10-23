@@ -5,18 +5,20 @@
 * https://aihubmix.com/models
 * https://kilo.ai/docs/code-with-ai/agents/free-and-budget-models#kilo-gateway-free-models
 * https://opencode.ai/docs/zen/#pricing
+* https://docs.z.ai/guides/overview/pricing#text-models-2
 */
 {
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": false,
-  "model": "zai/glm-4.7-flash",
-  "small_model": "zai/glm-4.5-flash",
+  "model": "zai/glm-4.5-flash",
+  "small_model": "qwen3.6-fp8-noreason",
   "enabled_providers": [
     "aihubmix",
     "kilo",
     "neuraldeep",
     "neurly",
     "opencode",
+    "teamorouter",
     "zai",
   ],
   "provider": {
@@ -36,16 +38,33 @@
       ]
     },
     "neuraldeep": {
-      "name": "Neuraldeep",
+      "name": "NeuralDeep",
       "options": {
         "baseURL": "https://api.neuraldeep.ru/v1",
         "apiKey": "{env:NEURALDEEP_API_KEY}",
       },
       "models": {
-        "qwen3.8-27b": {
-          "name": "qwen3.8-27b",
-          "attachment": false,
-          "reasoning": true,
+        "qwen3.6-fp8": {
+          // https://neuraldeep.ru/models/qwen3-6-fp8
+          "name": "NeuralDeep: Qwen 3.6 FP8",
+          "attachment": true,
+          "reasoning": false,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 46112,
+            "output": 131072
+          },
+          "cost": {
+            "input": 0,
+            "output": 0,
+          }
+        },
+        "qwen3.6-fp8-noreason": {
+          // https://neuraldeep.ru/models/qwen3-6-fp8-noreason
+          "name": "NeuralDeep: Qwen 3.6 FP8 No Reason",
+          "attachment": true,
+          "reasoning": false,
           "temperature": true,
           "tool_call": true,
           "limit": {
@@ -68,8 +87,40 @@
       "models": {
         "deepseek/deepseek-v4-flash": {
           // https://neurly.ru/models/deepseek/deepseek-v4-flash
-          "name": "DeepSeek: DeepSeek V4 Flash",
+          "name": "Neurly: DeepSeek V4 Flash",
           "attachment": false,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 384000,
+          },
+          "cost": {
+            "input": 0,
+            "output": 0,
+          }
+        },
+        "deepseek/deepseek-v4-flash-0731": {
+          // https: //neurly.ru/models/deepseek/deepseek-v4-flash-0731
+          "name": "Neurly: DeepSeek V4 Flash 0731",
+          "attachment": false,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 384000,
+          },
+          "cost": {
+            "input": 0,
+            "output": 0,
+          }
+        },
+        "openai/gpt-5-nano": {
+          // https: //neurly.ru/models/deepseek/deepseek-v4-flash-0731
+          "name": "Neurly: GPT-5 Nano",
+          "attachment": true,
           "reasoning": true,
           "temperature": true,
           "tool_call": true,
@@ -84,7 +135,7 @@
         },
         "z-ai/glm-5.3-flash": {
           // https://neurly.ru/models/z-ai/glm-5.3-flash
-          "name": "Z.ai: GLM 5.3 Flash",
+          "name": "Neurly: GLM 5.3 Flash",
           "attachment": true,
           "reasoning": true,
           "temperature": true,
@@ -99,6 +150,40 @@
           }
         },
       },
+    },
+    "teamorouter": {
+      "name": "TeamoRouter",
+      "options": {
+        "baseURL": "https://api.teamorouter.com/v1",
+        "apiKey": "{env:TEAMOROUTER_API_KEY}",
+      },
+      "models": {
+        "deepseek-flash-free": {
+          // https://teamorouter.com/models/deepseek-flash-free
+          "name": "TeamoRouter: DeepSeek Flash Free",
+          "attachment": false,
+          "reasoning": true,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 384000,
+          },
+          "cost": {
+            "input": 0,
+            "output": 0,
+          }
+        }
+      }
+    },
+    "zai": {
+      "options": {
+        "apiKey": "{env:ZAI_API_KEY}",
+      },
+      "whitelist": [
+        "glm-4.7-flash",
+        "glm-4.5-flash",
+      ]
     },
   },
   "mcp": {
@@ -134,6 +219,6 @@
     },
   },
   "plugin": [
-    "context-mode@1.0.169"
+    // "context-mode@1.0.169"
   ]
 }
