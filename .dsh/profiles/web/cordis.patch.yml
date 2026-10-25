@@ -5,6 +5,9 @@
   name: "@deepseek-ai/dsh-client-ui-settings-general"
   config:
     welcomeNoticeVersion: 2026-09-28.1
+- id: session-title-llm
+  name: "@deepseek-ai/dsh-session-title-first-prompt-llm"
+  disabled: true
 - id: agent-default-model
   name: "@deepseek-ai/dsh-agent-default-model"
   config:
