@@ -163,7 +163,7 @@ zinit light voronkovich/phpunit.plugin.zsh
 # Oh My Zsh Snippets
 zinit snippet OMZP::extract
 zinit snippet OMZP::git
-zinit snippet OMZP::github
+zinit snippet OMZP::gh
 zinit snippet OMZP::npm
 zinit snippet OMZP::vagrant
 zinit snippet OMZP::yarn
