@@ -1,0 +1,78 @@
+# Your patch layer for this dsh profile, applied after every bundle layer:
+# a top-level YAML array of loader patch entries (id-targeted config
+# overrides, disables, and insert lists; `!!js` expressions allowed).
+- id: ui-settings-general
+  name: "@deepseek-ai/dsh-client-ui-settings-general"
+  config:
+    welcomeNoticeVersion: 2026-09-28.1
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: neuraldeep
+    model: qwen3.6-fp8
+- id: llm-pi-ai
+  name: "@deepseek-ai/dsh-llm-pi-ai"
+  config:
+    providers:
+      neuraldeep:
+        displayName: NeuralDeep
+        baseURL: https://api.neuraldeep.ru/v1
+        api: openai-responses
+        apiKeyEnv: NEURALDEEP_API_KEY
+        models:
+          # https://hub.neuraldeep.ru/models/qwen3-6-fp8
+          - id: qwen3.6-fp8
+            name: "NeuralDeep: Qwen 3.6 FP8"
+            contextWindow: 46112
+            maxTokens: 235929
+            input:
+              - text
+              - image
+          # https://hub.neuraldeep.ru/models/qwen3-6-fp8-noreason
+          - id: qwen3.6-fp8-noreason
+            name: "NeuralDeep: Qwen 3.6 FP8 noreason"
+            contextWindow: 46112
+            maxTokens: 235929
+            input:
+              - text
+              - image
+      neurly:
+        displayName: Neurly
+        baseURL: https://neurly.ru/v1
+        api: openai-responses
+        apiKeyEnv: NEURLY_API_KEY
+        models:
+          # https://neurly.ru/models/deepseek/deepseek-v4-flash
+          - id: deepseek/deepseek-v4-flash
+            name: "Neurly: DeepSeek V4 Flash"
+            contextWindow: 1048576
+            maxTokens: 384000
+          # https://neurly.ru/models/deepseek/deepseek-v4-flash-0731
+          - id: deepseek/deepseek-v4-flash-0731
+            name: "Neurly: DeepSeek V4 Flash 0731"
+            contextWindow: 1048576
+            maxTokens: 384000
+          # https://neurly.ru/models/deepseek/deepseek-v4.1-flash
+          - id: deepseek/deepseek-v4.1-flash
+            name: "Neurly: DeepSeek V4.1 Flash"
+            contextWindow: 1048576
+            maxTokens: 384000
+            input:
+              - text
+              - image
+          # https://neurly.ru/models/deepseek/deepseek-v4.1-flash-1017
+          - id: deepseek/deepseek-v4.1-flash-1017
+            name: "Neurly: DeepSeek V4.1 Flash 1017"
+            contextWindow: 1048576
+            maxTokens: 384000
+            input:
+              - text
+              - image
+          # https://neurly.ru/models/qwen/qwen3.7-flash
+          - id: qwen/qwen3.7-flash
+            name: "Neurly: Qwen 3.7 Flash"
+            contextWindow: 1000000
+            maxTokens: 65536
+            input:
+              - text
+              - image
