@@ -1,6 +1,7 @@
 [tools]
 node = "24"
 php = "8.5"
+uv = "latest"
 
 "npm:@deepseek-ai/dsh" = "0.2.1-rc.2"
 "npm:@deepseek-harness-tui/dsh-tui" = "0.17.0"
