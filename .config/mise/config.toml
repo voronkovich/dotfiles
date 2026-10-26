@@ -5,6 +5,49 @@ php = "8.5"
 [bootstrap.plugins]
 php = "https://github.com/verzly/mise-php#latest"
 
+[bootstrap.packages]
+# Tools
+"apt:bat" = "latest"
+"apt:curl" = "latest"
+"apt:fd-find" = "latest"
+"apt:fzf" = "latest"
+"apt:git" = "latest"
+"apt:htop" = "latest"
+"apt:neovim" = "latest"
+"apt:ripgrep" = "latest"
+
+# Build tools
+"apt:autoconf" = "latest"
+"apt:bison" = "latest"
+"apt:build-essential" = "latest"
+"apt:gettext" = "latest"
+"apt:pkg-config" = "latest"
+"apt:re2c" = "latest"
+
+# PHP build deps
+# https://github.com/verzly/mise-php
+"apt:libbz2-dev" = "latest"
+"apt:libcurl4-openssl-dev" = "latest"
+"apt:libedit-dev" = "latest"
+"apt:libfreetype-dev" = "latest"
+"apt:libgd-dev" = "latest"
+"apt:libgmp-dev" = "latest"
+"apt:libicu-dev" = "latest"
+"apt:libjpeg-dev" = "latest"
+"apt:libmagic-dev" = "latest"
+"apt:libonig-dev" = "latest"
+"apt:libpng-dev" = "latest"
+"apt:libpq-dev" = "latest"
+"apt:libsodium-dev" = "latest"
+"apt:libsqlite3-dev" = "latest"
+"apt:libssl-dev" = "latest"
+"apt:libwebp-dev" = "latest"
+"apt:libxml2-dev" = "latest"
+"apt:libxslt1-dev" = "latest"
+"apt:libzip-dev" = "latest"
+"apt:libzstd-dev" = "latest"
+"apt:zlib1g-dev" = "latest"
+
 [env._.php]
 # https://github.com/verzly/mise-php#skip-dependency-installation
 skip_deps = true
