@@ -4,35 +4,29 @@ My dotfiles.
 
 ## Installation
 
-1. Install [yadm](https://thelocehiliosan.github.io/yadm/);
+1. Install required tools:
 
    ```sh
-   sudo apt install -y git yadm
+   sudo apt install -y curl git yadm
    ```
 
-2. Clone this repository:
+2. Clone this repository using [yadm](https://yadm.io):
 
    ```sh
    yadm clone git@github.com:voronkovich/dotfiles.git
    ```
 
-3. Install [zsh](https://www.zsh.org/) and [tmux](https://github.com/tmux/tmux)
+3. Install [mise](https://www.zsh.org):
 
    ```sh
-   sudo apt install zsh tmux
+   curl -fsSL https://mise.run | sh
    ```
 
-4. Make tmux default shell
+4. Run bootstrap:
 
    ```sh
-   chsh -s "$(which tmux)"
+   mise bootstrap
    ```
-
-## Utilities
-
-```sh
-sudo apt install curl htop bat ripgrep fzf
-```
 
 ## License
 
