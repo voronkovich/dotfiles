@@ -17,6 +17,7 @@ php = "https://github.com/verzly/mise-php#latest"
 # Tools
 "apt:bat" = "latest"
 "apt:curl" = "latest"
+"apt:extrepo" = "latest"
 "apt:fd-find" = "latest"
 "apt:fzf" = "latest"
 "apt:git" = "latest"
