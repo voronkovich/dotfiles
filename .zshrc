@@ -55,12 +55,6 @@ if [[ -d "${HOME}/projects/ansibled/bin" ]]; then
     path=( "${HOME}/projects/ansibled/bin" $path )
 fi
 
-# phpenv
-if [[ -d "${PHPENV_ROOT}" ]]; then
-    path=( "${PHPENV_ROOT}/bin" $path)
-    eval "$(phpenv init -)"
-fi
-
 # Ruby & Ruby Gems
 if which ruby >/dev/null && which gem >/dev/null; then
     path+=( $(ruby -r rubygems -e 'puts "#{Gem.dir}/bin #{Gem.user_dir}/bin"') )
@@ -113,10 +107,6 @@ zinit light molovo/revolver
 # ZUnit
 zinit ice as"command" from"gh-r"
 zinit light zunit-zsh/zunit
-
-# NVM
-zinit ice wait lucid
-zinit light lukechilds/zsh-nvm
 
 # Completions
 zinit ice wait lucid
@@ -171,6 +161,7 @@ zinit snippet OMZP::brew
 zinit snippet OMZP::composer
 zinit snippet OMZP::fancy-ctrl-z
 zinit snippet OMZP::magic-enter
+zinit snippet OMZP::mise
 MAGIC_ENTER_GIT_COMMAND='k'
 MAGIC_ENTER_OTHER_COMMAND='k'
 
@@ -191,7 +182,3 @@ fi
 if which pack >/dev/null; then
     . $(pack completion --shell zsh)
 fi
-
-# nvm (the zinit plugin is for loading, this is for direct use)
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"

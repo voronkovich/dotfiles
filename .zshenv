@@ -11,11 +11,3 @@ export AICOMMIT_CMD='ai --model groq:openai/gpt-oss-120b --prompt'
 export AICOMMIT_CMD='ai --model groq:llama-3.3-70b-versatile --prompt'
 
 export GOOGLE_CLOUD_PROJECT=gen-lang-client-0273337949
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-export NVM_COMPLETION=true
-export NVM_LAZY_LOAD=true
-
-# phpenv
-export PHPENV_ROOT="${HOME}/.phpenv"

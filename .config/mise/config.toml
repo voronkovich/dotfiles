@@ -1,0 +1,10 @@
+[tools]
+node = "24"
+php = "8.5"
+
+[bootstrap.plugins]
+php = "https://github.com/verzly/mise-php#latest"
+
+[env._.php]
+# https://github.com/verzly/mise-php#skip-dependency-installation
+skip_deps = true
