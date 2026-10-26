@@ -7,6 +7,9 @@ uv = "latest"
 "npm:@deepseek-harness-tui/dsh-tui" = "0.17.0"
 "npm:pnpm" = "latest"
 
+[bootstrap.user]
+login_shell = "tmux"
+
 [bootstrap.plugins]
 php = "https://github.com/verzly/mise-php#latest"
 
@@ -20,6 +23,8 @@ php = "https://github.com/verzly/mise-php#latest"
 "apt:htop" = "latest"
 "apt:neovim" = "latest"
 "apt:ripgrep" = "latest"
+"apt:tmux" = "latest"
+"apt:zsh" = "latest"
 "brew:bun" = "latest"
 "brew:symfony-cli/tap/symfony-cli" = "latest"
 
