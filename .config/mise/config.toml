@@ -27,6 +27,7 @@ php = "https://github.com/verzly/mise-php#latest"
 "apt:zsh" = "latest"
 "brew:bun" = "latest"
 "brew:symfony-cli/tap/symfony-cli" = "latest"
+"brew:transcrypt" = "latest"
 
 # Build tools
 "apt:autoconf" = "latest"
