@@ -1,0 +1,10 @@
+[Unit]
+Description=Restore screen brightness from ~/.config/brightness
+ConditionPathExists=%h/.config/brightness
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'exec /usr/bin/brightnessctl set "$(cat "$HOME/.config/brightness")"'
+
+[Install]
+WantedBy=default.target

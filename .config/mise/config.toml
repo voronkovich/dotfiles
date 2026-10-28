@@ -16,6 +16,7 @@ php = "https://github.com/verzly/mise-php#latest"
 [bootstrap.packages]
 # Tools
 "apt:bat" = "latest"
+"apt:brightnessctl" = "latest"
 "apt:curl" = "latest"
 "apt:extrepo" = "latest"
 "apt:fd-find" = "latest"
@@ -62,6 +63,14 @@ php = "https://github.com/verzly/mise-php#latest"
 "apt:libzstd-dev" = "latest"
 "apt:zlib1g-dev" = "latest"
 
+[bootstrap.hooks]
+final = """
+sudo usermod -aG video ${USER};
+sudo systemctl mask iio-sensor-proxy.service;
+systemctl --user enable --now brightness;
+"""
+
 [env._.php]
 # https://github.com/verzly/mise-php#skip-dependency-installation
 skip_deps = true
+
