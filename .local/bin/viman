@@ -1,3 +1,0 @@
-#!/bin/sh
-
-vim -Rc "Man ${1} ${2}" -c 'silent only'

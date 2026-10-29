@@ -2,7 +2,7 @@
 
 export LC_ALL=en_US.UTF-8
 export EDITOR=nvim
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+export MANPAGER='nvim +Man!'
 export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="${XDG_RUNTIME_DIR}/projects"
 export DOKKU_HOST=dokku
