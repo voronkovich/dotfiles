@@ -28,6 +28,20 @@ My dotfiles.
    mise bootstrap
    ```
 
+## Troubleshooting
+
+### iMac 2017 21.5-inch 4K + Ubuntu 26.04
+
+Fix brightness:
+
+```sh
+sudo systemctl mask iio-sensor-proxy.service
+```
+
+Fix sound:
+
+- [davidjo/snd_hda_macbookpro](https://github.com/davidjo/snd_hda_macbookpro)
+
 ## License
 
 Copyright (c) Voronkovich Oleg. Distributed under the MIT.
