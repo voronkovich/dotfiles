@@ -6,6 +6,7 @@ return {
     -- @type lspconfig.options
     servers = {
       phpactor = {
+        enabled = false,
         root_dir = function(pattern)
           local cwd = vim.loop.cwd()
           local root = util.root_pattern("composer.json", ".git", "index.php")(pattern)
@@ -14,6 +15,7 @@ return {
           return util.path.is_descendant(cwd, root) and cwd or root
         end,
       },
+      phpantom_lsp = {},
     },
   },
 }
