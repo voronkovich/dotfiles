@@ -24,6 +24,8 @@ php = "https://github.com/verzly/mise-php#latest"
 "apt:git" = "latest"
 "apt:htop" = "latest"
 "apt:neovim" = "latest"
+"apt:podman" = "latest"
+"apt:pwgen" = "latest"
 "apt:ripgrep" = "latest"
 "apt:tmux" = "latest"
 "apt:zsh" = "latest"
@@ -63,12 +65,17 @@ php = "https://github.com/verzly/mise-php#latest"
 "apt:libzstd-dev" = "latest"
 "apt:zlib1g-dev" = "latest"
 
-[bootstrap.hooks]
-final = """
-sudo usermod -aG video ${USER};
-sudo systemctl mask iio-sensor-proxy.service;
-systemctl --user enable --now brightness;
-"""
+[bootstrap.repos]
+"~/projects/aicommmit" = { url = "git@github.com:voronkovich/aicommit.git" }
+"~/projects/ansibled" = { url = "git@github.com:voronkovich/ansibled.git" }
+"~/projects/sniphpets-luasnip" = { url = "git@github.com:sniphpets/sniphpets-luasnip.git" }
+
+[bootstrap.hooks.final]
+run = [
+    "sudo usermod -aG video ${USER}",
+    "systemctl --user enable --now brightness",
+    "ln -s ~/projects/aicommmit/aicommit ~/.local/bin",
+]
 
 [env._.php]
 # https://github.com/verzly/mise-php#skip-dependency-installation
