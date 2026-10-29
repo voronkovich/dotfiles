@@ -35,10 +35,10 @@ smoke() {
         "${1:-localhost:8000}"
 }
 
-dsh() {
+dshell() {
     docker exec -it "${1:-$(docker ps -ql)}" "${2:-sh}"
 }
-compdef __docker_complete_running_containers dsh
+compdef __docker_complete_running_containers dshell
 
 paths() {
     local p; for p in "${path[@]}"; do; echo "${p}"; done;

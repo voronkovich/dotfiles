@@ -15,7 +15,6 @@ alias ll='ls -lG'
 alias localhost8080='sudo iptables -t nat -A OUTPUT -d localhost -p tcp --dport 80 -j REDIRECT --to-port 8080'
 alias ls='ls --color=auto'
 alias m='make'
-alias man='viman'
 alias mirror-site="httrack --footer '' --user-agent 'Mozilla/5.0 (compatible; SiteMirror)'"
 alias procdev='foreman start --procfile=Procfile.dev'
 alias pt='p -t'
