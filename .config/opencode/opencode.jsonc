@@ -10,16 +10,16 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "update": "disable",
-  "model": "zai/glm-4.5-flash",
-  "small_model": "qwen3.6-fp8-noreason",
+  "model": "neuraldeep/qwen3.6-fp8",
+  "small_model": "neuraldeep/qwen3.6-fp8-noreason",
   "enabled_providers": [
     "aihubmix",
-    "kilo",
+    // "kilo",
     "neuraldeep",
     "neurly",
     "opencode",
-    "teamorouter",
-    "zai",
+    // "teamorouter",
+    // "zai",
   ],
   "providers": {
     "aihubmix": {
