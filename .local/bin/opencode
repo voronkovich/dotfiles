@@ -7,4 +7,6 @@ set -a
 source "${HOME}/.secrets/envs"
 set +a
 
-exec bunx --bun opencode-ai@v1.19.4 "$@"
+# FIXME
+echo 'warn: standalone mode is used: --standalone' >&2
+exec npx @opencode/cli@2.2.3 --standalone "$@"

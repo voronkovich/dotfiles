@@ -95,7 +95,7 @@ alias zshrl="exec zsh"
 
 # AI
 alias aiconf="${EDITOR} ~/.config/aichat/config.yaml"
-alias oc='opencode --mini'
+alias oc='opencode mini'
 alias occonf="${EDITOR} ~/.config/opencode/opencode.jsonc"
 alias ge=gemini
 alias geconf="${EDITOR} ~/.gemini/settings.json"
