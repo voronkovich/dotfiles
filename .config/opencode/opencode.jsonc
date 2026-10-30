@@ -126,6 +126,45 @@
             "output": 0,
           }
         },
+        "deepseek/deepseek-v4.1-flash": {
+          // https://neurly.ru/models/deepseek/deepseek-v4.1-flash
+          "name": "Neurly: DeepSeek V4.1 Flash",
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 384000,
+          },
+          "cost": {
+            "input": 0,
+            "output": 0,
+          }
+        },
+        "deepseek/deepseek-v4.1-flash-1017": {
+          // https://neurly.ru/models/deepseek/deepseek-v4.1-flash-1017
+          "name": "Neurly: DeepSeek V4.1 Flash 1017",
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 384000,
+          },
+          "cost": {
+            "input": 0,
+            "output": 0,
+          }
+        },
+        "qwen/qwen3.7-flash": {
+          // https://neurly.ru/models/qwen/qwen3.7-flash
+          "name": "Neurly: Qwen 3.7 Flash",
+          "tool_call": true,
+          "limit": {
+            "context": 1000000,
+            "output": 65536,
+          },
+          "cost": {
+            "input": 0,
+            "output": 0,
+          }
+        },
         "z-ai/glm-5.3-flash": {
           // https://neurly.ru/models/z-ai/glm-5.3-flash
           "name": "Neurly: GLM 5.3 Flash",
