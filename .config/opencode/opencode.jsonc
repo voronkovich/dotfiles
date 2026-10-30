@@ -195,30 +195,5 @@
         "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
       }
     },
-    "docx-mcp": {
-      "type": "local",
-      "enabled": false,
-      "command": [
-        "uvx",
-        "--from",
-        "docx-mcp-server==0.7.4",
-        "--with",
-        "mcp==1.29.0",
-        "docx-mcp-server"
-      ]
-    },
-    "word-mcp-live": {
-      "type": "local",
-      "enabled": false,
-      "command": [
-        "uvx",
-        "--from",
-        "word-mcp-live",
-        "word_mcp_server",
-      ]
-    },
   },
-  "plugin": [
-    // "context-mode@1.0.169"
-  ]
 }
