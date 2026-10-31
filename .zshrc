@@ -174,7 +174,7 @@ if which fzf >/dev/null; then
     export FZF_CTRL_T_COMMAND='rg --files'
     export FZF_CTRL_T_OPTS="
     --style=full
-    --preview 'fzf-preview.sh {}'
+    --preview 'batcat --color=always {}'
     --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 fi
 
