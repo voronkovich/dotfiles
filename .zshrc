@@ -176,6 +176,10 @@ if which fzf >/dev/null; then
     --style=full
     --preview 'batcat --color=always {}'
     --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+    export FZF_ALT_C_OPTS="
+    --style=full
+    --preview 'batcat --color=always {}'
+    --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 fi
 
 # pack
