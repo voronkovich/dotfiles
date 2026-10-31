@@ -76,3 +76,24 @@ lrdep-artisan() {
 lrdep-composer() {
     artisan php vendor/bin/dep run "{{bin/composer}} $*"
 }
+
+config() {
+    local all_files=false
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -a) all_files=true; shift ;;
+            *) break ;;
+        esac
+    done
+
+    if $all_files; then
+        rg --files "${HOME}/.config"
+    else
+        yadm ls-files "${HOME}/.config" | xargs -d '\n' realpath
+    fi | fzf -m \
+        --preview 'batcat --color=always {}' \
+        --style=full \
+        --bind 'ctrl-/:change-preview-window(down|hidden|)' \
+    | xargs -r -d '\n' "${EDITOR}"
+}
