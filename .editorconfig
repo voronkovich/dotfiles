@@ -22,5 +22,5 @@ indent_style = tab
 [Makefile]
 indent_style = tab
 
-[**/.github/workflows/*.{yml,yaml}]
+[*.{yml,yaml}]
 indent_size = 2
