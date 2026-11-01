@@ -281,4 +281,15 @@
       },
     },
   },
+  "plugins": [
+    {
+      "package": "@plannotator/opencode@latest",
+      "options": {
+        "workflow": "plan-agent",
+        "planningAgents": [
+          "plan"
+        ]
+      }
+    }
+  ]
 }
