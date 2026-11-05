@@ -12,7 +12,6 @@ login_shell = "tmux"
 [bootstrap.packages]
 # Tools
 "apt:bat" = "latest"
-"apt:brightnessctl" = "latest"
 "apt:curl" = "latest"
 "apt:extrepo" = "latest"
 "apt:fd-find" = "latest"
@@ -45,8 +44,6 @@ login_shell = "tmux"
 
 [bootstrap.hooks.final]
 run = [
-    "sudo usermod -aG video ${USER}",
-    "systemctl --user enable --now brightness",
     "ln -s ~/projects/aicommmit/aicommit ~/.local/bin || true",
     "[ -f ~/.config/opencode/plugins/rtk.ts ] || rtk init -g --opencode",
 ]

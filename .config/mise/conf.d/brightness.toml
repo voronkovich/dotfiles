@@ -1,0 +1,10 @@
+# https://github.com/voronkovich/dotfiles/tree/master#imac-2017-215-inch-4k--ubuntu-2604
+
+[bootstrap.packages]
+"apt:brightnessctl" = "latest"
+
+[bootstrap.hooks.final]
+run = [
+    "sudo usermod -aG video ${USER}",
+    "systemctl --user enable --now brightness",
+]
