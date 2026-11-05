@@ -5,6 +5,6 @@
 
 [bootstrap.hooks.final]
 run = [
-    "sudo usermod -aG video ${USER}",
+    "id -Gn | grep -q video || sudo usermod -aG video ${USER}",
     "systemctl --user enable --now brightness",
 ]
