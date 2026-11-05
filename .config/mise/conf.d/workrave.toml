@@ -1,0 +1,6 @@
+# https://github.com/rcaelers/workrave#install
+[bootstrap.apt.sources]
+workrave = { ppa = "rob-caelers/workrave"}
+
+[bootstrap.packages]
+"apt:workrave" = "latest"
