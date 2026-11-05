@@ -1,0 +1,4 @@
+[tools]
+"npm:@deepseek-ai/dsh" = "0.2.1-rc.2"
+"npm:@deepseek-harness-tui/dsh-tui" = "0.17.0"
+"npm:pnpm" = "latest"
