@@ -14,7 +14,6 @@ login_shell = "tmux"
 "apt:fzf" = "latest"
 "apt:git" = "latest"
 "apt:htop" = "latest"
-"apt:neovim" = "latest"
 "apt:podman" = "latest"
 "apt:pwgen" = "latest"
 "apt:ripgrep" = "latest"
@@ -33,6 +32,4 @@ login_shell = "tmux"
 "apt:re2c" = "latest"
 
 [bootstrap.repos]
-"~/projects/aicommmit" = { url = "git@github.com:voronkovich/aicommit.git" }
 "~/projects/ansibled" = { url = "git@github.com:voronkovich/ansibled.git" }
-"~/projects/sniphpets-luasnip" = { url = "git@github.com:sniphpets/sniphpets-luasnip.git" }

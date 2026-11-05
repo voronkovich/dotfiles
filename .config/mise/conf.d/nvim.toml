@@ -1,0 +1,5 @@
+[bootstrap.packages]
+"apt:neovim" = "latest"
+
+[bootstrap.repos]
+"~/projects/sniphpets-luasnip" = { url = "git@github.com:sniphpets/sniphpets-luasnip.git" }
