@@ -1,3 +1,6 @@
+[env]
+AICOMMIT_CMD = "ai --model groq:llama-3.3-70b-versatile --prompt"
+
 [bootstrap.repos]
 "~/projects/aicommmit" = { url = "git@github.com:voronkovich/aicommit.git" }
 
