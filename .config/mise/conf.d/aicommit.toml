@@ -1,0 +1,7 @@
+[bootstrap.repos]
+"~/projects/aicommmit" = { url = "git@github.com:voronkovich/aicommit.git" }
+
+[bootstrap.hooks.final]
+run = [
+    "ln -s ~/projects/aicommmit/aicommit ~/.local/bin || true",
+]

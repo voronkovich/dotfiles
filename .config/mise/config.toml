@@ -23,7 +23,6 @@ login_shell = "tmux"
 "brew:bun" = "latest"
 "brew:symfony-cli/tap/symfony-cli" = "latest"
 "brew:transcrypt" = "latest"
-"brew:rtk" = "latest"
 
 # Build tools
 "apt:autoconf" = "latest"
@@ -37,9 +36,3 @@ login_shell = "tmux"
 "~/projects/aicommmit" = { url = "git@github.com:voronkovich/aicommit.git" }
 "~/projects/ansibled" = { url = "git@github.com:voronkovich/ansibled.git" }
 "~/projects/sniphpets-luasnip" = { url = "git@github.com:sniphpets/sniphpets-luasnip.git" }
-
-[bootstrap.hooks.final]
-run = [
-    "ln -s ~/projects/aicommmit/aicommit ~/.local/bin || true",
-    "[ -f ~/.config/opencode/plugins/rtk.ts ] || rtk init -g --opencode",
-]

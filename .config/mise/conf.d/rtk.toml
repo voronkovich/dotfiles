@@ -1,0 +1,7 @@
+[bootstrap.packages]
+"brew:rtk" = "latest"
+
+[bootstrap.hooks.final]
+run = [
+    "[ -f ~/.config/opencode/plugins/rtk.ts ] || rtk init -g --opencode",
+]
