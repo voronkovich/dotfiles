@@ -1,6 +1,5 @@
 [tools]
 node = "24"
-php = "8.5"
 uv = "latest"
 
 "npm:@deepseek-ai/dsh" = "0.2.1-rc.2"
@@ -9,9 +8,6 @@ uv = "latest"
 
 [bootstrap.user]
 login_shell = "tmux"
-
-[bootstrap.plugins]
-php = "https://github.com/verzly/mise-php#latest"
 
 [bootstrap.packages]
 # Tools
@@ -32,6 +28,7 @@ php = "https://github.com/verzly/mise-php#latest"
 "brew:bun" = "latest"
 "brew:symfony-cli/tap/symfony-cli" = "latest"
 "brew:transcrypt" = "latest"
+"brew:rtk" = "latest"
 
 # Build tools
 "apt:autoconf" = "latest"
@@ -40,30 +37,6 @@ php = "https://github.com/verzly/mise-php#latest"
 "apt:gettext" = "latest"
 "apt:pkg-config" = "latest"
 "apt:re2c" = "latest"
-
-# PHP build deps
-# https://github.com/verzly/mise-php
-"apt:libbz2-dev" = "latest"
-"apt:libcurl4-openssl-dev" = "latest"
-"apt:libedit-dev" = "latest"
-"apt:libfreetype-dev" = "latest"
-"apt:libgd-dev" = "latest"
-"apt:libgmp-dev" = "latest"
-"apt:libicu-dev" = "latest"
-"apt:libjpeg-dev" = "latest"
-"apt:libmagic-dev" = "latest"
-"apt:libonig-dev" = "latest"
-"apt:libpng-dev" = "latest"
-"apt:libpq-dev" = "latest"
-"apt:libsodium-dev" = "latest"
-"apt:libsqlite3-dev" = "latest"
-"apt:libssl-dev" = "latest"
-"apt:libwebp-dev" = "latest"
-"apt:libxml2-dev" = "latest"
-"apt:libxslt1-dev" = "latest"
-"apt:libzip-dev" = "latest"
-"apt:libzstd-dev" = "latest"
-"apt:zlib1g-dev" = "latest"
 
 [bootstrap.repos]
 "~/projects/aicommmit" = { url = "git@github.com:voronkovich/aicommit.git" }
@@ -74,10 +47,6 @@ php = "https://github.com/verzly/mise-php#latest"
 run = [
     "sudo usermod -aG video ${USER}",
     "systemctl --user enable --now brightness",
-    "ln -s ~/projects/aicommmit/aicommit ~/.local/bin",
+    "ln -s ~/projects/aicommmit/aicommit ~/.local/bin || true",
+    "[ -f ~/.config/opencode/plugins/rtk.ts ] || rtk init -g --opencode",
 ]
-
-[env._.php]
-# https://github.com/verzly/mise-php#skip-dependency-installation
-skip_deps = true
-
