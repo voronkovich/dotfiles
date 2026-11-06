@@ -1,0 +1,5 @@
+[env]
+RIPGREP_CONFIG_PATH = "${HOME}/.config/ripgrep"
+
+[bootstrap.packages]
+"apt:ripgrep" = "latest"

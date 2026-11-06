@@ -6,6 +6,5 @@ export MANPAGER='nvim +Man!'
 export PROJECTS="${HOME}/projects"
 export PROJECTS_TMP="${XDG_RUNTIME_DIR}/projects"
 export DOKKU_HOST=dokku
-export RIPGREP_CONFIG_PATH="${HOME}/.config/ripgrep"
 
 export GOOGLE_CLOUD_PROJECT=gen-lang-client-0273337949
