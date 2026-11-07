@@ -144,6 +144,9 @@
   "providers": {
     "aihubmix": {
       "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "apiKey": "{file:~/.secrets/api/aihubmix}",
+      },
       "whitelist": [
         "coding-glm-5-free",
         "coding-glm-5.1-free",
@@ -167,6 +170,7 @@
       ],
       "settings": {
         "baseURL": "https://api.neuraldeep.ru/v1",
+        "apiKey": "{file:~/.secrets/api/ai/neuraldeep}",
       },
       "models": {
         "qwen3.6-fp8": {
@@ -205,6 +209,7 @@
       ],
       "settings": {
         "baseURL": "https://neurly.ru/v1",
+        "apiKey": "{file:~/.secrets/api/ai/neurly}",
       },
       "models": {
         "deepseek/deepseek-v4-flash": {
@@ -308,6 +313,7 @@
       ],
       "settings": {
         "baseURL": "https://api.teamorouter.com/v1",
+        "apiKey": "{file:~/.secrets/api/ai/teamorouter}",
       },
       "models": {
         "deepseek-flash-1017": {
@@ -408,7 +414,9 @@
       "env": [
         "ZAI_API_KEY"
       ],
-      "settings": {},
+      "settings": {
+        "apiKey": "{file:~/.secrets/api/ai/zai}",
+      },
       "whitelist": [
         "glm-4.7-flash",
         "glm-4.5-flash",
@@ -422,7 +430,7 @@
         "disabled": false,
         "url": "https://mcp.context7.com/mcp",
         "headers": {
-          "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+          "CONTEXT7_API_KEY": "{file:~/.secretes/api/ai/context7}"
         }
       },
     },
