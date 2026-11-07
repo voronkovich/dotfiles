@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+    <dict>
+        <key>Protocol</key>
+        <string>s3</string>
+
+        <key>Vendor</key>
+        <string>cloud.ru</string>
+
+        <key>Default Nickname</key>
+	    <string>Cloud.ru Evolution S3</string>
+
+        <key>Description</key>
+        <string>Cloud.ru Evolution S3 (HTTPS)</string>
+
+        <key>Scheme</key>
+        <string>https</string>
+
+        <key>Schemes</key>
+        <array>
+            <string>cloudru</string>
+        </array>
+
+        <key>Default Hostname</key>
+		<string>s3.cloud.ru</string>
+        <key>Hostname Configurable</key>
+        <true/>
+
+        <key>Default Port</key>
+        <string>443</string>
+        <key>Port Configurable</key>
+        <true/>
+
+        <key>Username Placeholder</key>
+        <string>Tenant ID:Access Key ID</string>
+
+        <key>Password Placeholder</key>
+		<string>Secret Key</string>
+
+		<key>Region</key>
+		<string>ru-central-1</string>
+
+        <key>Properties</key>
+        <array>
+			<string>s3.bucket.virtualhost.disable=true</string>
+			<string>s3.upload.multipart.size=67108864</string>
+        </array>
+    </dict>
+</plist>

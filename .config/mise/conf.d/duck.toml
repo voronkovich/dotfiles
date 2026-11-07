@@ -1,0 +1,9 @@
+[bootstrap.apt.sources.duck]
+uris = "https://s3.amazonaws.com/repo.deb.cyberduck.io"
+suites = "stable"
+components = "main"
+key = "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xFE7097963FEFBE72"
+fingerprint = "DC90 2810 3CF5 FCB6 3E1C 8409 F7FA E1F3 2DA6 9515"
+
+[bootstrap.packages]
+"apt:duck" = "latest"
