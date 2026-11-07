@@ -12,6 +12,9 @@
   "update": "disable",
   "model": "neuraldeep/qwen3.6-fp8",
   "small_model": "neuraldeep/qwen3.6-fp8-noreason",
+  "instructions": [
+    "~/.config/opencode/AGENTS.caveman.md"
+  ],
   "permissions": [
     {
       "action": "shell",
@@ -50,6 +53,16 @@
     },
     {
       "action": "shell",
+      "resource": "head *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "tail *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
       "resource": "grep *",
       "effect": "allow"
     },
@@ -80,23 +93,8 @@
     },
     {
       "action": "shell",
-      "resource": "rm -rf *",
-      "effect": "deny"
-    },
-    {
-      "action": "shell",
-      "resource": "git push *",
-      "effect": "deny"
-    },
-    {
-      "action": "shell",
-      "resource": "git reset --hard *",
-      "effect": "deny"
-    },
-    {
-      "action": "shell",
-      "resource": "dd *",
-      "effect": "deny"
+      "resource": "shellspec *",
+      "effect": "allow"
     },
     {
       "action": "edit",
@@ -120,20 +118,25 @@
     },
     {
       "action": "read",
-      "resource": ".ansible_vault_password",
+      "resource": ".ansible_vault_*",
       "effect": "deny"
     },
     {
       "action": "read",
       "resource": "secrets/*",
       "effect": "deny"
-    }
+    },
+    {
+      "action": "skill",
+      "resource": "caveman*",
+      "effect": "allow"
+    },
   ],
   "enabled_providers": [
-    "aihubmix",
+    // "aihubmix",
     // "kilo",
     "neuraldeep",
-    "neurly",
+    // "neurly",
     "opencode",
     "teamorouter",
     // "zai",
@@ -334,7 +337,7 @@
           }
         },
         "deepseek-v4-flash-free": {
-          // https://teamorouter.com/ru/models/deepseek-v4-flash-free
+          // https://teamorouter.com/models/deepseek-v4-flash-free
           "name": "TeamoRouter: DeepSeek V4 Flash (Cheap)",
           "tool_call": true,
           "limit": {
@@ -347,7 +350,7 @@
           }
         },
         "glm-5.3-flash-free": {
-          // https://teamorouter.com/ru/models/glm-5.3-flash-free
+          // https://teamorouter.com/models/glm-5.3-flash-free
           "name": "TeamoRouter: GLM 5.3 Flash (Cheap)",
           "tool_call": true,
           "limit": {
@@ -360,7 +363,7 @@
           }
         },
         "glm-5.3-flash": {
-          // https://teamorouter.com/ru/models/glm-5.3-flash
+          // https://teamorouter.com/models/glm-5.3-flash
           "name": "TeamoRouter: GLM-5.3-Flash (Ox Alpha)",
           "tool_call": true,
           "limit": {
@@ -368,8 +371,34 @@
             "output": 128000,
           },
           "cost": {
-            "input": 0.0587,
-            "output": 0.206,
+            "input": 0.114,
+            "output": 0.4,
+          }
+        },
+        "claude-haiku-5-5": {
+          // https://teamorouter.com/models/claude-haiku-5-5
+          "name": "TeamoRouter: Claude Haiku 5.5",
+          "tool_call": true,
+          "limit": {
+            "context": 100000,
+            "output": 100000,
+          },
+          "cost": {
+            "input": 0.10,
+            "output": 0.50,
+          }
+        },
+        "qwen3.8-flash": {
+          // https://teamorouter.com/models/qwen3.8-flash
+          "name": "TeamoRouter: Qwen 3.8 Flash",
+          "tool_call": true,
+          "limit": {
+            "context": 1048576,
+            "output": 131072,
+          },
+          "cost": {
+            "input": 0.0572,
+            "output": 0.1929,
           }
         },
       },
