@@ -1,0 +1,8 @@
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "keybinds": {
+    "app.exit": "ctrl+d,<leader>q",
+    "session.interrupt": "ctrl+c",
+    "prompt.clear": "none"
+  }
+}
