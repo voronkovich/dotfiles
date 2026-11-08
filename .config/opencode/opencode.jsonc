@@ -78,6 +78,11 @@
     },
     {
       "action": "shell",
+      "resource": "echo *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
       "resource": "npm test *",
       "effect": "allow"
     },
