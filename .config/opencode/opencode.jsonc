@@ -410,6 +410,18 @@
             "output": 0.1929,
           }
         },
+        "gpt-6-luna": {
+          // https://teamorouter.com/models/gpt-6-luna
+          "name": "TeamoRouter: GPT-6 Luna",
+          "limit": {
+            "context": 272000,
+            "output": 128000,
+          },
+          "cost": {
+            "input": 0.10,
+            "output": 0.50,
+          }
+        },
       },
     },
     "zai": {
