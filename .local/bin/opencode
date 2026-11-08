@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+make --directory ~/.config/opencode opencode.json &&
+    exec npx -y @opencode/cli@"${OPENCODE_VERSION:-latest}" -- "$@"

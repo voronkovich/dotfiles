@@ -1,0 +1,14 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "update": "disable",
+  "model": "neuraldeep/qwen3.6-fp8",
+  "agents": {
+    "title": {
+      "model": "neuraldeep/qwen3.6-fp8-noreason"
+    }
+  },
+  "shell": "/bin/bash",
+  "instructions": [
+    "~/.config/opencode/AGENTS.caveman.md"
+  ]
+}

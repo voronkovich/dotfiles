@@ -1,148 +1,5 @@
-/*
- * Free Tier:
- *
- * https://www.askcodi.com/models
- * https://aihubmix.com/models
- * https://kilo.ai/docs/code-with-ai/agents/free-and-budget-models#kilo-gateway-free-models
- * https://opencode.ai/docs/zen/#pricing
- * https://docs.z.ai/guides/overview/pricing#text-models-2
- */
 {
   "$schema": "https://opencode.ai/config.json",
-  "update": "disable",
-  "model": "neuraldeep/qwen3.6-fp8",
-  "agents": {
-    "title": {
-      "model": "neuraldeep/qwen3.6-fp8-noreason",
-    },
-  },
-  "shell": "/bin/bash",
-  "instructions": [
-    "~/.config/opencode/AGENTS.caveman.md"
-  ],
-  "permissions": [
-    {
-      "action": "shell",
-      "resource": "*",
-      "effect": "ask"
-    },
-    {
-      "action": "shell",
-      "resource": "git status *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "git diff *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "git log *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "git show *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "ls *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "cat *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "head *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "tail *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "grep *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "rg *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "echo *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "npm test *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "pnpm test *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "ansible-lint *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "ansible-doc *",
-      "effect": "allow"
-    },
-    {
-      "action": "shell",
-      "resource": "shellspec *",
-      "effect": "allow"
-    },
-    {
-      "action": "edit",
-      "resource": "*",
-      "effect": "ask"
-    },
-    {
-      "action": "webfetch",
-      "resource": "*",
-      "effect": "ask"
-    },
-    {
-      "action": "read",
-      "resource": "*",
-      "effect": "allow"
-    },
-    {
-      "action": "read",
-      "resource": "*.env",
-      "effect": "deny"
-    },
-    {
-      "action": "read",
-      "resource": ".ansible_vault_*",
-      "effect": "deny"
-    },
-    {
-      "action": "read",
-      "resource": "secrets/*",
-      "effect": "deny"
-    },
-    {
-      "action": "skill",
-      "resource": "caveman*",
-      "effect": "allow"
-    },
-  ],
-  // https://opencode.ai/docs/policies
   "policies": [
     {
       "action": "provider.use",
@@ -163,13 +20,13 @@
       "action": "provider.use",
       "resource": "teamorouter",
       "effect": "allow"
-    },
+    }
   ],
   "providers": {
     "aihubmix": {
       "package": "@opencode/ai/providers/openai-compatible",
       "settings": {
-        "apiKey": "{file:~/.secrets/api/aihubmix}",
+        "apiKey": "{file:~/.secrets/api/aihubmix}"
       },
       "whitelist": [
         "coding-glm-5-free",
@@ -177,7 +34,7 @@
         "coding-minimax-m2.7-free",
         "gpt-4.1-free",
         "gpt-4o-free",
-        "kimi-for-coding-free",
+        "kimi-for-coding-free"
       ]
     },
     "kilo": {
@@ -194,33 +51,33 @@
       ],
       "settings": {
         "baseURL": "https://api.neuraldeep.ru/v1",
-        "apiKey": "{file:~/.secrets/api/ai/neuraldeep}",
+        "apiKey": "{file:~/.secrets/api/ai/neuraldeep}"
       },
       "models": {
         "qwen3.6-fp8": {
-          // https://neuraldeep.ru/models/qwen3-6-fp8
           "name": "NeuralDeep: Qwen 3.6 FP8",
+          "info": "https://neuraldeep.ru/models/qwen3-6-fp8",
           "limit": {
             "context": 46112,
             "output": 131072
           },
           "cost": {
             "input": 0,
-            "output": 0,
+            "output": 0
           }
         },
         "qwen3.6-fp8-noreason": {
-          // https://neuraldeep.ru/models/qwen3-6-fp8-noreason
           "name": "NeuralDeep: Qwen 3.6 FP8 No Reason",
+          "info": "https://neuraldeep.ru/models/qwen3-6-fp8-noreason",
           "limit": {
             "context": 46112,
             "output": 131072
           },
           "cost": {
             "input": 0,
-            "output": 0,
+            "output": 0
           }
-        },
+        }
       }
     },
     "neurly": {
@@ -231,94 +88,94 @@
       ],
       "settings": {
         "baseURL": "https://neurly.ru/v1",
-        "apiKey": "{file:~/.secrets/api/ai/neurly}",
+        "apiKey": "{file:~/.secrets/api/ai/neurly}"
       },
       "models": {
         "deepseek/deepseek-v4-flash": {
-          // https://neurly.ru/models/deepseek/deepseek-v4-flash
           "name": "Neurly: DeepSeek V4 Flash",
+          "info": "https://neurly.ru/models/deepseek/deepseek-v4-flash",
           "limit": {
             "context": 1048576,
-            "output": 384000,
+            "output": 384000
           },
           "cost": {
             "input": 0,
-            "output": 0,
+            "output": 0
           }
         },
         "deepseek/deepseek-v4-flash-0731": {
-          // https://neurly.ru/models/deepseek/deepseek-v4-flash-0731
           "name": "Neurly: DeepSeek V4 Flash 0731",
+          "info": "https://neurly.ru/models/deepseek/deepseek-v4-flash-0731",
           "limit": {
             "context": 1048576,
-            "output": 384000,
+            "output": 384000
           },
           "cost": {
             "input": 0,
-            "output": 0,
+            "output": 0
           }
         },
         "deepseek/deepseek-v4.1-flash": {
-          // https://neurly.ru/models/deepseek/deepseek-v4.1-flash
+          "info": "https://neurly.ru/models/deepseek/deepseek-v4.1-flash",
           "name": "Neurly: DeepSeek V4.1 Flash",
           "limit": {
             "context": 1048576,
-            "output": 384000,
+            "output": 384000
           },
           "cost": {
             "input": 0,
-            "output": 0,
+            "output": 0
           }
         },
         "deepseek/deepseek-v4.1-flash-1017": {
-          // https://neurly.ru/models/deepseek/deepseek-v4.1-flash-1017
           "name": "Neurly: DeepSeek V4.1 Flash 1017",
+          "info": "https://neurly.ru/models/deepseek/deepseek-v4.1-flash-1017",
           "limit": {
             "context": 1048576,
-            "output": 384000,
+            "output": 384000
           },
           "cost": {
             "input": 0,
-            "output": 0,
+            "output": 0
           }
         },
         "openai/gpt-5-nano": {
-          // https://neurly.ru/models/openai/gpt-5-nano
           "name": "Neurly: GPT-5 Nano",
+          "info": "https://neurly.ru/models/openai/gpt-5-nano",
           "limit": {
             "context": 1048576,
-            "output": 384000,
+            "output": 384000
           },
           "cost": {
             "input": 0,
-            "output": 0,
+            "output": 0
           }
         },
         "qwen/qwen3.7-flash": {
-          // https://neurly.ru/models/qwen/qwen3.7-flash
           "name": "Neurly: Qwen 3.7 Flash",
+          "info": "https://neurly.ru/models/qwen/qwen3.7-flash",
           "limit": {
             "context": 1000000,
-            "output": 65536,
+            "output": 65536
           },
           "cost": {
             "input": 0,
-            "output": 0,
+            "output": 0
           }
         },
         "z-ai/glm-5.3-flash": {
-          // https://neurly.ru/models/z-ai/glm-5.3-flash
           "name": "Neurly: GLM 5.3 Flash",
+          "info": "https://neurly.ru/models/z-ai/glm-5.3-flash",
           "limit": {
             "context": 1310720,
-            "output": 131072,
+            "output": 131072
           },
           "cost": {
             "input": 0,
-            "output": 0,
+            "output": 0
           }
-        },
-      },
+        }
+      }
     },
     "teamorouter": {
       "package": "@opencode/ai/providers/openai-compatible",
@@ -328,106 +185,106 @@
       ],
       "settings": {
         "baseURL": "https://api.teamorouter.com/v1",
-        "apiKey": "{file:~/.secrets/api/ai/teamorouter}",
+        "apiKey": "{file:~/.secrets/api/ai/teamorouter}"
       },
       "models": {
         "deepseek-flash-1017": {
-          // https://teamorouter.com/models/deepseek-flash-free
           "name": "TeamoRouter: Deepseek V4.1 Flash 1017",
+          "info": "https://teamorouter.com/models/deepseek-flash-1017",
           "limit": {
             "context": 1048576,
-            "output": 384000,
+            "output": 384000
           },
           "cost": {
             "input": 0.1275,
-            "output": 0.51,
+            "output": 0.51
           }
         },
         "deepseek-flash-free": {
-          // https://teamorouter.com/models/deepseek-flash-free
           "name": "TeamoRouter: DeepSeek V4.1 Flash (Cheap)",
+          "info": "https://teamorouter.com/models/deepseek-flash-free",
           "limit": {
             "context": 1048576,
-            "output": 384000,
+            "output": 384000
           },
           "cost": {
             "input": 0.0001,
-            "output": 0.0006,
+            "output": 0.0006
           }
         },
         "deepseek-v4-flash-free": {
-          // https://teamorouter.com/models/deepseek-v4-flash-free
           "name": "TeamoRouter: DeepSeek V4 Flash (Cheap)",
+          "info": "https://teamorouter.com/models/deepseek-v4-flash-free",
           "limit": {
             "context": 1048576,
-            "output": 384000,
+            "output": 384000
           },
           "cost": {
             "input": 0.0004,
-            "output": 0.0013,
+            "output": 0.0013
           }
         },
         "glm-5.3-flash-free": {
-          // https://teamorouter.com/models/glm-5.3-flash-free
           "name": "TeamoRouter: GLM 5.3 Flash (Cheap)",
+          "info": "https://teamorouter.com/models/glm-5.3-flash-free",
           "limit": {
             "context": 1048576,
-            "output": 128000,
+            "output": 128000
           },
           "cost": {
             "input": 0.0001,
-            "output": 0.0004,
+            "output": 0.0004
           }
         },
         "glm-5.3-flash": {
-          // https://teamorouter.com/models/glm-5.3-flash
           "name": "TeamoRouter: GLM-5.3-Flash (Ox Alpha)",
+          "info": "https://teamorouter.com/models/glm-5.3-flash",
           "limit": {
             "context": 1048576,
-            "output": 128000,
+            "output": 128000
           },
           "cost": {
             "input": 0.114,
-            "output": 0.4,
+            "output": 0.4
           }
         },
         "claude-haiku-5-5": {
-          // https://teamorouter.com/models/claude-haiku-5-5
           "name": "TeamoRouter: Claude Haiku 5.5",
+          "info": "https://teamorouter.com/models/claude-haiku-5-5",
           "limit": {
             "context": 100000,
-            "output": 100000,
+            "output": 100000
           },
           "cost": {
             "input": 0.10,
-            "output": 0.50,
+            "output": 0.50
           }
         },
         "qwen3.8-flash": {
-          // https://teamorouter.com/models/qwen3.8-flash
           "name": "TeamoRouter: Qwen 3.8 Flash",
+          "info": "https://teamorouter.com/models/qwen3.8-flash",
           "limit": {
             "context": 1048576,
-            "output": 131072,
+            "output": 131072
           },
           "cost": {
             "input": 0.0572,
-            "output": 0.1929,
+            "output": 0.1929
           }
         },
         "gpt-6-luna": {
-          // https://teamorouter.com/models/gpt-6-luna
           "name": "TeamoRouter: GPT-6 Luna",
+          "info": "https://teamorouter.com/models/gpt-6-luna",
           "limit": {
             "context": 272000,
-            "output": 128000,
+            "output": 128000
           },
           "cost": {
             "input": 0.10,
-            "output": 0.50,
+            "output": 0.50
           }
-        },
-      },
+        }
+      }
     },
     "zai": {
       "package": "@opencode/ai/providers/openai-compatible",
@@ -435,35 +292,12 @@
         "ZAI_API_KEY"
       ],
       "settings": {
-        "apiKey": "{file:~/.secrets/api/ai/zai}",
+        "apiKey": "{file:~/.secrets/api/ai/zai}"
       },
       "whitelist": [
         "glm-4.7-flash",
-        "glm-4.5-flash",
+        "glm-4.5-flash"
       ]
-    },
-  },
-  "mcp": {
-    "servers": {
-      "context7": {
-        "type": "remote",
-        "disabled": false,
-        "url": "https://mcp.context7.com/mcp",
-        "headers": {
-          "CONTEXT7_API_KEY": "{file:~/.secretes/api/ai/context7}"
-        }
-      },
-    },
-  },
-  "plugins": [
-    {
-      "package": "@plannotator/opencode@latest",
-      "options": {
-        "workflow": "plan-agent",
-        "planningAgents": [
-          "plan"
-        ]
-      }
     }
-  ]
+  }
 }
