@@ -137,14 +137,28 @@
       "effect": "allow"
     },
   ],
-  "enabled_providers": [
-    // "aihubmix",
-    // "kilo",
-    "neuraldeep",
-    // "neurly",
-    "opencode",
-    "teamorouter",
-    // "zai",
+  // https://opencode.ai/docs/policies
+  "policies": [
+    {
+      "action": "provider.use",
+      "resource": "*",
+      "effect": "deny"
+    },
+    {
+      "action": "provider.use",
+      "resource": "neuraldeep",
+      "effect": "allow"
+    },
+    {
+      "action": "provider.use",
+      "resource": "opencode",
+      "effect": "allow"
+    },
+    {
+      "action": "provider.use",
+      "resource": "teamorouter",
+      "effect": "allow"
+    },
   ],
   "providers": {
     "aihubmix": {
