@@ -58,6 +58,11 @@
     },
     {
       "action": "shell",
+      "resource": "sort *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
       "resource": "echo *",
       "effect": "allow"
     },
@@ -85,6 +90,56 @@
       "action": "shell",
       "resource": "shellspec *",
       "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "find *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "find*-delete*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "find*-exec*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "sed *",
+      "effect": "allow"
+    },
+    {
+      "action": "shell",
+      "resource": "sed *-i*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "sed *--in-place*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "sed *-e *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "sed *--expression*",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "sed * e *",
+      "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "sed *-i*--follow-symlinks*",
+      "effect": "deny"
     },
     {
       "action": "edit",
