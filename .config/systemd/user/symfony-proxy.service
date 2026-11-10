@@ -1,0 +1,12 @@
+[Unit]
+Description=Symfony Proxy
+Documentation=https://symfony.com/doc/current/setup/symfony_cli.html#setting-up-the-local-proxy
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/linuxbrew/.linuxbrew/bin/symfony proxy:start -f
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

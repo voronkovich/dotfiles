@@ -1,0 +1,9 @@
+# https://symfony.com/doc/current/setup/symfony_cli.html
+[bootstrap.packages]
+"brew:symfony-cli/tap/symfony-cli" = "latest"
+
+[bootstrap.hooks.final]
+run = [
+    # https://symfony.com/doc/current/setup/symfony_cli.html#setting-up-the-local-proxy
+    "systemctl --user enable --now symfony-proxy",
+]
