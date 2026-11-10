@@ -186,3 +186,7 @@ fi
 if which pack >/dev/null; then
     . $(pack completion --shell zsh)
 fi
+
+if which opencode >/dev/null; then
+    source <(opencode --completions zsh)
+fi
