@@ -1,7 +1,6 @@
 [tools]
 node = "24"
 uv = "latest"
-opencode = "2"
 
 [bootstrap.user]
 login_shell = "tmux"
