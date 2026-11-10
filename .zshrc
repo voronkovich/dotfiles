@@ -32,7 +32,6 @@ setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_space
 
-
 # ------------------------------------------------------------------------------
 # PATH CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -40,29 +39,29 @@ setopt hist_ignore_space
 
 # Tool specific paths
 if [[ -d "${HOME}/.phive/.local/bin" ]]; then
-    path=( "${HOME}/.phive/.local/bin" $path )
+    path=("${HOME}/.phive/.local/bin" $path)
 fi
 if [[ -d "${HOME}/.bun/bin" ]]; then
-    path=( "${HOME}/.bun/bin" $path )
+    path=("${HOME}/.bun/bin" $path)
 fi
 if [[ -d "${HOME}/.luarocks/bin" ]]; then
-    path=( "${HOME}/.luarocks/bin" $path )
+    path=("${HOME}/.luarocks/bin" $path)
 fi
 if [[ -d "${HOME}/.local/share/bob/nvim-bin" ]]; then
-    path=( "${HOME}/.local/share/bob/nvim-bin" $path )
+    path=("${HOME}/.local/share/bob/nvim-bin" $path)
 fi
 if [[ -d "${HOME}/projects/ansibled/bin" ]]; then
-    path=( "${HOME}/projects/ansibled/bin" $path )
+    path=("${HOME}/projects/ansibled/bin" $path)
 fi
 
 # Ruby & Ruby Gems
 if which ruby >/dev/null && which gem >/dev/null; then
-    path+=( $(ruby -r rubygems -e 'puts "#{Gem.dir}/bin #{Gem.user_dir}/bin"') )
+    path+=($(ruby -r rubygems -e 'puts "#{Gem.dir}/bin #{Gem.user_dir}/bin"'))
 fi
 
 # Local user binaries
 if [[ -d "${HOME}/.local/bin" ]]; then
-    path=( "${HOME}/.local/bin" $path )
+    path=("${HOME}/.local/bin" $path)
 fi
 
 # ------------------------------------------------------------------------------
@@ -182,11 +181,6 @@ if which fzf >/dev/null; then
     --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 fi
 
-# pack
-if which pack >/dev/null; then
-    . $(pack completion --shell zsh)
-fi
-
-if which opencode >/dev/null; then
-    source <(opencode --completions zsh)
-fi
+which pack >/dev/null && source $(pack completion --shell zsh)
+which opencode >/dev/null && source <(opencode --completions zsh)
+which gh >/dev/null && source <(gh completion -s zsh)

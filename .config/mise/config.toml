@@ -1,6 +1,7 @@
 [tools]
 node = "24"
 uv = "latest"
+gh = "latest"
 
 [bootstrap.user]
 login_shell = "tmux"
