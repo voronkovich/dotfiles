@@ -1,0 +1,6 @@
+# https://github.com/lerd-env/lerd-deb
+[bootstrap.apt.sources]
+lerd = { ppa = "lerd/lerd" }
+
+[bootstrap.packages]
+"apt:lerd" = "latest"
