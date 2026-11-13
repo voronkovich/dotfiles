@@ -20,7 +20,6 @@ login_shell = "tmux"
 "apt:tmux" = "latest"
 "apt:zsh" = "latest"
 "brew:bun" = "latest"
-"brew:symfony-cli/tap/symfony-cli" = "latest"
 "brew:transcrypt" = "latest"
 
 # Build tools
